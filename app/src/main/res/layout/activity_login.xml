@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title"></include>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_52PX"
+        android:layout_below="@id/layout_title"
+        android:layout_marginLeft="@dimen/DIMEN_18PX"
+        android:layout_marginRight="@dimen/DIMEN_18PX"
+        android:layout_marginTop="@dimen/DIMEN_12PX"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="@dimen/DIMEN_209PX"
+            android:layout_height="@dimen/DIMEN_52PX"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_edittext_shape"
+            android:hint="@string/phone_input"
+            android:inputType="phone"
+            android:textColor="@color/icon_text_grey"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+        <Button
+            android:id="@+id/btn_code"
+            android:layout_width="@dimen/DIMEN_260PX"
+            android:layout_height="@dimen/DIMEN_50PX"
+            android:layout_marginLeft="@dimen/DIMEN_10PX"
+            android:layout_toRightOf="@id/et_phone"
+            android:background="@color/main_blue"
+            android:text="@string/code_get"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_52PX"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/DIMEN_18PX"
+        android:layout_marginRight="@dimen/DIMEN_18PX"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:background="@drawable/bg_edittext_shape"
+        android:hint="@string/code_input"
+        android:inputType="number"
+        android:textColor="@color/icon_text_grey"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonTheme"
+        android:layout_marginTop="@dimen/DIMEN_52PX"
+        android:text="@string/login_bind" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_book1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_40PX"
+            android:text="@string/text_description"
+            android:textColor="@color/icon_text_grey"
+            android:textSize="@dimen/TEXT_SIZE_12SP" />
+
+        <TextView
+            android:id="@+id/tv_book2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_book1"
+            android:text="@string/text_pattern"
+            android:textColor="@color/second_blue"
+            android:textSize="@dimen/TEXT_SIZE_12SP" />
+
+    </RelativeLayout>
+
+</LinearLayout>

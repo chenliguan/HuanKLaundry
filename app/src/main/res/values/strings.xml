@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">浣客洗衣</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_frame">FrameActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_user_regulate">UserRegulateActivity</string>
+
+    <string name="title">标题</string>
+    <string name="text_register">注册</string>
+    <string name="text_backout">注销</string>
+    <string name="title_login">绑定手机登录</string>
+    <string name="title_user_regulate">用户协议</string>
+    <string name="title_register">注册</string>
+    <string name="phone_input">请输入手机号码</string>
+    <string name="code_get">获取验证码</string>
+    <string name="code_input">请输入验证码</string>
+    <string name="login_bind">绑定手机登陆</string>
+    <string name="register_login">注册并登陆</string>
+    <string name="text_description">点击“绑定手机登陆”，即表示同意</string>
+    <string name="text_pattern">《快快洗用户模式》</string>
+    <string name="text_refresh">重新获取</string>
+    <string name="main_navigation_home">主页</string>
+    <string name="main_navigation_basket">洗衣篮</string>
+    <string name="main_navigation_my">我</string>
+    <string name="main_navigation_more">更多</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homefragment">homeFragment</string>
+    <string name="basketfragment">basketfragment</string>
+
+</resources>

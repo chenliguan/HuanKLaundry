@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 给button设置selector让按钮背景正常状态下是一个颜色值方法 -->
+
+    <!-- 点击状态下的效果 -->
+    <item android:state_pressed="true">
+        <shape>
+            <!-- 设置背景填充色为灰色 -->
+            <solid android:color="@color/icon_text_grey"/>
+        </shape>
+    </item>
+    <!-- 正常状态下(非点击)的效果 -->
+    <item android:state_pressed="false">
+        <shape>
+            <!-- 设置背景填充色为分享蓝色 -->
+            <solid android:color="@color/main_blue"/>
+        </shape>
+    </item>
+
+</selector>
