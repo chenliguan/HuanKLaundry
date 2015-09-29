@@ -10,22 +10,33 @@ import android.view.ViewGroup;
 import com.guan.o2o.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 更多Fragment
+ *
+ * @author Guan
+ * @file com.guan.o2o.fragment
+ * @date 2015/9/29
+ * @Version 1.0
  */
 public class MoreFragment extends Fragment {
 
-
     public MoreFragment() {
-        // Required empty public constructor
-    }
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_more, container, false);
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+

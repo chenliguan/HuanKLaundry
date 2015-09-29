@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class UserRegulateActivity extends FrameActivity {
+public class UserAgreeActivity extends FrameActivity {
 
     @InjectView(R.id.iv_back)
     ImageView ivBack;

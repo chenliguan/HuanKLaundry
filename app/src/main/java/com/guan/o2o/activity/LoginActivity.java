@@ -100,7 +100,7 @@ public class LoginActivity extends FrameActivity {
                 break;
 
             case R.id.tv_book2:
-                openActivity(UserRegulateActivity.class);
+                openActivity(UserAgreeActivity.class);
                 break;
 
             default:

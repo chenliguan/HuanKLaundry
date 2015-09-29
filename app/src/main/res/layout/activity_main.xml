@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
@@ -14,7 +14,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <RadioGroup
             android:id="@+id/main_tab_group"
@@ -23,14 +23,15 @@
             android:layout_gravity="bottom"
             android:gravity="bottom"
             android:orientation="horizontal"
-            android:paddingTop="2.0dip" >
+            android:paddingTop="2.0dip">
 
             <RadioButton
                 android:id="@+id/main_tab_home"
                 style="@style/main_tab_bottom"
                 android:checked="true"
                 android:drawableTop="@drawable/bg_tab_home"
-                android:text="@string/main_navigation_home" />
+                android:text="@string/main_navigation_home"
+                android:textColor="@color/main_blue" />
 
             <RadioButton
                 android:id="@+id/main_tab_basket"

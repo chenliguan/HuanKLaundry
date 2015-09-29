@@ -41,7 +41,7 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name=".activity.UserRegulateActivity"
+            android:name=".activity.UserAgreeActivity"
             android:label="@string/title_activity_user_regulate" >
         </activity>
     </application>
