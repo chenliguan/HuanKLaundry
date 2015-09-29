@@ -14,24 +14,29 @@ import com.guan.o2o.R;
 
 
 /**
- * Created by Guan on 2015/7/25.
+ * 自定义View
+ *
+ * @author Guan
+ * @file com.guan.o2o.view
+ * @date 2015/9/29
+ * @Version 1.0
  */
-public class MyView extends FrameLayout {
+public class CustomView extends FrameLayout {
 
     private ImageView mMoreImage;
     private TextView mCustomer;
     private ImageView mRightImage;
 
-    public MyView(Context context) {
+    public CustomView(Context context) {
         super(context);
     }
 
-    public MyView(Context context, AttributeSet attrs) {
+    public CustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         // 通过布局view_custom.xml自定义每一行的格式
         // 再获取到view,并获取到具体的控件
-        View view = View.inflate(context, R.layout.view_coutom, this);
+        View view = View.inflate(context, R.layout.layout_coutom, this);
         mMoreImage = (ImageView) view.findViewById(R.id.iv_more);
         mCustomer = (TextView) view.findViewById(R.id.tv_customer);
         mRightImage = (ImageView) view.findViewById(R.id.iv_right);
@@ -49,7 +54,6 @@ public class MyView extends FrameLayout {
 
         // 关闭资源
         typeArray.recycle();
-
     }
 
     @Override

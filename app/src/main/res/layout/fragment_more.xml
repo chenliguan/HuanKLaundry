@@ -1,12 +1,65 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myandroid="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.guan.o2o.fragment.MoreFragment">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title"></include>
 
-</FrameLayout>
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/cv_customer"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_contact_customer"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/contact_customer" />
+
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/cv_problem"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_com_problem"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/com_problem" />
+
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/cv_service_scope"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_service_scope"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/service_scope" />
+
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/cv_about_us"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_about_us"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/about_us" />
+
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/user_agree"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_user_agree"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/user_agree" />
+
+    <TextView style="@style/TextView" />
+
+    <com.guan.o2o.view.CustomView
+        android:id="@+id/cv_feed_back"
+        style="@style/CustomView"
+        myandroid:iconMore="@mipmap/ic_feedback"
+        myandroid:iconRight="@mipmap/ic_right"
+        myandroid:textCustomer="@string/feedback" />
+
+</LinearLayout>

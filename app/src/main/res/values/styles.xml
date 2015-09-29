@@ -33,4 +33,18 @@
         <item name="android:layout_weight">1.0</item>
     </style>
 
+    <!--  More CustomView -->
+    <style name="CustomView" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!--  TextView -->
+    <style name="TextView" >
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_1PX</item>
+        <item name="android:background">@color/bg_grey</item>
+    </style>
+
 </resources>
