@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/et_phone"
-            android:layout_width="@dimen/DIMEN_209PX"
+            android:layout_width="@dimen/DIMEN_196PX"
             android:layout_height="@dimen/DIMEN_52PX"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/btn_code"
-            android:layout_width="@dimen/DIMEN_260PX"
+            android:layout_width="@dimen/DIMEN_280PX"
             android:layout_height="@dimen/DIMEN_50PX"
             android:layout_marginLeft="@dimen/DIMEN_10PX"
             android:layout_toRightOf="@id/et_phone"
@@ -75,7 +75,7 @@
             android:layout_marginLeft="@dimen/DIMEN_40PX"
             android:text="@string/text_description"
             android:textColor="@color/icon_text_grey"
-            android:textSize="@dimen/TEXT_SIZE_12SP" />
+            android:textSize="@dimen/TEXT_SIZE_13SP" />
 
         <TextView
             android:id="@+id/tv_book2"
@@ -84,7 +84,7 @@
             android:layout_toRightOf="@id/tv_book1"
             android:text="@string/text_pattern"
             android:textColor="@color/second_blue"
-            android:textSize="@dimen/TEXT_SIZE_12SP" />
+            android:textSize="@dimen/TEXT_SIZE_13SP" />
 
     </RelativeLayout>
 

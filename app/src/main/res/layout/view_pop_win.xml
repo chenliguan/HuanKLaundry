@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/pop_tip_title"
+            android:textColor="@color/frame_line_grey"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+        <TextView
+            android:id="@+id/tv_tip_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_10PX"
+            android:text="@string/pop_tip_text"
+            android:textColor="@color/frame_line_grey"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+    </LinearLayout>
+</RelativeLayout>

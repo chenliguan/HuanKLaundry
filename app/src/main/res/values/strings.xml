@@ -39,5 +39,7 @@
     <string name="about_us">关于我们</string>
     <string name="user_agree">用户协议</string>
     <string name="feedback">意见反馈</string>
+    <string name="pop_tip_title">提示信息</string>
+    <string name="pop_tip_text">请输入正确电话号码</string>
 
 </resources>

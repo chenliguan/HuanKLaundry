@@ -101,8 +101,10 @@ public class SplashActivity extends FrameActivity {
 
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
-        } else
+        } else {
             openActivity(GuideActivity.class);
+            finish();
+        }
     }
 
     @Override

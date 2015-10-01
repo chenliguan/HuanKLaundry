@@ -1,12 +1,19 @@
 package com.guan.o2o.activity;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
@@ -48,10 +55,16 @@ public class LoginActivity extends FrameActivity {
     TextView tvBook2;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
+    @InjectView(R.id.tv_tip_title)
+    TextView tvTipTitle;
+    @InjectView(R.id.tv_tip_text)
+    TextView tvTipText;
 
     private TimeCount mTime;
     private String mLoginPhone;
     private String mLoginCode;
+    private View localView;
+    private PopupWindow popupWindow;
     public Context context;
     public VolleyHandler<String> volleyRequest;
 
@@ -76,6 +89,7 @@ public class LoginActivity extends FrameActivity {
         mTime = new TimeCount(60000, 1000);
         tvTitle.setText(R.string.title_login);
         context = LoginActivity.this;
+        localView = getWindow().getDecorView();
     }
 
     /**
@@ -90,8 +104,6 @@ public class LoginActivity extends FrameActivity {
                 break;
 
             case R.id.btn_code:
-                // 开始计时
-                mTime.start();
                 getCode();
                 break;
 
@@ -105,31 +117,6 @@ public class LoginActivity extends FrameActivity {
 
             default:
                 break;
-        }
-    }
-
-    /**
-     * 获取验证码倒计时
-     */
-    private class TimeCount extends CountDownTimer {
-        public TimeCount(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
-
-        // 计时完毕
-        @Override
-        public void onFinish() {
-            btnCode.setText(R.string.text_refresh);
-            btnCode.setClickable(true);
-        }
-
-        // 计时过程
-        @Override
-        public void onTick(long millisUntilFinished) {
-            btnCode.setClickable(false);
-            btnCode.setBackgroundColor(getResources().getColor(R.color.icon_text_grey));
-            String text = "(" + millisUntilFinished / 1000 + "s" + ")后重新获取";
-            btnCode.setText(text);
         }
     }
 
@@ -152,11 +139,14 @@ public class LoginActivity extends FrameActivity {
         };
 
         // 对手机号码验证
-        if (isMobileNO(mLoginPhone)) {
+        if (isMobileNO(etPhone.getText().toString())) {
+            // 开始计时
+            mTime.start();
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
         } else
-            showMsg(Contant.MSG_PHONE_ERROR);
+//            showMsg(Contant.MSG_PHONE_ERROR);
+            showPopupWindow(localView);
     }
 
     /**
@@ -185,14 +175,83 @@ public class LoginActivity extends FrameActivity {
         };
 
         // 对手机号码与验证码验证
-        if (isMobileNO(mLoginPhone)) {
-            if (!isChineseNo(mLoginCode))
-                // 请求网络
-                VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
-            else
-                showMsg(Contant.MSG_PASSWORD_ERROR);
+        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode)) {
+            // 请求网络
+            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else
-            showMsg(Contant.MSG_PHONE_ERROR);
+            showMsg(Contant.MSG_PHONE_PASSWORD_ERROR);
+    }
+
+    /**
+     * 获取验证码倒计时
+     */
+    private class TimeCount extends CountDownTimer {
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        // 计时完毕
+        @Override
+        public void onFinish() {
+            btnCode.setText(R.string.text_refresh);
+            btnCode.setClickable(true);
+        }
+
+        // 计时过程
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btnCode.setClickable(false);
+            btnCode.setBackgroundColor(getResources().getColor(R.color.icon_text_grey));
+            String text = "(" + millisUntilFinished / 1000 + "s" + ")后重新获取";
+            btnCode.setText(text);
+        }
+    }
+
+    /**
+     * 定义提示PopupWindow
+     *
+     * @param view
+     */
+    private void showPopupWindow(View view) {
+
+        View contentView = LayoutInflater.from(this).inflate(
+                R.layout.view_pop_win, null);
+        popupWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
+        popupWindow.setTouchable(true);
+        // 必须实现，否则无论是点击外部区域还是Back键都无法dismiss
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        backgroundAlpha(0.5f);
+        // 设置好参数之后再show
+        popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
+
+        // 隐退监听
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1f);
+            }
+        });
+
+        // 停留2秒，隐退
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                popupWindow.dismiss();
+            }
+        }, 2000);
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        // 0.0-1.0
+        lp.alpha = bgAlpha;
+        getWindow().setAttributes(lp);
     }
 
     @Override

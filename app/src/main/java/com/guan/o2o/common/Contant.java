@@ -30,10 +30,10 @@ public class Contant {
     public static final long SPLASH_DELAY_MILLIS = 3000;
 
     // 手机号码格式错误
-    public final static String MSG_PHONE_ERROR = "手机号码格式错误";
+    public final static String MSG_PHONE_ERROR = "请重新输入手机号码";
 
-    // 密码存在汉字
-    public final static String MSG_PASSWORD_ERROR = "密码存在汉字";
+    // 手机号码或验证码格式错误
+    public final static String MSG_PHONE_PASSWORD_ERROR = "请重新输入手机号码或验证码";
 
     // 保存是否第一次登陆客户端
     public static final String SHAREDPREFERENCES_NAME_FIRST = "first_pref";
