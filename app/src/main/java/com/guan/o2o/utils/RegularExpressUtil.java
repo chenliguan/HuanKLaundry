@@ -33,14 +33,15 @@ public class RegularExpressUtil {
 
     /**
      * 判断密码字符串是否含有中文字
+     *
      * @param string
      * @return boolean
      */
     public static boolean isChineseNo(String string) {
         boolean is = false;
-        // 返回字符串的字节长度，一个中文两个字节
+        // 返回字符串的字节长度,一个中文两个字节
         int bytesLength = string.getBytes().length;
-        // 返回字符串的字符个数，一个中文算一个字符
+        // 返回字符串的字符个数,一个中文算一个字符
         int sLength = string.length();
         int hasNum = bytesLength - sLength;
         if (hasNum == 0) {
@@ -48,6 +49,21 @@ public class RegularExpressUtil {
         } else if (hasNum > 0) {
             is = true;
         }
+        return is;
+    }
+
+    /**
+     * 以及是否为空
+     *
+     * @param string
+     * @return
+     */
+    public static boolean isNullNo(String string) {
+        boolean is = false;
+        if (string == null) {
+            is = true;
+        } else
+            is = false;
         return is;
     }
 }

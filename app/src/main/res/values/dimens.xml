@@ -2810,6 +2810,8 @@
 
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="DIMEN_0.5PX">0.5dp</dimen>
+
     <dimen name="TEXT_SIZE_12SP">12sp</dimen>
     <dimen name="TEXT_SIZE_13SP">13sp</dimen>
     <dimen name="TEXT_SIZE_14SP">14sp</dimen>

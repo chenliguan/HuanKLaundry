@@ -1,18 +1,12 @@
 package com.guan.o2o.activity;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.ViewPagerAdapter;
@@ -68,9 +62,9 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
     private void initViewPager() {
         LayoutInflater inflater = getLayoutInflater();
         mList = new ArrayList<View>();
-        mList.add(inflater.inflate(R.layout.item_first, null));
-        mList.add(inflater.inflate(R.layout.item_second, null));
-        mList.add(inflater.inflate(R.layout.item_third, null));
+        mList.add(inflater.inflate(R.layout.view_first, null));
+        mList.add(inflater.inflate(R.layout.view_second, null));
+        mList.add(inflater.inflate(R.layout.view_third, null));
 
         mImageViews = new ImageView[mList.size()];
 
@@ -99,8 +93,7 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
         // 持久化数据设置已经引导
         SharedPreferenceUtil.sharedPreferences(GuideActivity.this);
         // 跳转到LoginActivity
-        openActivity(LoginActivity.class);
-        finish();
+        openActivityFn(LoginActivity.class);
     }
     
     @Override

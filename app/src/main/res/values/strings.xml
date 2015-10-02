@@ -9,12 +9,14 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_user_regulate">UserRegulateActivity</string>
+    <string name="title_activity_com_problem">ComProblemActivity</string>
 
     <string name="title">标题</string>
     <string name="text_register">注册</string>
     <string name="text_backout">注销</string>
     <string name="title_login">绑定手机登录</string>
     <string name="title_user_regulate">用户协议</string>
+    <string name="title_com_problem">常见问题</string>
     <string name="title_register">注册</string>
     <string name="phone_input">请输入手机号码</string>
     <string name="code_get">获取验证码</string>
@@ -41,5 +43,7 @@
     <string name="feedback">意见反馈</string>
     <string name="pop_tip_title">提示信息</string>
     <string name="pop_tip_text">请输入正确电话号码</string>
+
+    <string name="msg_repress">再按一次退出程序</string>
 
 </resources>

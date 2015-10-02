@@ -49,7 +49,7 @@ public class SplashActivity extends FrameActivity {
             public void run() {
                 switchActivity();
             }
-        }, 2300);
+        }, Contant.SPLASH_DELAY_MS);
     }
 
     /**
@@ -61,14 +61,14 @@ public class SplashActivity extends FrameActivity {
         mLoginPhone = null;
         mIsFirstIn = false;
 
-        // 读取SHAREDPREFERENCES_NAME_FIRST中的数据
+        // 读取SHARED_NAME_FIRST中的数据
         SharedPreferences preferences_first = getSharedPreferences(
-                Contant.SHAREDPREFERENCES_NAME_FIRST, MODE_PRIVATE);
-        // 读取SHAREDPREFERENCES_NAME_LOGIN中的数据
+                Contant.SHARED_NAME_FIRST, MODE_PRIVATE);
+        // 读取SHARED_NAME_LOGIN中的数据
         SharedPreferences preferences_login = getSharedPreferences(
-                Contant.SHAREDPREFERENCES_NAME_LOGIN, MODE_PRIVATE);
+                Contant.SHARED_NAME_LOGIN, MODE_PRIVATE);
 
-        // 取得相应的值，如果没有该值用true作为默认值
+        // 取得相应的值,如果没有用true作为默认值
         mIsFirstIn = preferences_first.getBoolean("isFirstIn", true);
         mLoginPhone = preferences_login.getString("loginPhone", "");
         mLoginCode = preferences_login.getString("loginCode", "");
@@ -86,31 +86,28 @@ public class SplashActivity extends FrameActivity {
                 public void reqSuccess(String response) {
                     // 登录业务判断
                     if (response.equals("547061")) {
-                        openActivity(MainActivity.class);
+                        openActivityFn(MainActivity.class);
                     } else
-                        openActivity(LoginActivity.class);
-                    finish();
+                        openActivityFn(LoginActivity.class);
                 }
 
                 @Override
                 public void reqError(String error) {
-                    openActivity(LoginActivity.class);
-                    finish();
+                    openActivityFn(LoginActivity.class);
                 }
             };
 
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else {
-            openActivity(GuideActivity.class);
-            finish();
+            openActivityFn(GuideActivity.class);
         }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        App.getQueue().cancelAll("stringrequest");
+        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
     }
 
     @Override

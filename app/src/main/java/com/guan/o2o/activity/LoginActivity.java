@@ -20,6 +20,7 @@ import com.guan.o2o.R;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
+import com.guan.o2o.utils.RegularExpressUtil;
 import com.guan.o2o.utils.SharedPreferenceUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
@@ -55,10 +56,6 @@ public class LoginActivity extends FrameActivity {
     TextView tvBook2;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
-    @InjectView(R.id.tv_tip_title)
-    TextView tvTipTitle;
-    @InjectView(R.id.tv_tip_text)
-    TextView tvTipText;
 
     private TimeCount mTime;
     private String mLoginPhone;
@@ -112,7 +109,7 @@ public class LoginActivity extends FrameActivity {
                 break;
 
             case R.id.tv_book2:
-                openActivity(UserAgreeActivity.class);
+                actionStart(this, UserAgreeActivity.class, Contant.VALUE_LOGIN_ACTIVITY);
                 break;
 
             default:
@@ -128,13 +125,13 @@ public class LoginActivity extends FrameActivity {
             @Override
             public void reqSuccess(String response) {
                 // 暂时代替验证码效果
-                String text = "[浣客洗衣] 您的登录验证码：" + response;
+                String text = "您的登录验证码：" + response;
                 showMsg(text);
             }
 
             @Override
             public void reqError(String error) {
-                showMsg(error);
+                showMsg("获取验证码失败");
             }
         };
 
@@ -145,7 +142,6 @@ public class LoginActivity extends FrameActivity {
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
         } else
-//            showMsg(Contant.MSG_PHONE_ERROR);
             showPopupWindow(localView);
     }
 
@@ -162,24 +158,23 @@ public class LoginActivity extends FrameActivity {
                 // 登录业务判断
                 if (response.equals("547061")) {
                     SharedPreferenceUtil.sharedPreferences(context, mLoginPhone, mLoginCode);
-                    openActivity(MainActivity.class);
-                    finish();
+                    openActivityFn(MainActivity.class);
                 } else
                     showMsg(Contant.MSG_SEIVICE_ERROR);
             }
 
             @Override
             public void reqError(String error) {
-                showMsg(error);
+                showMsg("连接服务器出错");
             }
         };
 
         // 对手机号码与验证码验证
-        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode)) {
+        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RegularExpressUtil.isNullNo(mLoginCode)) {
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else
-            showMsg(Contant.MSG_PHONE_PASSWORD_ERROR);
+            showMsg(Contant.MSG_PHONE_PASS_ERROR);
     }
 
     /**
@@ -193,8 +188,9 @@ public class LoginActivity extends FrameActivity {
         // 计时完毕
         @Override
         public void onFinish() {
-            btnCode.setText(R.string.text_refresh);
             btnCode.setClickable(true);
+            btnCode.setText(R.string.text_refresh);
+            btnCode.setBackgroundColor(getResources().getColor(R.color.main_blue));
         }
 
         // 计时过程
@@ -213,18 +209,16 @@ public class LoginActivity extends FrameActivity {
      * @param view
      */
     private void showPopupWindow(View view) {
-
         View contentView = LayoutInflater.from(this).inflate(
                 R.layout.view_pop_win, null);
         popupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
         popupWindow.setTouchable(true);
-        // 必须实现，否则无论是点击外部区域还是Back键都无法dismiss
+        // 必须实现，否则点击外部区域和Back键都无法dismiss
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         backgroundAlpha(0.5f);
         // 设置好参数之后再show
         popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
-
         // 隐退监听
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -232,14 +226,13 @@ public class LoginActivity extends FrameActivity {
                 backgroundAlpha(1f);
             }
         });
-
         // 停留2秒，隐退
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 popupWindow.dismiss();
             }
-        }, 2000);
+        }, Contant.POPWIN_DELAY_MS);
     }
 
     /**
@@ -257,7 +250,7 @@ public class LoginActivity extends FrameActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        App.getQueue().cancelAll("stringrequest");
+        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
     }
 
     @Override

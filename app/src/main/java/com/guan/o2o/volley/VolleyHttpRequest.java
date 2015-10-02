@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.guan.o2o.application.App;
+import com.guan.o2o.common.Contant;
 import com.guan.o2o.utils.LogUtil;
 
 /**
@@ -63,8 +64,7 @@ public class VolleyHttpRequest {
                 return params;
             }
         };
-        LogUtil.v("TAG", "String_request");
-        stringrequest.setTag("Volley_StringRequest");
+        stringrequest.setTag(Contant.TAG_STRING_REQUEST);
         App.getQueue().add(stringrequest);
     }
 
@@ -102,7 +102,7 @@ public class VolleyHttpRequest {
      */
     private static void Volley_JsonObjectRequest(int method, String url, JSONObject jsonObject, VolleyHandler<JSONObject> volleyRequest) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, jsonObject, volleyRequest.reqLis, volleyRequest.reqErr);
-        jsonObjectRequest.setTag("jsonObjectRequest");
+        jsonObjectRequest.setTag(Contant.TAG_JSON_REQUEST);
         App.getQueue().add(jsonObjectRequest);
     }
 
@@ -140,7 +140,7 @@ public class VolleyHttpRequest {
      */
     private static void Volley_ImageRequest(String url, int maxWidth, int maxHeight, VolleyHandler<Bitmap> volleyRequest) {
         ImageRequest imageRequest = new ImageRequest(url, volleyRequest.reqLis, maxWidth, maxHeight, Config.RGB_565, volleyRequest.reqErr);
-        imageRequest.setTag("imageRequest");
+        imageRequest.setTag(Contant.TAG_IMAGE_REQUEST);
         App.getQueue().add(imageRequest);
     }
 

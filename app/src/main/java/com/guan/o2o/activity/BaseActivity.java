@@ -1,12 +1,17 @@
 package com.guan.o2o.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.guan.o2o.common.Contant;
+
 /**
+ * 基础类封装业务无关的方法
+ *
  * @author Guan
  * @file com.example.guan.activity
  * @date 2015/8/14
@@ -35,9 +40,37 @@ public class BaseActivity extends Activity {
      * intent 跳转Activity公共方法
      */
     public void openActivity(Class<?> pClass) {
-
         Intent _intent = new Intent(this,pClass);
         startActivity(_intent);
+    }
+
+    /**
+     * intent 跳转Activity 并finish() 公共方法
+     */
+    public void openActivityFn(Class<?> pClass) {
+        Intent _intent = new Intent(this,pClass);
+        startActivity(_intent);
+        finish();
+    }
+
+    /**
+     * startActivityForResult()返回Activity的setResult方法
+     * @param value
+     */
+    public void setResultTo(int value) {
+        Intent _intent = new Intent();
+        _intent.putExtra(Contant.INTENT_KEY, value);
+        setResult(RESULT_OK, _intent);
+        finish();
+    }
+
+    /*
+     * intent 最佳数据传值方法
+     */
+    public static void actionStart(Context context,Class<?> pClass, String data) {
+        Intent intent = new Intent(context, pClass);
+        intent.putExtra(Contant.INTENT_PARAM, data);
+        context.startActivity(intent);
     }
 
     /**

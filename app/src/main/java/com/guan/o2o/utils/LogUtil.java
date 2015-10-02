@@ -30,6 +30,12 @@ public class LogUtil {
         }
     }
 
+    public static void d(String tag, String msg) {
+        if (LEVEL <= DEBUG) {
+            Log.d(tag, msg);
+        }
+    }
+
 
     public static void i(String tag, String msg) {
         if (LEVEL <= INFO) {
@@ -43,5 +49,9 @@ public class LogUtil {
         }
     }
 
-
+    public static void e(String tag, String msg) {
+        if (LEVEL <= ERROR) {
+            Log.e(tag, msg);
+        }
+    }
 }

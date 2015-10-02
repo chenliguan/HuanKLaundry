@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import com.guan.o2o.R;
 
 /**
+ * 框架类封装业务相关的方法
+ *
  * @author Guan
  * @file com.example.guan.activity
  * @date 2015/8/14

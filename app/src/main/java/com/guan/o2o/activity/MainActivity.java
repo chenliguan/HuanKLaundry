@@ -1,15 +1,18 @@
 package com.guan.o2o.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
+import com.guan.o2o.common.Contant;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -23,7 +26,7 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseFragActivity {
 
     @InjectView(R.id.viewpager)
     ViewPager viewPager;
@@ -38,10 +41,9 @@ public class MainActivity extends FragmentActivity {
     @InjectView(R.id.main_tab_group)
     RadioGroup mainTabGroup;
 
-    public static final int TAB_HOME = 0;
-    public static final int TAB_BASKET = 1;
-    public static final int TAB_MY = 2;
-    public static final int TAB_MORE = 3;
+    private long mExitTime;
+    private int mColorMainBlue;
+    private int mColorMainTextGrey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,67 +64,67 @@ public class MainActivity extends FragmentActivity {
      * 初始化变量
      */
     private void initVariable() {
+        mExitTime = 0;
+        mColorMainBlue = getResources().getColor(R.color.main_blue);
+        mColorMainTextGrey = getResources().getColor(R.color.icon_text_grey);
+
         FragmentAdapter adapter = new FragmentAdapter(
                 getSupportFragmentManager());
         viewPager.setAdapter(adapter);
     }
 
     /**
-     * 页面选择监听
+     * 4.实现MoreFragment的回调方法
+     *
+     * @param position
      */
-    private void onPageChangeListener() {
-        viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+    @Override
+    public void onIntentSelected(int position) {
 
-            @Override
-            public void onPageSelected(int id) {
-                switch (id) {
-                    case TAB_HOME:
-                        mainTabHome.setChecked(true);
-                        mainTabHome.setTextColor(getResources().getColor(R.color.main_blue));
-                        mainTabBasket.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMy.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMore.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        break;
+        switch (position) {
+            case Contant.CV_CUSTOMER:
+                break;
 
-                    case TAB_BASKET:
-                        mainTabBasket.setChecked(true);
-                        mainTabBasket.setTextColor(getResources().getColor(R.color.main_blue));
-                        mainTabHome.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMy.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMore.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        break;
+            case Contant.CV_PROBLEM:
+                // startActivityForResult()跳转，class、传值、请求码
+                requestActivity(ProblemActivity.class, null, Contant.CODE_PROBLEM);
+                break;
 
-                    case TAB_MY:
-                        mainTabMy.setChecked(true);
-                        mainTabMy.setTextColor(getResources().getColor(R.color.main_blue));
-                        mainTabHome.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabBasket.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMore.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        break;
+            case Contant.CV_SERVICESCOPE:
+                break;
 
-                    case TAB_MORE:
-                        mainTabMore.setChecked(true);
-                        mainTabMore.setTextColor(getResources().getColor(R.color.main_blue));
-                        mainTabHome.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabBasket.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        mainTabMy.setTextColor(getResources().getColor(R.color.icon_text_grey));
-                        break;
+            case Contant.CV_ABOUTUS:
+                break;
 
-                    default:
-                        break;
+            case Contant.CV_USERAGREE:
+                requestActivity(UserAgreeActivity.class, Contant.VALUE_MAIN_ACTIVITY, Contant.CODE_USERAGREE);
+                break;
+
+            case Contant.CV_FEEDBACK:
+                break;
+        }
+    }
+
+    /**
+     * 执行startActivityForResult()方法的回调
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        switch (requestCode) {
+            case Contant.CODE_USERAGREE:
+            case Contant.CODE_PROBLEM:
+                if (resultCode == RESULT_OK) {
+                    viewPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
                 }
-            }
+                break;
 
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-
-            }
-        });
+            default:
+                break;
+        }
     }
 
     /**
@@ -134,19 +136,19 @@ public class MainActivity extends FragmentActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_tab_home:
-                viewPager.setCurrentItem(TAB_HOME);
+                viewPager.setCurrentItem(Contant.TAB_HOME);
                 break;
 
             case R.id.main_tab_basket:
-                viewPager.setCurrentItem(TAB_BASKET);
+                viewPager.setCurrentItem(Contant.TAB_BASKET);
                 break;
 
             case R.id.main_tab_my:
-                viewPager.setCurrentItem(TAB_MY);
+                viewPager.setCurrentItem(Contant.TAB_MY);
                 break;
 
             case R.id.main_tab_more:
-                viewPager.setCurrentItem(TAB_MORE);
+                viewPager.setCurrentItem(Contant.TAB_MORE);
                 break;
 
             default:
@@ -154,4 +156,86 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 页面选择监听
+     */
+    private void onPageChangeListener() {
+        viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int id) {
+                switch (id) {
+                    case Contant.TAB_HOME:
+                        mainTabHome.setChecked(true);
+                        mainTabHome.setTextColor(mColorMainBlue);
+                        mainTabBasket.setTextColor(mColorMainTextGrey);
+                        mainTabMy.setTextColor(mColorMainTextGrey);
+                        mainTabMore.setTextColor(mColorMainTextGrey);
+                        break;
+
+                    case Contant.TAB_BASKET:
+                        mainTabBasket.setChecked(true);
+                        mainTabBasket.setTextColor(mColorMainBlue);
+                        mainTabHome.setTextColor(mColorMainTextGrey);
+                        mainTabMy.setTextColor(mColorMainTextGrey);
+                        mainTabMore.setTextColor(mColorMainTextGrey);
+                        break;
+
+                    case Contant.TAB_MY:
+                        mainTabMy.setChecked(true);
+                        mainTabMy.setTextColor(mColorMainBlue);
+                        mainTabHome.setTextColor(mColorMainTextGrey);
+                        mainTabBasket.setTextColor(mColorMainTextGrey);
+                        mainTabMore.setTextColor(mColorMainTextGrey);
+                        break;
+
+                    case Contant.TAB_MORE:
+                        mainTabMore.setChecked(true);
+                        mainTabMore.setTextColor(mColorMainBlue);
+                        mainTabHome.setTextColor(mColorMainTextGrey);
+                        mainTabBasket.setTextColor(mColorMainTextGrey);
+                        mainTabMy.setTextColor(mColorMainTextGrey);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+    }
+
+    /**
+     * 再按一次退出程序
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                mExitTime = System.currentTimeMillis();
+                showMsg(getResources().getString(R.string.msg_repress));
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

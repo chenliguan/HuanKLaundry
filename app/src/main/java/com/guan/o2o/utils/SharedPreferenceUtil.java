@@ -19,7 +19,7 @@ public class SharedPreferenceUtil {
     public static void sharedPreferences(Context context, String loginPhone, String loginCode) {
         //1、实例化SharedPreferences对象
         SharedPreferences preferences = context.getSharedPreferences(
-                Contant.SHAREDPREFERENCES_NAME_LOGIN, Context.MODE_PRIVATE);
+                Contant.SHARED_NAME_LOGIN, Context.MODE_PRIVATE);
         //2、实例化SharedPreferences.Editor对象
         SharedPreferences.Editor editor = preferences.edit();
         //3、editor.put()存入数据
@@ -34,7 +34,7 @@ public class SharedPreferenceUtil {
      */
     public static void sharedPreferences(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(
-                Contant.SHAREDPREFERENCES_NAME_FIRST, Context.MODE_PRIVATE);
+                Contant.SHARED_NAME_FIRST, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("isFirstIn", false);
         editor.commit();

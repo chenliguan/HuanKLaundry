@@ -2,6 +2,9 @@ package com.guan.o2o.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -16,34 +19,28 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 用户协议页面
+ * 常见问题页面
  *
  * @author Guan
  * @file com.guan.o2o.activity
- * @date 2015/9/29
+ * @date 2015/10/1
  * @Version 1.0
  */
-public class UserAgreeActivity extends FrameActivity {
+public class ProblemActivity extends FrameActivity {
 
     @InjectView(R.id.iv_back)
     ImageView ivBack;
-    @InjectView(R.id.wv_regulate)
-    WebView wvRegulate;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
-
-    private String mValue;
+    @InjectView(R.id.wv_com_problem)
+    WebView wvComProblem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_regulate);
+        setContentView(R.layout.activity_com_problem);
         ButterKnife.inject(this);
 
-        /**
-         * 初始化变量
-         */
-        initVariable();
         /**
          * 初始化布局
          */
@@ -51,24 +48,14 @@ public class UserAgreeActivity extends FrameActivity {
     }
 
     /**
-     * 初始化变量
-     */
-    private void initVariable() {
-        Intent mIntent = getIntent();
-        mValue = mIntent.getStringExtra(Contant.INTENT_PARAM);
-    }
-
-    /**
      * 初始化布局
      */
     private void initView() {
-        tvTitle.setText(R.string.title_user_regulate);
-        wvRegulate.loadUrl(HttpPath.getUserAgreeIfo());
-        // 覆盖WebView默认其他浏览器打开网页的行为,使网页用WebView打开
-        wvRegulate.setWebViewClient(new WebViewClient() {
+        tvTitle.setText(R.string.title_com_problem);
+        wvComProblem.loadUrl(HttpPath.getUserAgreeIfo());
+        wvComProblem.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //返回值是true时用WebView打开，为false调用其他浏览器
                 view.loadUrl(url);
                 return true;
             }
@@ -80,17 +67,6 @@ public class UserAgreeActivity extends FrameActivity {
      */
     @OnClick(R.id.iv_back)
     public void onClick() {
-        switch (mValue) {
-            case Contant.VALUE_LOGIN_ACTIVITY:
-                openActivityFn(LoginActivity.class);
-                break;
-
-            case Contant.VALUE_MAIN_ACTIVITY:
-                setResultTo(Contant.TAB_MORE);
-                break;
-
-            default:
-                break;
-        }
+        setResultTo(Contant.TAB_MORE);
     }
 }
