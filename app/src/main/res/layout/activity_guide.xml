@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/activity_btn_bottom"
+            android:layout_marginBottom="@dimen/DIMEN_88PX"
             android:background="@mipmap/bg_imexp" />
     </RelativeLayout>
 
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/activity_linear_bottom"
+            android:layout_marginBottom="@dimen/DIMEN_28PX"
             android:gravity="center"
             android:orientation="horizontal"></LinearLayout>
     </RelativeLayout>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/DIMEN_56PX"
+    android:layout_height="@dimen/DIMEN_100PX"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/iv_more"
-        android:layout_width="@dimen/DIMEN_28PX"
-        android:layout_height="@dimen/DIMEN_28PX"
+        android:layout_width="@dimen/DIMEN_50PX"
+        android:layout_height="@dimen/DIMEN_50PX"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/DIMEN_14PX"
+        android:layout_marginLeft="@dimen/DIMEN_26PX"
         android:src="@mipmap/ic_contact_customer" />
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/DIMEN_8PX"
+        android:layout_marginLeft="@dimen/DIMEN_14PX"
         android:layout_toRightOf="@id/iv_more"
         android:text="@string/contact_customer"
         android:textSize="18sp" />
@@ -29,6 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/DIMEN_24PX"
+        android:layout_marginRight="@dimen/DIMEN_44PX"
         android:src="@mipmap/ic_right" />
 </RelativeLayout>

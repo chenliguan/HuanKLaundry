@@ -55,9 +55,9 @@ public class MoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_more, container, false);
-        ButterKnife.inject(this, view);
-        return view;
+        View _view = inflater.inflate(R.layout.fragment_more, container, false);
+        ButterKnife.inject(this, _view);
+        return _view;
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
+import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 
 import butterknife.ButterKnife;
@@ -232,6 +233,11 @@ public class MainActivity extends BaseFragActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class LoginActivity extends FrameActivity {
     private String mLoginCode;
     private View localView;
     private PopupWindow popupWindow;
+    private long mExitTime;
     public Context context;
     public VolleyHandler<String> volleyRequest;
 
@@ -81,6 +83,7 @@ public class LoginActivity extends FrameActivity {
      * 初始化变量
      */
     private void initVariable() {
+        mExitTime = 0;
         mLoginCode = null;
         mLoginPhone = null;
         mTime = new TimeCount(60000, 1000);
@@ -246,6 +249,29 @@ public class LoginActivity extends FrameActivity {
         lp.alpha = bgAlpha;
         getWindow().setAttributes(lp);
     }
+
+    /**
+     * 再按一次退出程序
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                mExitTime = System.currentTimeMillis();
+                showMsg(getResources().getString(R.string.msg_repress));
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
     @Override
     protected void onStop() {

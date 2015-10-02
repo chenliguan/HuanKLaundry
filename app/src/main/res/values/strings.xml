@@ -12,6 +12,7 @@
     <string name="title_activity_com_problem">ComProblemActivity</string>
 
     <string name="title">标题</string>
+    <string name="city">成都</string>
     <string name="text_register">注册</string>
     <string name="text_backout">注销</string>
     <string name="title_login">绑定手机登录</string>

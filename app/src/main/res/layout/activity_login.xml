@@ -11,31 +11,30 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_52PX"
+        android:layout_height="@dimen/DIMEN_94PX"
         android:layout_below="@id/layout_title"
-        android:layout_marginLeft="@dimen/DIMEN_18PX"
-        android:layout_marginRight="@dimen/DIMEN_18PX"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_40PX"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_phone"
-            android:layout_width="@dimen/DIMEN_196PX"
-            android:layout_height="@dimen/DIMEN_52PX"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/DIMEN_274PX"
             android:background="@drawable/bg_edittext_shape"
             android:hint="@string/phone_input"
             android:inputType="phone"
+            android:paddingLeft="@dimen/DIMEN_12PX"
             android:textColor="@color/icon_text_grey"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
 
         <Button
             android:id="@+id/btn_code"
-            android:layout_width="@dimen/DIMEN_280PX"
-            android:layout_height="@dimen/DIMEN_50PX"
-            android:layout_marginLeft="@dimen/DIMEN_10PX"
-            android:layout_toRightOf="@id/et_phone"
+            android:layout_width="@dimen/DIMEN_260PX"
+            android:layout_height="@dimen/DIMEN_92PX"
+            android:layout_alignParentRight="true"
             android:background="@color/main_blue"
             android:text="@string/code_get"
             android:textColor="@color/white"
@@ -46,33 +45,34 @@
     <EditText
         android:id="@+id/et_code"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_52PX"
+        android:layout_height="@dimen/DIMEN_94PX"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/DIMEN_18PX"
-        android:layout_marginRight="@dimen/DIMEN_18PX"
-        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_36PX"
         android:background="@drawable/bg_edittext_shape"
         android:hint="@string/code_input"
         android:inputType="number"
+        android:paddingLeft="@dimen/DIMEN_12PX"
         android:textColor="@color/icon_text_grey"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
     <Button
         android:id="@+id/btn_login"
         style="@style/ButtonTheme"
-        android:layout_marginTop="@dimen/DIMEN_52PX"
+        android:layout_marginTop="@dimen/DIMEN_40PX"
         android:text="@string/login_bind" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_book1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/DIMEN_40PX"
             android:text="@string/text_description"
             android:textColor="@color/icon_text_grey"
             android:textSize="@dimen/TEXT_SIZE_13SP" />

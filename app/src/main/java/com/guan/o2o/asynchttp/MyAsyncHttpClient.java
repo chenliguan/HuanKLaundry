@@ -1,4 +1,4 @@
-package com.guan.o2o.async;
+package com.guan.o2o.asynchttp;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

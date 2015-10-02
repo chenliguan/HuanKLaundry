@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/console_line_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_50PX"
+        android:layout_height="@dimen/DIMEN_100PX"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:orientation="horizontal">
@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="bottom"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/DIMEN_2PX">
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/main_tab_home"
