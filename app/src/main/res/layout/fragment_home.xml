@@ -5,14 +5,34 @@
     android:orientation="vertical"
     tools:context="com.guan.o2o.fragment.HomeFragment">
 
+
     <include
         android:id="@+id/layout_title"
         layout="@layout/layout_home_title"></include>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/av_viewpager"
+    <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_260PX" />
+        android:layout_height="@dimen/DIMEN_260PX">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llyt_dots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/DIMEN_216PX"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/DIMEN_30PX"
+                android:orientation="horizontal"></LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -23,53 +43,37 @@
         <ImageView
             android:id="@+id/iv_a_wash"
             android:layout_width="@dimen/DIMEN_0PX"
-            android:layout_height="@dimen/DIMEN_180PX"
-            android:layout_weight="1"
+            android:layout_height="@dimen/DIMEN_182PX"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/DIMEN_30PX"
+            android:layout_marginLeft="@dimen/DIMEN_24PX"
+            android:layout_weight="1"
             android:src="@mipmap/ic_a_wash" />
 
         <ImageView
             android:id="@+id/iv_bag_wash"
             android:layout_width="@dimen/DIMEN_0PX"
-            android:layout_height="@dimen/DIMEN_180PX"
-            android:layout_weight="1"
+            android:layout_height="@dimen/DIMEN_182PX"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
-            android:layout_marginRight="@dimen/DIMEN_30PX"
+            android:layout_marginRight="@dimen/DIMEN_24PX"
+            android:layout_weight="1"
             android:src="@mipmap/ic_bag_wash" />
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_home_ariticles"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_136PX"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:layout_marginLeft="@dimen/DIMEN_30PX"
-        android:layout_marginRight="@dimen/DIMEN_30PX"
+        style="@style/imageview_home"
         android:src="@mipmap/ic_home_articles" />
 
     <ImageView
         android:id="@+id/iv_other_wash"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_136PX"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:layout_marginLeft="@dimen/DIMEN_30PX"
-        android:layout_marginRight="@dimen/DIMEN_30PX"
+        style="@style/imageview_home"
         android:src="@mipmap/ic_other_wash" />
 
     <ImageView
         android:id="@+id/iv_service_note"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_136PX"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:layout_marginLeft="@dimen/DIMEN_30PX"
-        android:layout_marginRight="@dimen/DIMEN_30PX"
+        style="@style/imageview_home"
         android:src="@mipmap/ic_service_note" />
-
 
 </LinearLayout>

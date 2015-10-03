@@ -42,7 +42,7 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
     private ArrayList<View> mList;
 
     /**
-     * 图片资源数组
+     * 圆点资源数组
      */
     private ImageView[] mImageViews;
 
@@ -67,15 +67,16 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
         mList.add(inflater.inflate(R.layout.view_third, null));
 
         mImageViews = new ImageView[mList.size()];
-
         for (int i = 0; i < mList.size(); i++) {
             mImageViews[i] = new ImageView(GuideActivity.this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
+            params.setMargins(7, 10, 7, 10);
+            mImageViews[i].setLayoutParams(params);
             if (0 == i) {
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_indicator_c);
             } else {
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_indicator);
             }
-            mImageViews[i].setPadding(0, 0, 20, 0);
             layoutDots.addView(mImageViews[i]);
         }
 

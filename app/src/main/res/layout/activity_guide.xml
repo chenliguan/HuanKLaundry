@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/DIMEN_28PX"
+            android:layout_marginBottom="@dimen/DIMEN_50PX"
             android:gravity="center"
             android:orientation="horizontal"></LinearLayout>
     </RelativeLayout>

@@ -48,4 +48,14 @@
         <item name="android:background">@color/frame_line_grey</item>
     </style>
 
+    <!--  ImageViewHome -->
+    <style name="imageview_home" >
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_136PX</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginLeft">@dimen/DIMEN_24PX</item>
+        <item name="android:layout_marginRight">@dimen/DIMEN_24PX</item>
+        <item name="android:layout_marginTop">@dimen/DIMEN_12PX</item>
+    </style>
+
 </resources>

@@ -28,7 +28,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-
         // 返回页面数目实现有限滑动效果
         if (mList != null) {
             return mList.size();
@@ -58,7 +57,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 //        return mList.get(position % mList.size());
 //        return super.instantiateItem(container, position);
     }
-
 
     @Override
     public void restoreState(Parcelable arg0, ClassLoader arg1) {

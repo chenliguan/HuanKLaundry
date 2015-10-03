@@ -95,23 +95,37 @@ public class Contant {
      * Intent识别哪个跳转ACTIVITY/FRAGMENT
      */
     // loginActivity
-    public final static String VALUE_LOGIN_ACTIVITY = "LoginActivity";
+    public static final String VALUE_LOGIN_ACTIVITY = "LoginActivity";
     // moreFragment
-    public final static String VALUE_MAIN_ACTIVITY = "MainActivity";
+    public static final String VALUE_MAIN_ACTIVITY = "MainActivity";
 
     // KEY值1
-    public final static String INTENT_KEY = "KEY";
+    public static final String INTENT_KEY = "KEY";
     // KEY值2
-    public final static String INTENT_PARAM = "PARAM";
+    public static final String INTENT_PARAM = "PARAM";
 
     /**
      * 更多页面跳转请求码
      */
-    public final static int CODE_CUSTOMER = 0000;
-    public final static int CODE_PROBLEM = 0001;
-    public final static int CODE_SERVICESCOPE = 0003;
-    public final static int CODE_ABOUTUS = 0004;
-    public final static int CODE_USERAGREE = 0005;
-    public final static int CODE_FEEDBACK = 0006;
+    public static final int CODE_CUSTOMER = 0000;
+    public static final int CODE_PROBLEM = 0001;
+    public static final int CODE_SERVICESCOPE = 0003;
+    public static final int CODE_ABOUTUS = 0004;
+    public static final int CODE_USERAGREE = 0005;
+    public static final int CODE_FEEDBACK = 0006;
+
+    /**
+     * 页面轮询
+     */
+    // 请求更新显示的View。
+    public static final int MSG_UPDATE_IMAGE = 1;
+    // 请求暂停轮播。
+    public static final int MSG_KEEP_SILENT = 2;
+    // 请求恢复轮播。
+    public static final int MSG_BREAK_SILENT = 3;
+    // 记录最新的页号
+    public static final int MSG_PAGE_CHANGED = 4;
+    // 轮播间隔时间
+    public static final long MSG_DELAY = 3000;
 
 }
