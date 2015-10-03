@@ -2,6 +2,7 @@ package com.guan.o2o.fragment;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -15,9 +16,13 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.ImagePagerAdapter;
 import com.guan.o2o.common.Contant;
-import com.guan.o2o.handler.ImageHandler;
+import com.guan.o2o.utils.LogUtil;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -52,11 +57,41 @@ public class HomeFragment extends Fragment {
     @InjectView(R.id.llyt_dots)
     LinearLayout llytDots;
 
+    // 当前轮播页
+    private int mCurrentItem;
+    private int[] imageUrls;
     private ImageView[] mImageViews;
-    private String[] imageUrls;
+    // Handler来处理ViewPager的轮播,实现定时更新
+    private ImageHandler imageHandler;
+    // 定时周期执行指定的任务
+    private ScheduledExecutorService mScheduledExecutorService;
 
-    public ImageHandler handler;
+    /**
+     * 使用弱引用避免Handler泄露,泛型参数可以是Activity/Fragment
+     */
+    private class ImageHandler extends Handler {
 
+        private WeakReference<HomeFragment> mWeakReference;
+
+        public ImageHandler(HomeFragment fragment) {
+            mWeakReference = new WeakReference<HomeFragment>(fragment);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Contant.MSG_UPDATE_IMAGE:
+                    mWeakReference.get().viewpager.setCurrentItem(mCurrentItem);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +114,18 @@ public class HomeFragment extends Fragment {
      * 初始化变量
      */
     private void initVariable() {
-        handler = new ImageHandler(HomeFragment.this);
+        imageUrls = new int[]{
+//                "http://image.zcool.com.cn/56/35/1303967876491.jpg",
+//                "http://image.zcool.com.cn/59/54/m_1303967870670.jpg",
+//                "http://image.zcool.com.cn/47/19/1280115949992.jpg",
+//                "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
+                R.mipmap.ic_b,
+                R.mipmap.ic_c,
+                R.mipmap.ic_a,
+                R.mipmap.ic_d
+        };
+        mCurrentItem = imageUrls.length * 1000;
+        imageHandler = new ImageHandler(HomeFragment.this);
     }
 
     /**
@@ -89,25 +135,18 @@ public class HomeFragment extends Fragment {
         LayoutInflater _inflater = LayoutInflater.from(getActivity());
         // 图片资源数组
         ArrayList<View> _listViews = new ArrayList<View>();
-        imageUrls = new String[]{
-                "http://image.zcool.com.cn/56/35/1303967876491.jpg",
-                "http://image.zcool.com.cn/59/54/m_1303967870670.jpg",
-                "http://image.zcool.com.cn/47/19/1280115949992.jpg",
-                "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
-        };
         // 圆点资源数组
         mImageViews = new ImageView[imageUrls.length];
 
-        // 热点个数与图片、圆点相等
         for (int i = 0; i < imageUrls.length; i++) {
             // 图片
             View _view = (View) _inflater.inflate(R.layout.view_pager, null);
-            _view.setBackgroundResource(R.mipmap.ic_b);
+            _view.setBackgroundResource(imageUrls[i]);
             _listViews.add(_view);
 
             // 圆点
             mImageViews[i] = new ImageView(getActivity());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(16,16);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(16, 16);
             params.setMargins(7, 10, 7, 10);
             mImageViews[i].setLayoutParams(params);
             if (0 == i) {
@@ -120,10 +159,18 @@ public class HomeFragment extends Fragment {
 
         viewpager.setAdapter(new ImagePagerAdapter(_listViews));
         viewpager.setOnPageChangeListener(new onPageChangeListener());
-        // 默认在中间,使用户看不到边界
-        viewpager.setCurrentItem(0);
-        // 开始轮播效果
-        handler.sendEmptyMessageDelayed(Contant.MSG_UPDATE_IMAGE, Contant.MSG_DELAY);
+        // 设定大大的值实现向左回播
+        viewpager.setCurrentItem(mCurrentItem);
+    }
+
+    /**
+     * 开始轮播图切换
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        mScheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 2, 3, TimeUnit.SECONDS);
     }
 
     /**
@@ -131,12 +178,10 @@ public class HomeFragment extends Fragment {
      */
     private class onPageChangeListener implements ViewPager.OnPageChangeListener {
 
-        // 配合Adapter的currentItem字段进行设置。
         @Override
         public void onPageSelected(int position) {
-            // 发送播放消息
-            handler.sendMessage(Message.obtain(handler, Contant.MSG_PAGE_CHANGED, position, 0));
 
+            mCurrentItem = position;
             // 更新小圆点图标
             for (int i = 0; i < imageUrls.length; i++) {
                 if (position % imageUrls.length == i) {
@@ -151,25 +196,34 @@ public class HomeFragment extends Fragment {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         }
 
-        /**
-         * 覆写该方法实现轮播效果的暂停和恢复
-         */
         @Override
         public void onPageScrollStateChanged(int position) {
 
-            switch (position) {
-                case ViewPager.SCROLL_STATE_DRAGGING:
-                    handler.sendEmptyMessage(Contant.MSG_KEEP_SILENT);
-                    break;
+        }
+    }
 
-                case ViewPager.SCROLL_STATE_IDLE:
-                    handler.sendEmptyMessageDelayed(Contant.MSG_UPDATE_IMAGE, Contant.MSG_DELAY);
-                    break;
+    /**
+     * 执行轮播图切换任务
+     */
+    private class ScrollTask implements Runnable {
 
-                default:
-                    break;
+        @Override
+        public void run() {
+            synchronized (viewpager) {
+                mCurrentItem++;
+                // 通过handler切换图片
+                imageHandler.sendEmptyMessage(Contant.MSG_UPDATE_IMAGE);
             }
         }
+    }
+
+    /**
+     * 停止轮播图切换
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        mScheduledExecutorService.shutdown();
     }
 
     @Override

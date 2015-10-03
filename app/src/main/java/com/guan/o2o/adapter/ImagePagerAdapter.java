@@ -26,7 +26,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        //设置成最大,实现无限循环
+        // 设置成最大,实现无限循环
         return Integer.MAX_VALUE;
     }
 
@@ -43,21 +43,21 @@ public class ImagePagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        //对ViewPager页号求模取出View列表中要显示的项
+        // 对ViewPager页号求模取出View列表中要显示的项
         position %= mViewlist.size();
         if (position < 0) {
             position = mViewlist.size() + position;
         }
 
-        View view = mViewlist.get(position);
-        //如果View已经在之前添加到了一个父组件,则必须先remove,否则会抛出IllegalStateException。
-        ViewParent vp = view.getParent();
-        if (vp != null) {
-            ViewGroup parent = (ViewGroup) vp;
-            parent.removeView(view);
+        View _view = mViewlist.get(position);
+        // 如果View已经在之前添加到了一个父组件,则必须先remove
+        // 否则会抛出IllegalStateException。
+        ViewParent viewParent = _view.getParent();
+        if (viewParent != null) {
+            ViewGroup viewGroup = (ViewGroup) viewParent;
+            viewGroup.removeView(_view);
         }
-        container.addView(view);
-        //add listeners here if necessary
-        return view;
+        container.addView(_view);
+        return _view;
     }
 }

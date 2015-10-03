@@ -117,15 +117,6 @@ public class Contant {
     /**
      * 页面轮询
      */
-    // 请求更新显示的View。
+    // 请求切换显示的View。
     public static final int MSG_UPDATE_IMAGE = 1;
-    // 请求暂停轮播。
-    public static final int MSG_KEEP_SILENT = 2;
-    // 请求恢复轮播。
-    public static final int MSG_BREAK_SILENT = 3;
-    // 记录最新的页号
-    public static final int MSG_PAGE_CHANGED = 4;
-    // 轮播间隔时间
-    public static final long MSG_DELAY = 3000;
-
 }

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/DIMEN_216PX"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/DIMEN_30PX"
+                android:layout_marginRight="@dimen/DIMEN_24PX"
                 android:orientation="horizontal"></LinearLayout>
         </RelativeLayout>
     </FrameLayout>
@@ -45,7 +45,7 @@
             android:layout_width="@dimen/DIMEN_0PX"
             android:layout_height="@dimen/DIMEN_182PX"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/DIMEN_24PX"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
             android:layout_weight="1"
             android:src="@mipmap/ic_a_wash" />
 
@@ -55,7 +55,7 @@
             android:layout_height="@dimen/DIMEN_182PX"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/DIMEN_20PX"
-            android:layout_marginRight="@dimen/DIMEN_24PX"
+            android:layout_marginRight="@dimen/DIMEN_20PX"
             android:layout_weight="1"
             android:src="@mipmap/ic_bag_wash" />
 

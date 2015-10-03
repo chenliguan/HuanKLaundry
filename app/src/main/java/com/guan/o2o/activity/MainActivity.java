@@ -14,6 +14,7 @@ import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.fragment.HomeFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -129,7 +130,7 @@ public class MainActivity extends BaseFragActivity {
     }
 
     /**
-     * 监听设置当前选择项
+     * 监听设置当前页面
      *
      * @param view
      */

@@ -3,6 +3,7 @@ package com.guan.o2o.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.guan.o2o.activity.MainActivity;
 import com.guan.o2o.common.Contant;
