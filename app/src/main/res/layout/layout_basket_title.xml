@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rllyt_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_100PX"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/DIMEN_38PX"
+            android:layout_height="@dimen/DIMEN_38PX"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/DIMEN_36PX"
+            android:src="@drawable/bg_back_selector" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/title"
+            android:textColor="@color/texts_grey"
+            android:textSize="@dimen/TEXT_SIZE_20SP" />
+
+        <TextView
+            android:id="@+id/tv_delete_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/DIMEN_36PX"
+            android:text="@string/text_delete_order"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -12,15 +12,14 @@ import com.guan.o2o.fragment.MoreFragment;
  * 基础类封装业务无关的方法
  *
  * @author Guan
- * @file com.example.guan.activity
+ * @file com.guan.o2o.activity
  * @date 2015/10/1
  * @Version 1.0
  */
 public abstract class BaseFragActivity extends FragmentActivity implements MoreFragment.OnClickListener {
 
     /**
-     * 把最常用的与业务无关的方法封装，简化编码编写过程
-     *
+     * 把最常用的与业务无关的方法封装,简化编码编写过程
      * @param savedInstanceState
      */
     @Override
@@ -30,7 +29,6 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
 
     /**
      * Toast公共方法
-     *
      * @param pMsg
      */
     public void showMsg(String pMsg) {
@@ -39,6 +37,7 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
 
     /**
      * intent 跳转Activity公共方法
+     * @param pClass
      */
     public void openActivity(Class<?> pClass) {
         Intent _intent = new Intent(this, pClass);

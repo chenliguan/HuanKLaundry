@@ -13,6 +13,7 @@
 
     <string name="title">标题</string>
     <string name="city">成都</string>
+    <string name="text_delete_order">删除订单</string>
     <string name="text_register">注册</string>
     <string name="text_backout">注销</string>
     <string name="title_login">绑定手机登录</string>
@@ -46,5 +47,8 @@
     <string name="pop_tip_text">请输入正确电话号码</string>
 
     <string name="msg_repress">再按一次退出程序</string>
+    <string name="text_tshirt">T恤</string>
+    <string name="x">X</string>
+    <string name="rnb">¥0</string>
 
 </resources>

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context="com.guan.o2o.fragment.HomeFragment">
 
-
     <include
         android:id="@+id/layout_title"
         layout="@layout/layout_home_title"></include>

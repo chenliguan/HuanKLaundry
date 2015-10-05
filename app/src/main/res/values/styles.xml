@@ -13,7 +13,7 @@
         <item name="android:layout_marginRight">@dimen/DIMEN_32PX</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginBottom">@dimen/DIMEN_32PX</item>
-        <item name="android:background">@drawable/bg_button_selector</item>
+        <item name="android:background">@drawable/bg_btn_selector</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/TEXT_SIZE_14SP</item>
     </style>

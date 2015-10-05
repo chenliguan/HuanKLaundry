@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.guan.o2o.fragment.BasketFragment">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_basket_title"></include>
+
+    <TextView
+        style="@style/TextView"
+        android:layout_height="@dimen/DIMEN_18PX" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_basket"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"></ListView>
+
+        <ImageView
+            android:id="@+id/iv_basket_null"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bg_basket_null"
+            android:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>

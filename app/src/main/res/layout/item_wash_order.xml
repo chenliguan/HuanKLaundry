@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/DIMEN_180PX"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/DIMEN_20PX"
+    android:paddingTop="@dimen/DIMEN_20PX">
+
+    <FrameLayout
+        android:id="@+id/flyt_cloth"
+        android:layout_width="@dimen/DIMEN_132PX"
+        android:layout_height="@dimen/DIMEN_140PX"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/DIMEN_20PX"
+        android:background="@mipmap/bg_box">
+
+        <ImageView
+            android:id="@+id/iv_cloth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/DIMEN_20PX"
+            android:src="@mipmap/ic_clo_tshirt" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/DIMEN_20PX"
+        android:layout_toEndOf="@+id/flyt_cloth"
+        android:text="@string/text_tshirt"
+        android:textSize="@dimen/TEXT_SIZE_20SP" />
+
+    <LinearLayout
+        android:id="@+id/llyt_calculate"
+        android:layout_width="@dimen/DIMEN_200PX"
+        android:layout_height="@dimen/DIMEN_56PX"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/DIMEN_160PX"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_min"
+            android:layout_width="@dimen/DIMEN_56PX"
+            android:layout_height="fill_parent"
+            android:src="@drawable/bg_min_selector" />
+
+        <ImageView
+            android:layout_width="@dimen/DIMEN_86PX"
+            android:layout_height="fill_parent"
+            android:src="@mipmap/ic_middle" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="@dimen/DIMEN_56PX"
+            android:layout_height="fill_parent"
+            android:src="@drawable/bg_add_selector" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/DIMEN_110PX"
+        android:text="@string/x"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/DIMEN_60PX"
+        android:text="@string/rnb"
+        android:textSize="@dimen/TEXT_SIZE_20SP" />
+
+    <ImageView
+        android:layout_width="@dimen/DIMEN_32PX"
+        android:layout_height="@dimen/DIMEN_32PX"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/DIMEN_10PX"
+        android:layout_marginTop="@dimen/DIMEN_0PX"
+        android:src="@mipmap/ic_delete" />
+
+</RelativeLayout>

@@ -17,9 +17,8 @@ public class UserBean {
     /**
      * registerPhone : 13751338740
      * registerCode : 13751338740
-     * interesting : ["game","music","sports"]
+     * interesting : ["gprivate Stringame","music","sports"]
      */
-
     private String registerPhone;
     private String registerCode;
     private List<String> interesting;

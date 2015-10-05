@@ -53,6 +53,18 @@ public class MoreFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
+        try {
+            mCallback = (OnClickListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View _view = inflater.inflate(R.layout.fragment_more, container, false);
@@ -65,18 +77,6 @@ public class MoreFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // 初始化变量
         initVariable();
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
-        try {
-            mCallback = (OnClickListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnHeadlineSelectedListener");
-        }
     }
 
     /**

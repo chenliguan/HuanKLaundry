@@ -16,11 +16,11 @@ import java.util.ArrayList;
  * @date 2015/10/3
  * @Version 1.0
  */
-public class ImagePagerAdapter extends PagerAdapter {
+public class PollPagerAdapter extends PagerAdapter {
 
     private ArrayList<View> mViewlist;
 
-    public ImagePagerAdapter(ArrayList<View> viewlist) {
+    public PollPagerAdapter(ArrayList<View> viewlist) {
         this.mViewlist = viewlist;
     }
 
@@ -35,15 +35,20 @@ public class ImagePagerAdapter extends PagerAdapter {
         return arg0 == arg1;
     }
 
+    /**
+     * Warning：不要在这里调用removeView
+     * @param container
+     * @param position
+     * @param object
+     */
     @Override
     public void destroyItem(ViewGroup container, int position,
                             Object object) {
-        // Warning：不要在这里调用removeView
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        // 对ViewPager页号求模取出View列表中要显示的项
+        // 对ViewPager页号求模取出View列表要显示的项
         position %= mViewlist.size();
         if (position < 0) {
             position = mViewlist.size() + position;

@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.adapter.ImagePagerAdapter;
+import com.guan.o2o.adapter.PollPagerAdapter;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.utils.LogUtil;
 
@@ -57,22 +57,23 @@ public class HomeFragment extends Fragment {
     @InjectView(R.id.llyt_dots)
     LinearLayout llytDots;
 
-    // 当前轮播页
-    private int mCurrentItem;
     private int[] imageUrls;
+    private int mCurrentItem;
     private ImageView[] mImageViews;
-    // Handler来处理ViewPager的轮播,实现定时更新
-    private ImageHandler imageHandler;
-    // 定时周期执行指定的任务
+    private ImageHandler mImageHandler;
+    /*
+     *定时周期执行指定的任务
+     */
     private ScheduledExecutorService mScheduledExecutorService;
 
     /**
-     * 使用弱引用避免Handler泄露,泛型参数可以是Activity/Fragment
+     * Handler来处理ViewPager的轮播,实现定时更新
      */
     private class ImageHandler extends Handler {
 
         private WeakReference<HomeFragment> mWeakReference;
 
+        // 使用弱引用避免Handler泄露,泛型参数可以是Activity/Fragment
         public ImageHandler(HomeFragment fragment) {
             mWeakReference = new WeakReference<HomeFragment>(fragment);
         }
@@ -91,23 +92,33 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    ;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View _view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.inject(this, _view);
+        LogUtil.v("TAG", "HomeFragment:onCreateView");
         return _view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        LogUtil.v("TAG", "HomeFragment:onActivityCreated");
         // 初始化变量
         initVariable();
         // 初始化ViewPager
         initViewPager();
+    }
+
+    /**
+     * 开始轮播图切换
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        mScheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 2, 3, TimeUnit.SECONDS);
     }
 
     /**
@@ -119,13 +130,13 @@ public class HomeFragment extends Fragment {
 //                "http://image.zcool.com.cn/59/54/m_1303967870670.jpg",
 //                "http://image.zcool.com.cn/47/19/1280115949992.jpg",
 //                "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
-                R.mipmap.ic_b,
-                R.mipmap.ic_c,
-                R.mipmap.ic_a,
-                R.mipmap.ic_d
+                R.mipmap.ic_poll_a,
+                R.mipmap.ic_poll_c,
+                R.mipmap.ic_poll_b,
+                R.mipmap.ic_poll_d
         };
         mCurrentItem = imageUrls.length * 1000;
-        imageHandler = new ImageHandler(HomeFragment.this);
+        mImageHandler = new ImageHandler(HomeFragment.this);
     }
 
     /**
@@ -133,9 +144,9 @@ public class HomeFragment extends Fragment {
      */
     private void initViewPager() {
         LayoutInflater _inflater = LayoutInflater.from(getActivity());
-        // 图片资源数组
+        // 图片资源集合数组
         ArrayList<View> _listViews = new ArrayList<View>();
-        // 圆点资源数组
+        // 圆点资源对象数组
         mImageViews = new ImageView[imageUrls.length];
 
         for (int i = 0; i < imageUrls.length; i++) {
@@ -157,20 +168,10 @@ public class HomeFragment extends Fragment {
             llytDots.addView(mImageViews[i]);
         }
 
-        viewpager.setAdapter(new ImagePagerAdapter(_listViews));
+        viewpager.setAdapter(new PollPagerAdapter(_listViews));
         viewpager.setOnPageChangeListener(new onPageChangeListener());
         // 设定大大的值实现向左回播
         viewpager.setCurrentItem(mCurrentItem);
-    }
-
-    /**
-     * 开始轮播图切换
-     */
-    @Override
-    public void onStart() {
-        super.onStart();
-        mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        mScheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 2, 3, TimeUnit.SECONDS);
     }
 
     /**
@@ -212,7 +213,7 @@ public class HomeFragment extends Fragment {
             synchronized (viewpager) {
                 mCurrentItem++;
                 // 通过handler切换图片
-                imageHandler.sendEmptyMessage(Contant.MSG_UPDATE_IMAGE);
+                mImageHandler.sendEmptyMessage(Contant.MSG_UPDATE_IMAGE);
             }
         }
     }

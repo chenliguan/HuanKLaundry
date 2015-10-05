@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * @date 2015/9/21
  * @Version 1.0
  */
-public class FileAdapter extends BaseToAdapter {
+public class FileAdapter extends BaseToAdapter<FileBean> {
 
     private List<FileBean> mList;
     private Context mContext;

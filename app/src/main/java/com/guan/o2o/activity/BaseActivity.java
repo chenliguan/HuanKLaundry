@@ -13,14 +13,14 @@ import com.guan.o2o.common.Contant;
  * 基础类封装业务无关的方法
  *
  * @author Guan
- * @file com.example.guan.activity
+ * @file com.guan.o2o.activity
  * @date 2015/8/14
  * @Version 1.0
  */
 public class BaseActivity extends Activity {
 
     /**
-     * 把最常用的与业务无关的方法封装，简化编码编写过程
+     * 把最常用的与业务无关的方法封装,简化编码编写过程
      * @param savedInstanceState
      */
     @Override
@@ -38,6 +38,7 @@ public class BaseActivity extends Activity {
 
     /**
      * intent 跳转Activity公共方法
+     * @param pClass
      */
     public void openActivity(Class<?> pClass) {
         Intent _intent = new Intent(this,pClass);
@@ -45,7 +46,8 @@ public class BaseActivity extends Activity {
     }
 
     /**
-     * intent 跳转Activity 并finish() 公共方法
+     * intent 跳转Activity并finish()公共方法
+     * @param pClass
      */
     public void openActivityFn(Class<?> pClass) {
         Intent _intent = new Intent(this,pClass);
@@ -64,8 +66,11 @@ public class BaseActivity extends Activity {
         finish();
     }
 
-    /*
+    /**
      * intent 最佳数据传值方法
+     * @param context
+     * @param pClass
+     * @param data
      */
     public static void actionStart(Context context,Class<?> pClass, String data) {
         Intent intent = new Intent(context, pClass);
