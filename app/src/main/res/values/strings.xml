@@ -49,6 +49,10 @@
     <string name="msg_repress">再按一次退出程序</string>
     <string name="text_tshirt">T恤</string>
     <string name="x">X</string>
-    <string name="rnb">¥0</string>
-
+    <string name="rnb">¥00</string>
+    <string name="the_cost">费用总计:</string>
+    <string name="last_cost">总计</string>
+    <string name="user_info">用户信息</string>
+    <string name="write_info">填写</string>
+    <string name="one">1</string>
 </resources>

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context="com.guan.o2o.fragment.BasketFragment">
 
     <include
@@ -10,8 +11,9 @@
         layout="@layout/layout_basket_title"></include>
 
     <TextView
-        style="@style/TextView"
-        android:layout_height="@dimen/DIMEN_18PX" />
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_18PX"
+        android:background="@color/bg_grey"/>
 
     <FrameLayout
         android:layout_width="fill_parent"

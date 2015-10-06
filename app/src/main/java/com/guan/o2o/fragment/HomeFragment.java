@@ -97,14 +97,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View _view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.inject(this, _view);
-        LogUtil.v("TAG", "HomeFragment:onCreateView");
         return _view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LogUtil.v("TAG", "HomeFragment:onActivityCreated");
         // 初始化变量
         initVariable();
         // 初始化ViewPager
@@ -131,7 +129,7 @@ public class HomeFragment extends Fragment {
 //                "http://image.zcool.com.cn/47/19/1280115949992.jpg",
 //                "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
                 R.mipmap.ic_poll_a,
-                R.mipmap.ic_poll_c,
+                R.mipmap.ic_poll_a,
                 R.mipmap.ic_poll_b,
                 R.mipmap.ic_poll_d
         };

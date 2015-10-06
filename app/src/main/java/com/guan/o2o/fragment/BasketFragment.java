@@ -10,7 +10,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.adapter.WashOrderAdapter;
 import com.guan.o2o.application.App;
+import com.guan.o2o.model.WashOrder;
 import com.guan.o2o.utils.LogUtil;
 
 import butterknife.ButterKnife;
@@ -37,8 +39,11 @@ public class BasketFragment extends Fragment {
     @InjectView(R.id.iv_basket_null)
     ImageView ivBasketNull;
 
+    private WashOrderAdapter mWashOrderAdapter;
+
     /**
-     * Fragment可见时,在onCreateView之前调用
+     * Fragment可见时,并在onCreateView之前调用
+     *
      * @param isVisibleToUser
      */
     @Override
@@ -76,11 +81,19 @@ public class BasketFragment extends Fragment {
      */
     protected void lazyLoad() {
 
-        if(App.washOrders.size() == 0 && lvBasket != null) {
-            ivBasketNull.setVisibility(View.VISIBLE);
-        } else {
+        WashOrder washOrder = new WashOrder("T恤","2","8");
+        App.washOrders.add(washOrder);
 
+        if (App.washOrders.size() == 0 && lvBasket != null) {
+            ivBasketNull.setVisibility(View.VISIBLE);
+        } else if (App.washOrders.size() != 0){
+            mWashOrderAdapter = new WashOrderAdapter(getActivity(), App.washOrders, ivBasketNull);
+            lvBasket.setAdapter(mWashOrderAdapter);
             ivBasketNull.setVisibility(View.INVISIBLE);
+        }
+
+        if (App.washOrders != null && mWashOrderAdapter != null) {
+            mWashOrderAdapter.notifyDataSetChanged();
         }
     }
 

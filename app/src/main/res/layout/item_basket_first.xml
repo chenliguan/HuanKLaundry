@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_grey"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_114PX"
+            android:text="@string/the_cost"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_32PX"
+            android:text="@string/rnb"
+            android:textColor="@color/price_red"
+            android:textSize="@dimen/TEXT_SIZE_20SP" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_laundry_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_160PX"
+        android:layout_marginBottom="@dimen/DIMEN_8PX"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:gravity="center_vertical"
+        android:paddingEnd="@dimen/DIMEN_32PX"
+        android:paddingStart="@dimen/DIMEN_32PX"
+        android:src="@mipmap/bg_laundry_coupon" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_90PX">
+
+        <com.guan.o2o.utils.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_114PX"
+            android:text="@string/last_cost"
+            android:textSize="@dimen/TEXT_SIZE_22SP" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_32PX"
+            android:text="@string/rnb"
+            android:textColor="@color/price_red"
+            android:textSize="@dimen/TEXT_SIZE_20SP" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyt_write"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/DIMEN_32PX"
+            android:text="@string/user_info"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+        <TextView
+            android:id="@+id/tv_write_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_76PX"
+            android:text="@string/write_info"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+        <ImageView
+            android:id="@+id/iv_write_info"
+            android:layout_width="@dimen/DIMEN_30PX"
+            android:layout_height="@dimen/DIMEN_26PX"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/DIMEN_32PX"
+            android:src="@mipmap/ic_in" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:layout_marginBottom="@dimen/DIMEN_130PX"
+        android:layout_marginEnd="@dimen/DIMEN_32PX"
+        android:layout_marginStart="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_60PX"
+        android:background="@drawable/bg_pay_selector" />
+</LinearLayout>
