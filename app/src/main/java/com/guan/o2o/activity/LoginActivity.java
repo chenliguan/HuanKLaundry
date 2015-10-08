@@ -21,8 +21,8 @@ import com.guan.o2o.R;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.utils.RegularExpressUtil;
-import com.guan.o2o.utils.SharedPreferenceUtil;
+import com.guan.o2o.utils.RglExpressUtil;
+import com.guan.o2o.utils.SharedPfeUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
 
@@ -30,8 +30,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.guan.o2o.utils.RegularExpressUtil.isChineseNo;
-import static com.guan.o2o.utils.RegularExpressUtil.isMobileNO;
+import static com.guan.o2o.utils.RglExpressUtil.isChineseNo;
+import static com.guan.o2o.utils.RglExpressUtil.isMobileNO;
 
 /**
  * 登录页面
@@ -160,7 +160,7 @@ public class LoginActivity extends FrameActivity {
             public void reqSuccess(String response) {
                 // 登录业务判断
                 if (response.equals("547061")) {
-                    SharedPreferenceUtil.sharedPreferences(context, mLoginPhone, mLoginCode);
+                    SharedPfeUtil.sharedPreferences(context, mLoginPhone, mLoginCode);
                     openActivityFn(MainActivity.class);
                 } else
                     showMsg(Contant.MSG_SEIVICE_ERROR);
@@ -173,7 +173,7 @@ public class LoginActivity extends FrameActivity {
         };
 
         // 对手机号码与验证码验证
-        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RegularExpressUtil.isNullNo(mLoginCode)) {
+        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RglExpressUtil.isNullNo(mLoginCode)) {
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else

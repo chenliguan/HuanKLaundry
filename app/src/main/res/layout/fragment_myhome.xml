@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.guan.o2o.fragment.MyHomeFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_380PX"
+        android:background="@color/main_blue"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DIMEN_48PX"
+            android:layout_marginTop="@dimen/DIMEN_90PX"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/DIMEN_90PX"
+                android:src="@mipmap/ic_person" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/text_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TEXT_SIZE_20SP" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DIMEN_40PX"
+            android:layout_marginTop="@dimen/DIMEN_45PX"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/DIMEN_90PX"
+                android:src="@mipmap/ic_phone" />
+
+            <com.guan.o2o.utils.CustomMsyhTV
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/text_phone"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TEXT_SIZE_18SP" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DIMEN_1PX"
+            android:layout_marginEnd="@dimen/DIMEN_40PX"
+            android:layout_marginStart="@dimen/DIMEN_40PX"
+            android:layout_marginTop="@dimen/DIMEN_45PX"
+            android:background="@color/white" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/tv_recom"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/DIMEN_40PX"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/DIMEN_100PX"
+                android:text="@string/text_recom_code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+            <com.guan.o2o.utils.CustomHanzTV
+                android:id="@+id/tv_recom_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/DIMEN_10PX"
+                android:layout_toEndOf="@id/tv_recom"
+                android:text="@string/recom_code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_1PX"
+                android:layout_height="@dimen/DIMEN_80PX"
+                android:layout_centerInParent="true"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_last_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/DIMEN_40PX"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/DIMEN_108PX"
+                android:text="@string/text_last_coupon"
+                android:textColor="@color/white"
+                android:textSize="@dimen/TEXT_SIZE_16SP" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gv_my"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:paddingTop="@dimen/DIMEN_40PX"
+        android:verticalSpacing="@dimen/DIMEN_40PX">
+
+    </GridView>
+</LinearLayout>

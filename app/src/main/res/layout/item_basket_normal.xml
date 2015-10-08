@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/DIMEN_180PX"
-    android:background="@color/white"
     android:orientation="vertical"
     android:paddingBottom="@dimen/DIMEN_20PX"
     android:paddingTop="@dimen/DIMEN_20PX">
@@ -36,8 +35,8 @@
         android:id="@+id/rg_num"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/DIMEN_56PX"
-        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/DIMEN_150PX"
         android:orientation="horizontal">
 
@@ -52,7 +51,6 @@
             android:id="@+id/tv_num"
             android:layout_width="@dimen/DIMEN_72PX"
             android:layout_height="@dimen/DIMEN_54PX"
-            android:layout_centerVertical="true"
             android:background="@mipmap/ic_middle"
             android:gravity="center"
             android:text="@string/one"
@@ -62,7 +60,7 @@
         <RadioButton
             android:id="@+id/rb_add"
             android:layout_width="@dimen/DIMEN_76PX"
-            android:layout_height="@dimen/DIMEN_54PX"
+            android:layout_height="@dimen/DIMEN_56PX"
             android:background="@drawable/bg_add_selector"
             android:button="@null" />
 

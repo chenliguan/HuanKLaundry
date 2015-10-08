@@ -24,6 +24,13 @@ public class LogUtil {
 
     public static final int LEVEL = VERBOSE;
 
+    /**
+     * 注释
+     */
+    public static void showLog(String msg) {
+        Log.v("TAG",msg);
+    }
+
     public static void v(String tag, String msg) {
         if (LEVEL <= VERBOSE) {
             Log.v(tag, msg);

@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.PollPagerAdapter;
+import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
-import com.guan.o2o.utils.LogUtil;
+import com.guan.o2o.model.WashOrder;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import butterknife.InjectView;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     @InjectView(R.id.tv_city)
     TextView tvCity;
@@ -61,9 +62,7 @@ public class HomeFragment extends Fragment {
     private int mCurrentItem;
     private ImageView[] mImageViews;
     private ImageHandler mImageHandler;
-    /*
-     *定时周期执行指定的任务
-     */
+    // 定时周期执行指定的任务
     private ScheduledExecutorService mScheduledExecutorService;
 
     /**
@@ -72,7 +71,6 @@ public class HomeFragment extends Fragment {
     private class ImageHandler extends Handler {
 
         private WeakReference<HomeFragment> mWeakReference;
-
         // 使用弱引用避免Handler泄露,泛型参数可以是Activity/Fragment
         public ImageHandler(HomeFragment fragment) {
             mWeakReference = new WeakReference<HomeFragment>(fragment);
@@ -95,18 +93,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View _view = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.inject(this, _view);
-        return _view;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // 初始化变量
-        initVariable();
-        // 初始化ViewPager
-        initViewPager();
     }
 
     /**
@@ -120,21 +112,36 @@ public class HomeFragment extends Fragment {
     }
 
     /**
+     * 实现父类方法
+     *
+     * @param inflater
+     * @return
+     */
+    @Override
+    public View initView(LayoutInflater inflater, ViewGroup container) {
+        View _view = inflater.inflate(R.layout.fragment_home, container, false);
+        ButterKnife.inject(this, _view);
+        return _view;
+    }
+
+    /**
      * 初始化变量
      */
-    private void initVariable() {
+    public void initVariable() {
         imageUrls = new int[]{
-//                "http://image.zcool.com.cn/56/35/1303967876491.jpg",
-//                "http://image.zcool.com.cn/59/54/m_1303967870670.jpg",
-//                "http://image.zcool.com.cn/47/19/1280115949992.jpg",
-//                "http://image.zcool.com.cn/59/11/m_1303967844788.jpg"
-                R.mipmap.ic_poll_a,
-                R.mipmap.ic_poll_a,
-                R.mipmap.ic_poll_b,
-                R.mipmap.ic_poll_d
+                R.mipmap.ic_poll_a, R.mipmap.ic_poll_a, R.mipmap.ic_poll_b, R.mipmap.ic_poll_d
         };
+        // 设定大大的值实现向左回播
         mCurrentItem = imageUrls.length * 1000;
         mImageHandler = new ImageHandler(HomeFragment.this);
+
+        WashOrder washOrder = new WashOrder("T恤", "2", "8");
+        App.washOrders.add(washOrder);
+
+        /*
+         * 初始化ViewPager
+         */
+        initViewPager();
     }
 
     /**
@@ -142,9 +149,7 @@ public class HomeFragment extends Fragment {
      */
     private void initViewPager() {
         LayoutInflater _inflater = LayoutInflater.from(getActivity());
-        // 图片资源集合数组
         ArrayList<View> _listViews = new ArrayList<View>();
-        // 圆点资源对象数组
         mImageViews = new ImageView[imageUrls.length];
 
         for (int i = 0; i < imageUrls.length; i++) {
@@ -167,8 +172,7 @@ public class HomeFragment extends Fragment {
         }
 
         viewpager.setAdapter(new PollPagerAdapter(_listViews));
-        viewpager.setOnPageChangeListener(new onPageChangeListener());
-        // 设定大大的值实现向左回播
+        viewpager.addOnPageChangeListener(new onPageChangeListener());
         viewpager.setCurrentItem(mCurrentItem);
     }
 
@@ -179,7 +183,6 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onPageSelected(int position) {
-
             mCurrentItem = position;
             // 更新小圆点图标
             for (int i = 0; i < imageUrls.length; i++) {
@@ -230,5 +233,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
-
 }

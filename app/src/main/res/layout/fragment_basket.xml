@@ -8,12 +8,14 @@
 
     <include
         android:id="@+id/layout_title"
-        layout="@layout/layout_basket_title"></include>
+        layout="@layout/layout_basket_title">
+
+    </include>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_18PX"
-        android:background="@color/bg_grey"/>
+        android:background="@color/bg_grey" />
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -23,12 +25,14 @@
             android:id="@+id/lv_basket"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"></ListView>
+            android:background="@color/white">
+
+        </ListView>
 
         <ImageView
             android:id="@+id/iv_basket_null"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:src="@mipmap/bg_basket_null"
             android:visibility="visible" />
     </FrameLayout>

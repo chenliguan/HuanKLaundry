@@ -3,22 +3,14 @@ package com.guan.o2o.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.Message;
 import android.os.Bundle;
 
 import com.guan.o2o.R;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.exception.ServiceRulesException;
-import com.guan.o2o.utils.SharedPreferenceUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
-
-import java.lang.ref.WeakReference;
-
-import static com.guan.o2o.utils.RegularExpressUtil.isChineseNo;
-import static com.guan.o2o.utils.RegularExpressUtil.isMobileNO;
 
 public class SplashActivity extends FrameActivity {
 

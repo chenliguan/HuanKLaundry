@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.ViewPagerAdapter;
-import com.guan.o2o.utils.SharedPreferenceUtil;
+import com.guan.o2o.utils.SharedPfeUtil;
 
 import java.util.ArrayList;
 
@@ -20,30 +20,13 @@ import butterknife.OnClick;
 
 public class GuideActivity extends FrameActivity implements ViewPager.OnPageChangeListener {
 
-    /**
-     * ViewPager
-     */
     @InjectView(R.id.viewPager)
     ViewPager viewPager;
-
-    /**
-     * 立刻体验按钮
-     */
     @InjectView(R.id.btn_im_exp)
     Button btnImExp;
-    /**
-     * 小点图片位置
-     */
     @InjectView(R.id.llyt_dots)
     LinearLayout layoutDots;
-    /**
-     * 装ImageView数组List
-     */
     private ArrayList<View> mList;
-
-    /**
-     * 圆点资源数组
-     */
     private ImageView[] mImageViews;
 
     @Override
@@ -82,7 +65,7 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
 
         viewPager.setAdapter(new ViewPagerAdapter(mList, GuideActivity.this));
         // 绑定回调
-        viewPager.setOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
 //        viewPager.setCurrentItem(0);
     }
 
@@ -92,7 +75,7 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
     @OnClick(R.id.btn_im_exp)
     public void onButtonClick() {
         // 持久化数据设置已经引导
-        SharedPreferenceUtil.sharedPreferences(GuideActivity.this);
+        SharedPfeUtil.sharedPreferences(GuideActivity.this);
         // 跳转到LoginActivity
         openActivityFn(LoginActivity.class);
     }

@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class MoreFragment extends Fragment {
+public class MoreFragment extends BaseFragment {
 
     @InjectView(R.id.iv_back)
     ImageView ivBack;
@@ -67,22 +67,31 @@ public class MoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View _view = inflater.inflate(R.layout.fragment_more, container, false);
-        ButterKnife.inject(this, _view);
-        return _view;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // 初始化变量
-        initVariable();
+    }
+
+    /**
+     * 实现父类方法
+     *
+     * @param inflater
+     * @return
+     */
+    @Override
+    public View initView(LayoutInflater inflater, ViewGroup container) {
+        View _view = inflater.inflate(R.layout.fragment_more, container, false);
+        ButterKnife.inject(this, _view);
+        return _view;
     }
 
     /**
      * 初始化变量
      */
-    private void initVariable() {
+    public void initVariable() {
         tvTitle.setText(R.string.main_navigation_more);
     }
 

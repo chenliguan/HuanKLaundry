@@ -2,19 +2,23 @@ package com.guan.o2o.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
-import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.fragment.BasketFragment;
 import com.guan.o2o.fragment.HomeFragment;
+import com.guan.o2o.fragment.MoreFragment;
+import com.guan.o2o.fragment.MyHomeFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,8 +44,6 @@ public class MainActivity extends BaseFragActivity {
     RadioButton mainTabMy;
     @InjectView(R.id.main_tab_more)
     RadioButton mainTabMore;
-    @InjectView(R.id.main_tab_group)
-    RadioGroup mainTabGroup;
 
     private long mExitTime;
     private int mColorMainBlue;
@@ -70,9 +72,21 @@ public class MainActivity extends BaseFragActivity {
         mColorMainBlue = getResources().getColor(R.color.main_blue);
         mColorMainTextGrey = getResources().getColor(R.color.icon_text_grey);
 
-        FragmentAdapter adapter = new FragmentAdapter(
-                getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+        List<Fragment> fragList = new ArrayList<>();
+        HomeFragment homeFragment = new HomeFragment();
+        BasketFragment basketFragment = new BasketFragment();
+        MyHomeFragment myHomeFragment = new MyHomeFragment();
+        MoreFragment moreFragment = new MoreFragment();
+        fragList.add(homeFragment);
+        fragList.add(basketFragment);
+        fragList.add(myHomeFragment);
+        fragList.add(moreFragment);
+
+        FragmentAdapter fagAdapter = new FragmentAdapter(
+                getSupportFragmentManager(), fragList);
+        // 缓存页面的个数
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setAdapter(fagAdapter);
     }
 
     /**
@@ -162,7 +176,7 @@ public class MainActivity extends BaseFragActivity {
      * 页面选择监听
      */
     private void onPageChangeListener() {
-        viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int id) {

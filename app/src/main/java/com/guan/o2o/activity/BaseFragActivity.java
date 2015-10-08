@@ -3,6 +3,7 @@ package com.guan.o2o.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.guan.o2o.common.Contant;
@@ -55,13 +56,6 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
         Intent _intent = new Intent(this, pClass);
         _intent.putExtra(Contant.INTENT_PARAM, value);
         startActivityForResult(_intent, requestCode);
-    }
-
-    /**
-     * dialog 对话框公共方法
-     */
-    public void showAlterDialog() {
-
     }
 
 }

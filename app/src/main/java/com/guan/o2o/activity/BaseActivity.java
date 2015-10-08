@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.utils.LogUtil;
 
 /**
  * 基础类封装业务无关的方法
@@ -84,5 +86,4 @@ public class BaseActivity extends Activity {
     public void showAlterDialog() {
 
     }
-
 }

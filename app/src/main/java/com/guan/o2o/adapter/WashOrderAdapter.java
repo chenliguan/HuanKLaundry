@@ -83,33 +83,33 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View normalView = null;
-        View firstView = null;
+        View normalView;
+        View firstView;
         mCurrentType = getItemViewType(position);
 
         if (mCurrentType == ITEM_NORMAL) {
             // 普通项
             normalView = convertView;
-            NormalHolder holder;
+            NormalHolder normalHolder;
             if (normalView != null) {
-                holder = (NormalHolder) normalView.getTag();
+                normalHolder = (NormalHolder) normalView.getTag();
             } else {
                 normalView = LayoutInflater.from(mContext).inflate(R.layout.item_basket_normal, null);
-                holder = new NormalHolder(normalView);
-                normalView.setTag(holder);
+                normalHolder = new NormalHolder(normalView);
+                normalView.setTag(normalHolder);
             }
             convertView = normalView;
 
         } else if (mCurrentType == ITEM_FIRST) {
             // 添加的第一项
             firstView = convertView;
-            FirstHolder holder;
+            FirstHolder firstHolder;
             if (firstView != null) {
-                holder = (FirstHolder) firstView.getTag();
+                firstHolder = (FirstHolder) firstView.getTag();
             } else {
                 firstView = LayoutInflater.from(mContext).inflate(R.layout.item_basket_first, null);
-                holder = new FirstHolder(firstView);
-                firstView.setTag(holder);
+                firstHolder = new FirstHolder(firstView);
+                firstView.setTag(firstHolder);
             }
             convertView = firstView;
         }

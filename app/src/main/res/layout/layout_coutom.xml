@@ -8,9 +8,9 @@
         android:id="@+id/iv_more"
         android:layout_width="@dimen/DIMEN_50PX"
         android:layout_height="@dimen/DIMEN_50PX"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/DIMEN_26PX"
+        android:layout_marginStart="@dimen/DIMEN_26PX"
         android:src="@mipmap/ic_contact_customer" />
 
     <TextView
@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/DIMEN_14PX"
-        android:layout_toRightOf="@id/iv_more"
+        android:layout_marginStart="@dimen/DIMEN_14PX"
+        android:layout_toEndOf="@id/iv_more"
         android:text="@string/contact_customer"
         android:textSize="18sp" />
 
@@ -27,8 +27,8 @@
         android:id="@+id/iv_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/DIMEN_44PX"
+        android:layout_marginEnd="@dimen/DIMEN_44PX"
         android:src="@mipmap/ic_right" />
 </RelativeLayout>

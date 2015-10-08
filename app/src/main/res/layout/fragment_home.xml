@@ -7,7 +7,8 @@
 
     <include
         android:id="@+id/layout_title"
-        layout="@layout/layout_home_title"></include>
+        layout="@layout/layout_home_title">
+    </include>
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -18,19 +19,17 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/llyt_dots"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/DIMEN_24PX"
+            android:layout_marginTop="@dimen/DIMEN_216PX"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/llyt_dots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/DIMEN_216PX"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/DIMEN_24PX"
-                android:orientation="horizontal"></LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
+
     </FrameLayout>
 
     <LinearLayout
@@ -43,8 +42,7 @@
             android:id="@+id/iv_a_wash"
             android:layout_width="@dimen/DIMEN_0PX"
             android:layout_height="@dimen/DIMEN_182PX"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
             android:layout_weight="1"
             android:src="@mipmap/ic_a_wash" />
 
@@ -52,9 +50,8 @@
             android:id="@+id/iv_bag_wash"
             android:layout_width="@dimen/DIMEN_0PX"
             android:layout_height="@dimen/DIMEN_182PX"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/DIMEN_20PX"
-            android:layout_marginRight="@dimen/DIMEN_20PX"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
+            android:layout_marginEnd="@dimen/DIMEN_20PX"
             android:layout_weight="1"
             android:src="@mipmap/ic_bag_wash" />
 

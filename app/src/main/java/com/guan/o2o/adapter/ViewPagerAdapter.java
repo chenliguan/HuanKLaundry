@@ -33,9 +33,6 @@ public class ViewPagerAdapter extends PagerAdapter {
             return mList.size();
         }
         return 0;
-
-//        返回最大值，实现无限循环
-//        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -52,15 +49,10 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(View container, int position) {
         ((ViewPager) container).addView(mList.get(position), 0);
         return mList.get(position);
-
-//        ((ViewPager) container).addView(mList.get(position % mList.size()), 0);
-//        return mList.get(position % mList.size());
-//        return super.instantiateItem(container, position);
     }
 
     @Override
     public void restoreState(Parcelable arg0, ClassLoader arg1) {
-
     }
 
     @Override
@@ -69,18 +61,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void startUpdate(View arg0) {
-
-    }
-
-    @Override
-    public void finishUpdate(View arg0) {
-
-    }
-
-    @Override
     public void destroyItem(View container, int position, Object object) {
         ((ViewPager) container).removeView(mList.get(position));
-//        ((ViewPager) container).removeView(mList.get(position % mList.size()));
     }
 }

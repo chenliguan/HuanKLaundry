@@ -55,8 +55,7 @@ public class PollPagerAdapter extends PagerAdapter {
         }
 
         View _view = mViewlist.get(position);
-        // 如果View已经在之前添加到了一个父组件,则必须先remove
-        // 否则会抛出IllegalStateException。
+        // 如果View已经在之前添加到了一个父组件,则必须先remove,否则会抛出IllegalStateException。
         ViewParent viewParent = _view.getParent();
         if (viewParent != null) {
             ViewGroup viewGroup = (ViewGroup) viewParent;

@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.WashOrderAdapter;
 import com.guan.o2o.application.App;
-import com.guan.o2o.model.WashOrder;
-import com.guan.o2o.utils.LogUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -26,7 +24,7 @@ import butterknife.InjectView;
  * @date 2015/10/5
  * @Version 1.0
  */
-public class BasketFragment extends Fragment {
+public class BasketFragment extends BaseFragment {
 
     @InjectView(R.id.iv_back)
     ImageView ivBack;
@@ -50,40 +48,47 @@ public class BasketFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            lazyLoad();
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_basket, container, false);
-        ButterKnife.inject(this, view);
-        return view;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // 初始化变量
-        initVariable();
+        // 加载控件的数据
+        lazyLoad();
+    }
+
+    /**
+     * 实现父类方法
+     *
+     * @param inflater
+     * @return
+     */
+    @Override
+    public View initView(LayoutInflater inflater, ViewGroup container) {
+        View view = inflater.inflate(R.layout.fragment_basket, container, false);
+        ButterKnife.inject(this, view);
+        return view;
     }
 
     /**
      * 初始化变量
      */
-    private void initVariable() {
+    public void initVariable() {
         tvTitle.setText(R.string.main_navigation_basket);
     }
 
     /*
-     * 可见时,懒加载控件的数据
+     * 加载控件的数据
      */
     protected void lazyLoad() {
-
-        WashOrder washOrder = new WashOrder("T恤","2","8");
-        App.washOrders.add(washOrder);
-
         if (App.washOrders.size() == 0 && lvBasket != null) {
             ivBasketNull.setVisibility(View.VISIBLE);
         } else if (App.washOrders.size() != 0){

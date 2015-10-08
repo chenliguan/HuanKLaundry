@@ -24,8 +24,8 @@
         <item name="android:textColor">@color/icon_text_grey</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:paddingTop">@dimen/DIMEN_4PX</item>
-        <item name="android:paddingBottom">@dimen/DIMEN_4PX</item>
+        <item name="android:paddingTop">@dimen/DIMEN_12PX</item>
+        <item name="android:paddingBottom">@dimen/DIMEN_2PX</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:button">@null</item>

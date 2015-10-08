@@ -55,4 +55,15 @@
     <string name="user_info">用户信息</string>
     <string name="write_info">填写</string>
     <string name="one">1</string>
+    <string name="text_phone">13751338740</string>
+    <string name="text_name">小冠</string>
+    <string name="text_recom_code">推荐码:</string>
+    <string name="recom_code">60a6</string>
+    <string name="text_last_coupon">余0张优惠券</string>
+    <string name="text_gird">文字</string>
+    <string name="grid_myorder">我的订单</string>
+    <string name="grid_washcoin">洗衣币</string>
+    <string name="grid_myads">我的地址</string>
+    <string name="grid_share">分享推荐码</string>
+    <string name="grid_rcmcode">验证推荐码</string>
 </resources>
