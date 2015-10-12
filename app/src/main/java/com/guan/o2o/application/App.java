@@ -2,6 +2,7 @@ package com.guan.o2o.application;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.baidu.mapapi.SDKInitializer;
 import com.guan.o2o.model.WashOrder;
 
 import android.app.Application;
@@ -20,7 +21,7 @@ import java.util.List;
 public class App extends Application {
 
     private static RequestQueue queue;
-    public static List<WashOrder> washOrders;
+    public static List<WashOrder> washOrderList;
 
     @Override
     public void onCreate() {
@@ -38,7 +39,7 @@ public class App extends Application {
         /**
          * 洗衣篮订单集合(全局保存)
          */
-        washOrders = new ArrayList<WashOrder>();
+        washOrderList = new ArrayList<WashOrder>();
     }
 
     //入口

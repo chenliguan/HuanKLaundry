@@ -213,11 +213,11 @@ public class LoginActivity extends FrameActivity {
      */
     private void showPopupWindow(View view) {
         View contentView = LayoutInflater.from(this).inflate(
-                R.layout.view_pop_win, null);
+                R.layout.view_pop_tip, null);
         popupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
-        popupWindow.setTouchable(true);
-        // 必须实现，否则点击外部区域和Back键都无法dismiss
+        popupWindow.setOutsideTouchable(true);
+        // 必须实现,否则点击外部区域和Back键都无法dismiss
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         backgroundAlpha(0.5f);
         // 设置好参数之后再show
@@ -229,7 +229,7 @@ public class LoginActivity extends FrameActivity {
                 backgroundAlpha(1f);
             }
         });
-        // 停留2秒，隐退
+        // 停留2秒,隐退
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

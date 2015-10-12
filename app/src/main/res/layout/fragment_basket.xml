@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_grey"
     android:orientation="vertical"
-
     tools:context="com.guan.o2o.fragment.BasketFragment">
 
     <include
@@ -12,22 +12,9 @@
 
     </include>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_18PX"
-        android:background="@color/bg_grey" />
-
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/lv_basket"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-        </ListView>
+        android:layout_height="fill_parent">
 
         <ImageView
             android:id="@+id/iv_basket_null"
@@ -35,5 +22,15 @@
             android:layout_height="fill_parent"
             android:src="@mipmap/bg_basket_null"
             android:visibility="visible" />
+
+        <ListView
+            android:id="@+id/lv_basket"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_10PX"
+            android:background="@color/white">
+
+        </ListView>
+
     </FrameLayout>
 </LinearLayout>

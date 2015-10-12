@@ -1414,6 +1414,7 @@
     <dimen name="TEXT_SIZE_20SP">20sp</dimen>
     <dimen name="TEXT_SIZE_22SP">22sp</dimen>
     <dimen name="TEXT_SIZE_24SP">24sp</dimen>
-
+    <dimen name="TEXT_SIZE_26SP">26sp</dimen>
+    <dimen name="TEXT_SIZE_28SP">28sp</dimen>
 
 </resources>

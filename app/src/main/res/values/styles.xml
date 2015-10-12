@@ -20,7 +20,7 @@
 
     <!-- Tab Bottom -->
     <style name="main_tab_bottom">
-        <item name="android:textSize">@dimen/DIMEN_20PX</item>
+        <item name="android:textSize">@dimen/DIMEN_22PX</item>
         <item name="android:textColor">@color/icon_text_grey</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center_horizontal</item>

@@ -1,16 +1,24 @@
 package com.guan.o2o.fragment;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
@@ -18,6 +26,7 @@ import com.guan.o2o.adapter.PollPagerAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
+import com.guan.o2o.utils.CustomMsyhTV;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,6 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * 主页Fragment
@@ -36,7 +46,7 @@ import butterknife.InjectView;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @InjectView(R.id.tv_city)
     TextView tvCity;
@@ -60,8 +70,12 @@ public class HomeFragment extends BaseFragment {
 
     private int[] imageUrls;
     private int mCurrentItem;
+    private int mNum;
+    private TextView mTvNum;
+    private PopupWindow mPopupWindow;
     private ImageView[] mImageViews;
     private ImageHandler mImageHandler;
+    private OnClickListener mCallback;
     // 定时周期执行指定的任务
     private ScheduledExecutorService mScheduledExecutorService;
 
@@ -71,6 +85,7 @@ public class HomeFragment extends BaseFragment {
     private class ImageHandler extends Handler {
 
         private WeakReference<HomeFragment> mWeakReference;
+
         // 使用弱引用避免Handler泄露,泛型参数可以是Activity/Fragment
         public ImageHandler(HomeFragment fragment) {
             mWeakReference = new WeakReference<HomeFragment>(fragment);
@@ -90,9 +105,27 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    // 存放fragment的Activtiy必须实现的接口
+    public interface OnClickListener {
+        public void onHomeIntentSelected(int position);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
+        try {
+            mCallback = (OnClickListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ButterKnife.inject(this, super.onCreateView(inflater, container, savedInstanceState));
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -129,15 +162,13 @@ public class HomeFragment extends BaseFragment {
      */
     public void initVariable() {
         imageUrls = new int[]{
-                R.mipmap.ic_poll_a, R.mipmap.ic_poll_a, R.mipmap.ic_poll_b, R.mipmap.ic_poll_d
+                R.mipmap.ic_poll_a, R.mipmap.ic_poll_c,
+                R.mipmap.ic_poll_b, R.mipmap.ic_poll_d
         };
+        mNum = 1;
         // 设定大大的值实现向左回播
         mCurrentItem = imageUrls.length * 1000;
         mImageHandler = new ImageHandler(HomeFragment.this);
-
-        WashOrder washOrder = new WashOrder("T恤", "2", "8");
-        App.washOrders.add(washOrder);
-
         /*
          * 初始化ViewPager
          */
@@ -163,11 +194,10 @@ public class HomeFragment extends BaseFragment {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(16, 16);
             params.setMargins(7, 10, 7, 10);
             mImageViews[i].setLayoutParams(params);
-            if (0 == i) {
+            if (0 == i)
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_dot_c);
-            } else {
+            else
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_dot);
-            }
             llytDots.addView(mImageViews[i]);
         }
 
@@ -185,13 +215,11 @@ public class HomeFragment extends BaseFragment {
         public void onPageSelected(int position) {
             mCurrentItem = position;
             // 更新小圆点图标
-            for (int i = 0; i < imageUrls.length; i++) {
-                if (position % imageUrls.length == i) {
+            for (int i = 0; i < imageUrls.length; i++)
+                if (position % imageUrls.length == i)
                     mImageViews[i].setBackgroundResource(R.mipmap.ic_dot_c);
-                } else {
+                else
                     mImageViews[i].setBackgroundResource(R.mipmap.ic_dot);
-                }
-            }
         }
 
         @Override
@@ -217,6 +245,122 @@ public class HomeFragment extends BaseFragment {
                 mImageHandler.sendEmptyMessage(Contant.MSG_UPDATE_IMAGE);
             }
         }
+    }
+
+    /**
+     * 监听实现，回调接口
+     */
+    @OnClick({R.id.tv_city, R.id.iv_below, R.id.iv_a_wash, R.id.iv_bag_wash, R.id.iv_home_ariticles, R.id.iv_other_wash, R.id.iv_service_note})
+    public void OnClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.tv_city:
+                break;
+
+            case R.id.iv_below:
+                break;
+
+            case R.id.iv_a_wash:
+                break;
+
+            case R.id.iv_bag_wash:
+                // popwindow
+                if (mPopupWindow != null && mPopupWindow.isShowing())
+                    mPopupWindow.dismiss();
+                else
+                    showPopupWindow(view);
+                break;
+
+            case R.id.iv_home_ariticles:
+                break;
+
+            case R.id.iv_other_wash:
+                break;
+
+            case R.id.iv_service_note:
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 定义袋洗popupwindow
+     *
+     * @param view
+     */
+    private void showPopupWindow(View view) {
+        View contentView = LayoutInflater.from(getActivity()).inflate(
+                R.layout.view_pop_bagwash, null);
+        CustomMsyhTV cvPrice = ButterKnife.findById(contentView, R.id.cv_price);
+        RadioButton rbMin = ButterKnife.findById(contentView, R.id.rb_min);
+        mTvNum = ButterKnife.findById(contentView, R.id.tv_num);
+        RadioButton rbAdd = ButterKnife.findById(contentView, R.id.rb_add);
+        Button btnPay = ButterKnife.findById(contentView, R.id.btn_pay);
+        cvPrice.setText(Contant.PRICE_BAGWASH);
+        rbMin.setOnClickListener(this);
+        rbAdd.setOnClickListener(this);
+        btnPay.setOnClickListener(this);
+
+        mPopupWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
+        // 接收点击事件
+        mPopupWindow.setFocusable(true);
+        // 触摸
+        mPopupWindow.setOutsideTouchable(true);
+        // 必须实现,否则点击外部区域和Back键都无法dismiss
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
+        backgroundAlpha(0.5f);
+        // 显示
+        mPopupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 40);
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1f);
+            }
+        });
+    }
+
+    /**
+     * 袋洗popupwindow内容的监听实现
+     *
+     * @param view
+     */
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rb_min:
+                if (mNum > 1)
+                    mTvNum.setText(String.valueOf(mNum--));
+                else
+                    mTvNum.setText(String.valueOf(1));
+                break;
+
+            case R.id.rb_add:
+                mTvNum.setText(String.valueOf(mNum++));
+                break;
+
+            case R.id.btn_pay:
+                App.washOrderList.add(new WashOrder(getString(R.string.text_bag_wash),
+                        String.valueOf(mNum), Contant.PRICE_BAGWASH));
+                mPopupWindow.dismiss();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+        // 0.0-1.0
+        lp.alpha = bgAlpha;
+        getActivity().getWindow().setAttributes(lp);
     }
 
     /**

@@ -54,9 +54,8 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         if (mList.size() == 0) {
             mIvBasketNull.setVisibility(View.VISIBLE);
             return 0;
-        } else {
+        } else
             return mList.size() + 1;
-        }
     }
 
     /**
@@ -98,6 +97,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
                 normalHolder = new NormalHolder(normalView);
                 normalView.setTag(normalHolder);
             }
+
             convertView = normalView;
 
         } else if (mCurrentType == ITEM_FIRST) {

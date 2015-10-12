@@ -85,17 +85,27 @@ public class MainActivity extends BaseFragActivity {
         FragmentAdapter fagAdapter = new FragmentAdapter(
                 getSupportFragmentManager(), fragList);
         // 缓存页面的个数
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(fagAdapter);
     }
 
     /**
-     * 4.实现MoreFragment的回调方法
+     * 0.实现HomeFragment的回调方法
      *
      * @param position
      */
     @Override
-    public void onIntentSelected(int position) {
+    public void onHomeIntentSelected(int position) {
+
+    }
+
+    /**
+     * 3.实现MoreFragment的回调方法
+     *
+     * @param position
+     */
+    @Override
+    public void onMoreIntentSelected(int position) {
 
         switch (position) {
             case Contant.CV_CUSTOMER:
@@ -107,6 +117,7 @@ public class MainActivity extends BaseFragActivity {
                 break;
 
             case Contant.CV_SERVICESCOPE:
+                requestActivity(ServiceScopeActivity.class, null, Contant.CODE_SERVICESCOPE);
                 break;
 
             case Contant.CV_ABOUTUS:
@@ -133,9 +144,9 @@ public class MainActivity extends BaseFragActivity {
         switch (requestCode) {
             case Contant.CODE_USERAGREE:
             case Contant.CODE_PROBLEM:
-                if (resultCode == RESULT_OK) {
+            case Contant.CODE_SERVICESCOPE:
+                if (resultCode == RESULT_OK)
                     viewPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
-                }
                 break;
 
             default:

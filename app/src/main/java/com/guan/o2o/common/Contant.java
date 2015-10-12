@@ -119,4 +119,9 @@ public class Contant {
      */
     // 请求切换显示的View。
     public static final int MSG_UPDATE_IMAGE = 1;
+
+    /**
+     * 价格
+     */
+    public static final String PRICE_BAGWASH = "¥99";
 }

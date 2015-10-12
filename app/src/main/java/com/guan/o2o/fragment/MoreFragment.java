@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.view.CustomView;
 
 import butterknife.ButterKnife;
@@ -49,7 +50,7 @@ public class MoreFragment extends BaseFragment {
 
     // 存放fragment的Activtiy必须实现的接口
     public interface OnClickListener {
-        public void onIntentSelected(int position);
+        public void onMoreIntentSelected(int position);
     }
 
     @Override
@@ -106,17 +107,18 @@ public class MoreFragment extends BaseFragment {
                 break;
 
             case R.id.cv_problem:
-                mCallback.onIntentSelected(Contant.CV_PROBLEM);
+                mCallback.onMoreIntentSelected(Contant.CV_PROBLEM);
                 break;
 
             case R.id.cv_service_scope:
+                mCallback.onMoreIntentSelected(Contant.CV_SERVICESCOPE);
                 break;
 
             case R.id.cv_about_us:
                 break;
 
             case R.id.user_agree:
-                mCallback.onIntentSelected(Contant.CV_USERAGREE);
+                mCallback.onMoreIntentSelected(Contant.CV_USERAGREE);
                 break;
 
             case R.id.cv_feed_back:

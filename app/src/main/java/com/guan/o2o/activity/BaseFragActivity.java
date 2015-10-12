@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.fragment.HomeFragment;
 import com.guan.o2o.fragment.MoreFragment;
 
 /**
@@ -17,10 +18,12 @@ import com.guan.o2o.fragment.MoreFragment;
  * @date 2015/10/1
  * @Version 1.0
  */
-public abstract class BaseFragActivity extends FragmentActivity implements MoreFragment.OnClickListener {
+public abstract class BaseFragActivity extends FragmentActivity
+        implements MoreFragment.OnClickListener, HomeFragment.OnClickListener {
 
     /**
      * 把最常用的与业务无关的方法封装,简化编码编写过程
+     *
      * @param savedInstanceState
      */
     @Override
@@ -30,6 +33,7 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
 
     /**
      * Toast公共方法
+     *
      * @param pMsg
      */
     public void showMsg(String pMsg) {
@@ -38,6 +42,7 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
 
     /**
      * intent 跳转Activity公共方法
+     *
      * @param pClass
      */
     public void openActivity(Class<?> pClass) {
@@ -47,6 +52,7 @@ public abstract class BaseFragActivity extends FragmentActivity implements MoreF
 
     /**
      * startActivityForResult()跳转Activity请求方法
+     *
      * @param pClass
      * @param value
      * @param requestCode

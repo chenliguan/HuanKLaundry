@@ -66,4 +66,9 @@
     <string name="grid_myads">我的地址</string>
     <string name="grid_share">分享推荐码</string>
     <string name="grid_rcmcode">验证推荐码</string>
+    <string name="text_bag_wash">袋洗</string>
+    <string name="unit_bag">/袋</string>
+    <string name="text_dsb">装多少，洗多少！</string>
+    <string name="text_dsbs">亲,皮衣真丝内衣、袜子、鞋不要装喔!</string>
+    <string name="title_activity_service_scope">ServiceScopeActivity</string>
 </resources>

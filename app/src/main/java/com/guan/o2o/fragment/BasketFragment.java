@@ -1,7 +1,6 @@
 package com.guan.o2o.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.WashOrderAdapter;
 import com.guan.o2o.application.App;
+import com.guan.o2o.utils.LogUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,6 +37,7 @@ public class BasketFragment extends BaseFragment {
     @InjectView(R.id.iv_basket_null)
     ImageView ivBasketNull;
 
+    private boolean isRefresh;
     private WashOrderAdapter mWashOrderAdapter;
 
     /**
@@ -48,7 +49,8 @@ public class BasketFragment extends BaseFragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-
+            // 更新数据
+            notifyData();
         }
     }
 
@@ -62,7 +64,7 @@ public class BasketFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // 加载控件的数据
-        lazyLoad();
+        loadData();
     }
 
     /**
@@ -82,24 +84,39 @@ public class BasketFragment extends BaseFragment {
      * 初始化变量
      */
     public void initVariable() {
+        isRefresh = false;
         tvTitle.setText(R.string.main_navigation_basket);
     }
 
     /*
      * 加载控件的数据
      */
-    protected void lazyLoad() {
-        if (App.washOrders.size() == 0 && lvBasket != null) {
+    public void loadData() {
+        if (App.washOrderList.size() == 0 && lvBasket != null)
             ivBasketNull.setVisibility(View.VISIBLE);
-        } else if (App.washOrders.size() != 0){
-            mWashOrderAdapter = new WashOrderAdapter(getActivity(), App.washOrders, ivBasketNull);
-            lvBasket.setAdapter(mWashOrderAdapter);
-            ivBasketNull.setVisibility(View.INVISIBLE);
-        }
+        else if (App.washOrderList.size() != 0)
+            bindAdapter();
+    }
 
-        if (App.washOrders != null && mWashOrderAdapter != null) {
+    /**
+     * 更新数据
+     */
+    public void notifyData() {
+        if (App.washOrderList != null & !isRefresh)
+            bindAdapter();
+
+        if (App.washOrderList != null & mWashOrderAdapter != null)
             mWashOrderAdapter.notifyDataSetChanged();
-        }
+    }
+
+    /*
+     * 绑定适配器
+     */
+    public void bindAdapter() {
+        mWashOrderAdapter = new WashOrderAdapter(getActivity(), App.washOrderList, ivBasketNull);
+        lvBasket.setAdapter(mWashOrderAdapter);
+        ivBasketNull.setVisibility(View.INVISIBLE);
+        isRefresh = true;
     }
 
     @Override

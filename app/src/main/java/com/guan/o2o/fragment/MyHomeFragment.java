@@ -13,6 +13,7 @@ import com.guan.o2o.R;
 import com.guan.o2o.adapter.GridViewAdapter;
 import com.guan.o2o.utils.CustomHanzTV;
 import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +49,14 @@ public class MyHomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        LogUtil.showLog("MyHomeFragment:onCreateView");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        LogUtil.showLog("MyHomeFragment:onActivityCreated");
         // 绑定数据
         bindData();
     }

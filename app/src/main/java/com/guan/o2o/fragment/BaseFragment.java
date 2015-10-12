@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.guan.o2o.application.App;
+import com.guan.o2o.model.WashOrder;
+
 /**
  * 提供了fragment的封装后基类，提供context给子类使用
  *
@@ -32,9 +35,8 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // 加入rootView,缓存加载后的view,如果有就不重新加载数据
-        if (rootView == null) {
+        if (rootView == null)
             rootView = initView(inflater, container);
-        }
         return rootView;
     }
 
