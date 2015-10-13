@@ -33,7 +33,7 @@
     <string name="main_navigation_my">我</string>
     <string name="main_navigation_more">更多</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="homefragment">homeFragment</string>
     <string name="basketfragment">basketfragment</string>
@@ -66,9 +66,12 @@
     <string name="grid_myads">我的地址</string>
     <string name="grid_share">分享推荐码</string>
     <string name="grid_rcmcode">验证推荐码</string>
-    <string name="text_bag_wash">袋洗</string>
     <string name="unit_bag">/袋</string>
     <string name="text_dsb">装多少，洗多少！</string>
     <string name="text_dsbs">亲,皮衣真丝内衣、袜子、鞋不要装喔!</string>
     <string name="title_activity_service_scope">ServiceScopeActivity</string>
+
+    <!--衣服类型 -->
+    <string name="text_bag_wash">袋洗</string>
+    <string name="title_activity_awash">AWashActivity</string>
 </resources>

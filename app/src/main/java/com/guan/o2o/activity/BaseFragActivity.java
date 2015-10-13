@@ -19,7 +19,7 @@ import com.guan.o2o.fragment.MoreFragment;
  * @Version 1.0
  */
 public abstract class BaseFragActivity extends FragmentActivity
-        implements MoreFragment.OnClickListener, HomeFragment.OnClickListener {
+        implements MoreFragment.OnClickListener {
 
     /**
      * 把最常用的与业务无关的方法封装,简化编码编写过程

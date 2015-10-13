@@ -124,4 +124,5 @@ public class Contant {
      * 价格
      */
     public static final String PRICE_BAGWASH = "¥99";
+
 }

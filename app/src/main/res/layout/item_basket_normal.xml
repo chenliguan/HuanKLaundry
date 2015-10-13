@@ -18,6 +18,7 @@
         android:src="@mipmap/ic_clo_tshirt" />
 
     <TextView
+        android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/DIMEN_20PX"
@@ -61,7 +62,6 @@
 
     </RadioGroup>
 
-
     <TextView
         android:id="@+id/tv_x"
         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
     <TextView
-        android:id="@+id/tv_single_cost"
+        android:id="@+id/tv_single_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

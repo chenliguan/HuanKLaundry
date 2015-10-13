@@ -21,15 +21,21 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.PollPagerAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.utils.LogUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -68,14 +74,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @InjectView(R.id.llyt_dots)
     LinearLayout llytDots;
 
+    private int mNum;
     private int[] imageUrls;
     private int mCurrentItem;
-    private int mNum;
     private TextView mTvNum;
+    private WashOrder washOrder;
     private PopupWindow mPopupWindow;
     private ImageView[] mImageViews;
     private ImageHandler mImageHandler;
     private OnClickListener mCallback;
+    public LocationClient mLocationClient;
+    public BDLocationListener myListener;
     // 定时周期执行指定的任务
     private ScheduledExecutorService mScheduledExecutorService;
 
@@ -158,6 +167,27 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
+     * 初始化位置
+     */
+    private void initLocation() {
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
+        );
+        option.setCoorType("bd09ll");
+        int span = 1000;
+        option.setScanSpan(span);
+        option.setIsNeedAddress(true);
+        option.setOpenGps(true);
+        option.setLocationNotify(true);
+        option.setIsNeedLocationDescribe(true);
+        option.setIsNeedLocationPoiList(true);
+        option.setIgnoreKillProcess(false);
+        option.SetIgnoreCacheException(false);
+        option.setEnableSimulateGps(false);
+        mLocationClient.setLocOption(option);
+    }
+
+    /**
      * 初始化变量
      */
     public void initVariable() {
@@ -165,10 +195,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 R.mipmap.ic_poll_a, R.mipmap.ic_poll_c,
                 R.mipmap.ic_poll_b, R.mipmap.ic_poll_d
         };
-        mNum = 1;
+        washOrder = null;
         // 设定大大的值实现向左回播
         mCurrentItem = imageUrls.length * 1000;
         mImageHandler = new ImageHandler(HomeFragment.this);
+
+        // 地图
+        mLocationClient = new LocationClient(getActivity());
+        myListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(myListener);
+        initLocation();
+        mLocationClient.start();
         /*
          * 初始化ViewPager
          */
@@ -182,13 +219,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         LayoutInflater _inflater = LayoutInflater.from(getActivity());
         ArrayList<View> _listViews = new ArrayList<View>();
         mImageViews = new ImageView[imageUrls.length];
-
         for (int i = 0; i < imageUrls.length; i++) {
             // 图片
             View _view = (View) _inflater.inflate(R.layout.view_pager, null);
             _view.setBackgroundResource(imageUrls[i]);
             _listViews.add(_view);
-
             // 圆点
             mImageViews[i] = new ImageView(getActivity());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(16, 16);
@@ -200,7 +235,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_dot);
             llytDots.addView(mImageViews[i]);
         }
-
         viewpager.setAdapter(new PollPagerAdapter(_listViews));
         viewpager.addOnPageChangeListener(new onPageChangeListener());
         viewpager.setCurrentItem(mCurrentItem);
@@ -248,7 +282,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     * 监听实现，回调接口
+     * 监听实现
      */
     @OnClick({R.id.tv_city, R.id.iv_below, R.id.iv_a_wash, R.id.iv_bag_wash, R.id.iv_home_ariticles, R.id.iv_other_wash, R.id.iv_service_note})
     public void OnClick(View view) {
@@ -298,11 +332,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mTvNum = ButterKnife.findById(contentView, R.id.tv_num);
         RadioButton rbAdd = ButterKnife.findById(contentView, R.id.rb_add);
         Button btnPay = ButterKnife.findById(contentView, R.id.btn_pay);
+        mNum = 1;
         cvPrice.setText(Contant.PRICE_BAGWASH);
         rbMin.setOnClickListener(this);
         rbAdd.setOnClickListener(this);
         btnPay.setOnClickListener(this);
-
+        // PopupWindow显示位置
         mPopupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
         // 接收点击事件
@@ -330,19 +365,30 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rb_min:
-                if (mNum > 1)
-                    mTvNum.setText(String.valueOf(mNum--));
-                else
+                if (mNum > 1) {
+                    mNum = mNum - 1;
+                    mTvNum.setText(String.valueOf(mNum));
+                } else
                     mTvNum.setText(String.valueOf(1));
                 break;
 
             case R.id.rb_add:
-                mTvNum.setText(String.valueOf(mNum++));
+                mNum = mNum + 1;
+                mTvNum.setText(String.valueOf(mNum));
                 break;
 
             case R.id.btn_pay:
-                App.washOrderList.add(new WashOrder(getString(R.string.text_bag_wash),
-                        String.valueOf(mNum), Contant.PRICE_BAGWASH));
+                String bagWash = getString(R.string.text_bag_wash);
+                if (App.washOrderList.size() == 0)
+                    App.washOrderList.add(new WashOrder(bagWash, mNum, Contant.PRICE_BAGWASH));
+                else
+                    for (int i = 0; i < App.washOrderList.size(); i++) {
+                        WashOrder washOrder = App.washOrderList.get(i);
+                        if (washOrder.getWashCategory().equals(bagWash)) {
+                            washOrder.setWashNum(washOrder.getWashNum() + mNum);
+                            break;
+                        }
+                    }
                 mPopupWindow.dismiss();
                 break;
 
@@ -364,6 +410,20 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
+     * 位置监听
+     */
+    public class MyLocationListener implements BDLocationListener{
+
+        @Override
+        public void onReceiveLocation(BDLocation poiLocation) {
+            tvCity.setText(poiLocation.getCity());
+        }
+
+        public void onReceivePoi(BDLocation poiLocation) {
+        }
+    }
+
+    /**
      * 停止轮播图切换
      */
     @Override
@@ -375,6 +435,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mLocationClient.stop();
         ButterKnife.reset(this);
     }
 }

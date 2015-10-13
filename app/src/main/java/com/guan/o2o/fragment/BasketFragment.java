@@ -104,7 +104,6 @@ public class BasketFragment extends BaseFragment {
     public void notifyData() {
         if (App.washOrderList != null & !isRefresh)
             bindAdapter();
-
         if (App.washOrderList != null & mWashOrderAdapter != null)
             mWashOrderAdapter.notifyDataSetChanged();
     }

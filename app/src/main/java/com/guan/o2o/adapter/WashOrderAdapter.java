@@ -11,12 +11,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.application.App;
+import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * 洗衣篮Adapter
@@ -28,6 +31,7 @@ import butterknife.InjectView;
  */
 public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
 
+    private int mNum;
     private Context mContext;
     private int mCurrentType;
     private List<WashOrder> mList;
@@ -80,7 +84,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View normalView;
         View firstView;
@@ -89,7 +93,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         if (mCurrentType == ITEM_NORMAL) {
             // 普通项
             normalView = convertView;
-            NormalHolder normalHolder;
+            final NormalHolder normalHolder;
             if (normalView != null) {
                 normalHolder = (NormalHolder) normalView.getTag();
             } else {
@@ -97,13 +101,49 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
                 normalHolder = new NormalHolder(normalView);
                 normalView.setTag(normalHolder);
             }
-
             convertView = normalView;
+
+            WashOrder washOrder = (WashOrder) getItem(position);
+//            normalHolder.ivCloth.setImageResource();
+            mNum = washOrder.getWashNum();
+            normalHolder.tvNum.setText(washOrder.getWashNum() + "");
+            normalHolder.tvSinglePrice.setText(washOrder.getWashPrice());
+            normalHolder.tvCategory.setText(washOrder.getWashCategory());
+
+            normalHolder.rbMin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mNum > 1) {
+                        mNum = mNum - 1;
+                        normalHolder.tvNum.setText(String.valueOf(mNum));
+                        App.washOrderList.get(position).setWashNum(mNum);
+                    } else {
+                        normalHolder.tvNum.setText(String.valueOf(1));
+                        App.washOrderList.get(position).setWashNum(1);
+                    }
+                }
+            });
+            normalHolder.rbAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mNum = mNum + 1;
+                    normalHolder.tvNum.setText(String.valueOf(mNum));
+                    App.washOrderList.get(position).setWashNum(mNum);
+                }
+            });
+            normalHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    App.washOrderList.remove(position);
+                    // 更新页面
+                    notifyDataSetChanged();
+                }
+            });
 
         } else if (mCurrentType == ITEM_FIRST) {
             // 添加的第一项
             firstView = convertView;
-            FirstHolder firstHolder;
+            final FirstHolder firstHolder;
             if (firstView != null) {
                 firstHolder = (FirstHolder) firstView.getTag();
             } else {
@@ -117,23 +157,52 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         return convertView;
     }
 
+    /**
+     * 普通项
+     */
     static class NormalHolder {
         @InjectView(R.id.iv_cloth)
         ImageView ivCloth;
+        @InjectView(R.id.tv_category)
+        TextView tvCategory;
         @InjectView(R.id.rb_min)
         RadioButton rbMin;
+        @InjectView(R.id.tv_num)
+        TextView tvNum;
         @InjectView(R.id.rb_add)
         RadioButton rbAdd;
-        @InjectView(R.id.tv_single_cost)
-        TextView tvSingleCost;
+        @InjectView(R.id.tv_single_price)
+        TextView tvSinglePrice;
         @InjectView(R.id.iv_delete)
         ImageView ivDelete;
 
         NormalHolder(View view) {
             ButterKnife.inject(this, view);
         }
+
+//        @OnClick({R.id.rb_min, R.id.rb_add})
+//        public void onClick(View view) {
+//            switch (view.getId()) {
+//                case R.id.rb_min:
+//                    if (mNum > 1)
+//                        tvNum.setText(String.valueOf(mNum--));
+//                    else
+//                        tvNum.setText(String.valueOf(1));
+//                    break;
+//
+//                case R.id.rb_add:
+//                    tvNum.setText(String.valueOf(mNum++));
+//                    break;
+//
+//                default:
+//                    break;
+//            }
+//        }
     }
 
+    /**
+     * 添加的第一项
+     */
     static class FirstHolder {
         @InjectView(R.id.iv_laundry_coupon)
         ImageView ivLaundryCoupon;

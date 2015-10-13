@@ -90,16 +90,6 @@ public class MainActivity extends BaseFragActivity {
     }
 
     /**
-     * 0.实现HomeFragment的回调方法
-     *
-     * @param position
-     */
-    @Override
-    public void onHomeIntentSelected(int position) {
-
-    }
-
-    /**
      * 3.实现MoreFragment的回调方法
      *
      * @param position
