@@ -1,13 +1,17 @@
 package com.guan.o2o.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.guan.o2o.activity.BaseActivity;
 import com.guan.o2o.application.App;
+import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 
 /**
@@ -46,6 +50,7 @@ public abstract class BaseFragment extends Fragment {
         // 加入判断是否已经加载数据完成的标志变量,如果已经加载了数据就不重新加载数据。
         if (!hasInitData) {
             initVariable();
+            bindData();
             hasInitData = true;
         }
     }
@@ -57,7 +62,24 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
-     * 子类实现初始化View操作
+     * Toast公共方法
+     * @param pMsg
+     */
+    public void showMsg(String pMsg) {
+        Toast.makeText(getActivity(), pMsg, Toast.LENGTH_SHORT).show();
+    }
+    /**
+     * intent 跳转Activity公共方法
+     *
+     * @param pClass
+     */
+    public void openActivity(Class<?> pClass) {
+        Intent _intent = new Intent(getActivity(), pClass);
+        startActivity(_intent);
+    }
+
+    /**
+     * 子类实现初始化View操作(子类自己调用)
      */
     public abstract View initView(LayoutInflater inflater, ViewGroup container);
 
@@ -65,5 +87,10 @@ public abstract class BaseFragment extends Fragment {
      * 子类实现初始化数据操作(子类自己调用)
      */
     public abstract void initVariable();
+
+    /**
+     * 子类实现绑定/设置数据操作(子类自己调用)
+     */
+    public abstract void bindData();
 
 }

@@ -25,17 +25,17 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 主页面
+ * 主页面，包含4个fragment
  *
  * @author Guan
  * @file com.guan.o2o.activity
  * @date 2015/9/29
  * @Version 1.0
  */
-public class MainActivity extends BaseFragActivity {
+public class MainActivity extends FrameActivity {
 
-    @InjectView(R.id.viewpager)
-    ViewPager viewPager;
+    @InjectView(R.id.frag_vpager)
+    ViewPager fragVPager;
     @InjectView(R.id.main_tab_home)
     RadioButton mainTabHome;
     @InjectView(R.id.main_tab_basket)
@@ -48,6 +48,7 @@ public class MainActivity extends BaseFragActivity {
     private long mExitTime;
     private int mColorMainBlue;
     private int mColorMainTextGrey;
+    private ArrayList<Fragment> mFragList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,9 @@ public class MainActivity extends BaseFragActivity {
          */
         initVariable();
         /**
-         * 页面选择监听
+         * 绑定数据
          */
-        onPageChangeListener();
+        bindData();
     }
 
     /**
@@ -72,55 +73,56 @@ public class MainActivity extends BaseFragActivity {
         mColorMainBlue = getResources().getColor(R.color.main_blue);
         mColorMainTextGrey = getResources().getColor(R.color.icon_text_grey);
 
-        List<Fragment> fragList = new ArrayList<>();
-        HomeFragment homeFragment = new HomeFragment();
-        BasketFragment basketFragment = new BasketFragment();
-        MyHomeFragment myHomeFragment = new MyHomeFragment();
-        MoreFragment moreFragment = new MoreFragment();
-        fragList.add(homeFragment);
-        fragList.add(basketFragment);
-        fragList.add(myHomeFragment);
-        fragList.add(moreFragment);
-
-        FragmentAdapter fagAdapter = new FragmentAdapter(
-                getSupportFragmentManager(), fragList);
-        // 缓存页面的个数
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.setAdapter(fagAdapter);
+        mFragList = new ArrayList<>();
+        mFragList.add(new HomeFragment());
+        mFragList.add(new BasketFragment());
+        mFragList.add(new MyHomeFragment());
+        mFragList.add(new MoreFragment());
     }
 
     /**
-     * 3.实现MoreFragment的回调方法
-     *
-     * @param position
+     * 绑定数据
      */
-    @Override
-    public void onMoreIntentSelected(int position) {
-
-        switch (position) {
-            case Contant.CV_CUSTOMER:
-                break;
-
-            case Contant.CV_PROBLEM:
-                // startActivityForResult()跳转，class、传值、请求码
-                requestActivity(ProblemActivity.class, null, Contant.CODE_PROBLEM);
-                break;
-
-            case Contant.CV_SERVICESCOPE:
-                requestActivity(ServiceScopeActivity.class, null, Contant.CODE_SERVICESCOPE);
-                break;
-
-            case Contant.CV_ABOUTUS:
-                break;
-
-            case Contant.CV_USERAGREE:
-                requestActivity(UserAgreeActivity.class, Contant.VALUE_MAIN_ACTIVITY, Contant.CODE_USERAGREE);
-                break;
-
-            case Contant.CV_FEEDBACK:
-                break;
-        }
+    private void bindData() {
+        // 缓存页面的个数
+        fragVPager.setOffscreenPageLimit(3);
+        fragVPager.setAdapter(new FragmentAdapter(
+                getSupportFragmentManager(), mFragList));
+        fragVPager.addOnPageChangeListener(new onPageChangeListener());
     }
+
+//    /**
+//     * 3.实现MoreFragment的回调方法
+//     *
+//     * @param position
+//     */
+//    @Override
+//    public void onMoreIntentSelected(int position) {
+//
+//        switch (position) {
+//            case Contant.CV_CUSTOMER:
+//                break;
+//
+//            case Contant.CV_PROBLEM:
+//                // startActivityForResult()跳转，class、传值、请求码
+//                requestActivity(ProblemActivity.class, null, Contant.CODE_PROBLEM);
+//                break;
+//
+//            case Contant.CV_SERVICESCOPE:
+//                requestActivity(ServiceScopeActivity.class, null, Contant.CODE_SERVICESCOPE);
+//                break;
+//
+//            case Contant.CV_ABOUTUS:
+//                break;
+//
+//            case Contant.CV_USERAGREE:
+//                requestActivity(UserAgreeActivity.class, Contant.VALUE_MAIN_ACTIVITY, Contant.CODE_USERAGREE);
+//                break;
+//
+//            case Contant.CV_FEEDBACK:
+//                break;
+//        }
+//    }
 
     /**
      * 执行startActivityForResult()方法的回调
@@ -136,7 +138,7 @@ public class MainActivity extends BaseFragActivity {
             case Contant.CODE_PROBLEM:
             case Contant.CODE_SERVICESCOPE:
                 if (resultCode == RESULT_OK)
-                    viewPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
+                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
                 break;
 
             default:
@@ -153,19 +155,19 @@ public class MainActivity extends BaseFragActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_tab_home:
-                viewPager.setCurrentItem(Contant.TAB_HOME);
+                fragVPager.setCurrentItem(Contant.TAB_HOME);
                 break;
 
             case R.id.main_tab_basket:
-                viewPager.setCurrentItem(Contant.TAB_BASKET);
+                fragVPager.setCurrentItem(Contant.TAB_BASKET);
                 break;
 
             case R.id.main_tab_my:
-                viewPager.setCurrentItem(Contant.TAB_MY);
+                fragVPager.setCurrentItem(Contant.TAB_MY);
                 break;
 
             case R.id.main_tab_more:
-                viewPager.setCurrentItem(Contant.TAB_MORE);
+                fragVPager.setCurrentItem(Contant.TAB_MORE);
                 break;
 
             default:
@@ -176,57 +178,56 @@ public class MainActivity extends BaseFragActivity {
     /**
      * 页面选择监听
      */
-    private void onPageChangeListener() {
-        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
+    private class onPageChangeListener implements ViewPager.OnPageChangeListener {
 
-            @Override
-            public void onPageSelected(int id) {
-                switch (id) {
-                    case Contant.TAB_HOME:
-                        mainTabHome.setChecked(true);
-                        mainTabHome.setTextColor(mColorMainBlue);
-                        mainTabBasket.setTextColor(mColorMainTextGrey);
-                        mainTabMy.setTextColor(mColorMainTextGrey);
-                        mainTabMore.setTextColor(mColorMainTextGrey);
-                        break;
+        @Override
+        public void onPageSelected(int position) {
 
-                    case Contant.TAB_BASKET:
-                        mainTabBasket.setChecked(true);
-                        mainTabBasket.setTextColor(mColorMainBlue);
-                        mainTabHome.setTextColor(mColorMainTextGrey);
-                        mainTabMy.setTextColor(mColorMainTextGrey);
-                        mainTabMore.setTextColor(mColorMainTextGrey);
-                        break;
+            switch (position) {
+                case Contant.TAB_HOME:
+                    mainTabHome.setChecked(true);
+                    mainTabHome.setTextColor(mColorMainBlue);
+                    mainTabBasket.setTextColor(mColorMainTextGrey);
+                    mainTabMy.setTextColor(mColorMainTextGrey);
+                    mainTabMore.setTextColor(mColorMainTextGrey);
+                    break;
 
-                    case Contant.TAB_MY:
-                        mainTabMy.setChecked(true);
-                        mainTabMy.setTextColor(mColorMainBlue);
-                        mainTabHome.setTextColor(mColorMainTextGrey);
-                        mainTabBasket.setTextColor(mColorMainTextGrey);
-                        mainTabMore.setTextColor(mColorMainTextGrey);
-                        break;
+                case Contant.TAB_BASKET:
+                    mainTabBasket.setChecked(true);
+                    mainTabBasket.setTextColor(mColorMainBlue);
+                    mainTabHome.setTextColor(mColorMainTextGrey);
+                    mainTabMy.setTextColor(mColorMainTextGrey);
+                    mainTabMore.setTextColor(mColorMainTextGrey);
+                    break;
 
-                    case Contant.TAB_MORE:
-                        mainTabMore.setChecked(true);
-                        mainTabMore.setTextColor(mColorMainBlue);
-                        mainTabHome.setTextColor(mColorMainTextGrey);
-                        mainTabBasket.setTextColor(mColorMainTextGrey);
-                        mainTabMy.setTextColor(mColorMainTextGrey);
-                        break;
+                case Contant.TAB_MY:
+                    mainTabMy.setChecked(true);
+                    mainTabMy.setTextColor(mColorMainBlue);
+                    mainTabHome.setTextColor(mColorMainTextGrey);
+                    mainTabBasket.setTextColor(mColorMainTextGrey);
+                    mainTabMore.setTextColor(mColorMainTextGrey);
+                    break;
 
-                    default:
-                        break;
-                }
+                case Contant.TAB_MORE:
+                    mainTabMore.setChecked(true);
+                    mainTabMore.setTextColor(mColorMainBlue);
+                    mainTabHome.setTextColor(mColorMainTextGrey);
+                    mainTabBasket.setTextColor(mColorMainTextGrey);
+                    mainTabMy.setTextColor(mColorMainTextGrey);
+                    break;
+
+                default:
+                    break;
             }
+        }
 
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
+        @Override
+        public void onPageScrolled(int position, float arg1, int arg2) {
+        }
 
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
+        @Override
+        public void onPageScrollStateChanged(int position) {
+        }
     }
 
     /**

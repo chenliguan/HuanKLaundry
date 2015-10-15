@@ -102,11 +102,7 @@
 
     <Button
         android:id="@+id/btn_pay"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/DIMEN_88PX"
-        android:layout_marginBottom="@dimen/DIMEN_130PX"
-        android:layout_marginEnd="@dimen/DIMEN_32PX"
-        android:layout_marginStart="@dimen/DIMEN_32PX"
+        style="@style/BaseButtonTheme"
         android:layout_marginTop="@dimen/DIMEN_60PX"
         android:background="@drawable/bg_pay_selector" />
 </LinearLayout>

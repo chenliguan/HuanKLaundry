@@ -1,9 +1,70 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.guan.o2o.activity.AWashActivity">
 
-    <include layout="@layout/layout_title"></include>
+    <include layout="@layout/layout_title"/>
 
-</RelativeLayout>
+    <TextView style="@style/TextView"
+        android:layout_height="@dimen/DIMEN_2PX"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DIMEN_78PX">
+
+            <TextView
+                android:id="@+id/tv_wash_spring"
+                style="@style/awash_tab"
+                android:text="@string/a_wash_tab_spring" />
+
+            <TextView style="@style/TextViewVertical"/>
+
+            <TextView
+                android:id="@+id/tv_wash_summer"
+                style="@style/awash_tab"
+                android:text="@string/a_wash_tab_summer" />
+
+            <TextView style="@style/TextViewVertical"/>
+
+            <TextView
+                android:id="@+id/tv_wash_winter"
+                style="@style/awash_tab"
+                android:text="@string/a_wash_tab_winter" />
+
+            <TextView style="@style/TextViewVertical"/>
+
+            <TextView
+                android:id="@+id/tv_wash_leather"
+                style="@style/awash_tab"
+                android:text="@string/a_wash_tab_leather" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <ImageView
+                android:id="@+id/iv_bottom_line"
+                android:layout_width="@dimen/DIMEN_160PX"
+                android:layout_height="@dimen/DIMEN_10PX"
+                android:background="@color/main_blue" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/frag_vpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_grey"
+        android:persistentDrawingCache="animation" />
+</LinearLayout>

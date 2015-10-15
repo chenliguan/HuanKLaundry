@@ -50,26 +50,6 @@ public class VolleyHttpRequest {
     }
 
     /**
-     * 1 封装 StringRequest 数据请求
-     *
-     * @param method        方式
-     * @param url           地址
-     * @param params        参数
-     * @param volleyRequest 回调对象
-     */
-    private static void Volley_StringRequest(int method, String url, final Map<String, String> params, VolleyHandler<String> volleyRequest) {
-        StringRequest stringrequest = new StringRequest(method, url, volleyRequest.reqLis, volleyRequest.reqErr) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                return params;
-            }
-        };
-        stringrequest.setTag(Contant.TAG_STRING_REQUEST);
-        App.getQueue().add(stringrequest);
-    }
-
-
-    /**
      * 2.1 JsonObjectRequest GET 请求
      *
      * @param url           请求地址
@@ -88,22 +68,6 @@ public class VolleyHttpRequest {
      */
     public static void JsonObject_Request(String url, JSONObject jsonObject, VolleyHandler<JSONObject> volleyRequest) {
         Volley_JsonObjectRequest(Method.POST, url, jsonObject, volleyRequest);
-    }
-
-    /**
-     * 2 封装 JsonObjectRequest 请求方法
-     *
-     * 客户端以json串的post请求方式进行提交,服务端返回json串（JsonObject）
-     *
-     * @param method        方式
-     * @param url           地址
-     * @param jsonObject    参数
-     * @param volleyRequest 回调函数对象
-     */
-    private static void Volley_JsonObjectRequest(int method, String url, JSONObject jsonObject, VolleyHandler<JSONObject> volleyRequest) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, jsonObject, volleyRequest.reqLis, volleyRequest.reqErr);
-        jsonObjectRequest.setTag(Contant.TAG_JSON_REQUEST);
-        App.getQueue().add(jsonObjectRequest);
     }
 
     /**
@@ -129,22 +93,6 @@ public class VolleyHttpRequest {
     }
 
     /**
-     * 3 封装 ImageRequest 请求方法
-     * <p/>
-     * 请求单张图片使用ImageRequest即可
-     *
-     * @param url           地址
-     * @param maxWidth      最大宽度
-     * @param maxHeight     最大高度
-     * @param volleyRequest 回调函数对象
-     */
-    private static void Volley_ImageRequest(String url, int maxWidth, int maxHeight, VolleyHandler<Bitmap> volleyRequest) {
-        ImageRequest imageRequest = new ImageRequest(url, volleyRequest.reqLis, maxWidth, maxHeight, Config.RGB_565, volleyRequest.reqErr);
-        imageRequest.setTag(Contant.TAG_IMAGE_REQUEST);
-        App.getQueue().add(imageRequest);
-    }
-
-    /**
      * 4.1 自定义图片的宽度值
      *
      * @param url
@@ -164,6 +112,57 @@ public class VolleyHttpRequest {
      */
     public static void Image_Loader(String url, ImageListener imageListener) {
         Volley_ImageLoader(url, imageListener, 0, 0);
+    }
+
+    /**
+     * 1 封装 StringRequest 数据请求
+     *
+     * @param method        方式
+     * @param url           地址
+     * @param params        参数
+     * @param volleyRequest 回调对象
+     */
+    private static void Volley_StringRequest(int method, String url, final Map<String, String> params, VolleyHandler<String> volleyRequest) {
+        StringRequest stringrequest = new StringRequest(method, url, volleyRequest.reqLis, volleyRequest.reqErr) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return params;
+            }
+        };
+        stringrequest.setTag(Contant.TAG_STRING_REQUEST);
+        App.getQueue().add(stringrequest);
+    }
+
+    /**
+     * 2 封装 JsonObjectRequest 请求方法
+     *
+     * 客户端以json串的post请求方式进行提交,服务端返回json串（JsonObject）
+     *
+     * @param method        方式
+     * @param url           地址
+     * @param jsonObject    参数
+     * @param volleyRequest 回调函数对象
+     */
+    private static void Volley_JsonObjectRequest(int method, String url, JSONObject jsonObject, VolleyHandler<JSONObject> volleyRequest) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, jsonObject, volleyRequest.reqLis, volleyRequest.reqErr);
+        jsonObjectRequest.setTag(Contant.TAG_JSON_REQUEST);
+        App.getQueue().add(jsonObjectRequest);
+    }
+
+    /**
+     * 3 封装 ImageRequest 请求方法
+     * <p/>
+     * 请求单张图片使用ImageRequest即可
+     *
+     * @param url           地址
+     * @param maxWidth      最大宽度
+     * @param maxHeight     最大高度
+     * @param volleyRequest 回调函数对象
+     */
+    private static void Volley_ImageRequest(String url, int maxWidth, int maxHeight, VolleyHandler<Bitmap> volleyRequest) {
+        ImageRequest imageRequest = new ImageRequest(url, volleyRequest.reqLis, maxWidth, maxHeight, Config.RGB_565, volleyRequest.reqErr);
+        imageRequest.setTag(Contant.TAG_IMAGE_REQUEST);
+        App.getQueue().add(imageRequest);
     }
 
     /**
@@ -190,5 +189,4 @@ public class VolleyHttpRequest {
      * 因为：Volley中默认并不支持使用自家的GSON来解析数据
      * 扩展自定义方法:涉及到匿名类型T故需要model借助对象来实现
      */
-
 }

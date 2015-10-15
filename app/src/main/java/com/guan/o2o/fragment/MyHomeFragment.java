@@ -1,8 +1,6 @@
 package com.guan.o2o.fragment;
 
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +8,9 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.adapter.GridViewAdapter;
+import com.guan.o2o.adapter.MyGridAdapter;
 import com.guan.o2o.utils.CustomHanzTV;
 import com.guan.o2o.utils.CustomMsyhTV;
-import com.guan.o2o.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +28,6 @@ import butterknife.InjectView;
  */
 public class MyHomeFragment extends BaseFragment {
 
-
     @InjectView(R.id.tv_name)
     TextView tvName;
     @InjectView(R.id.tv_phone)
@@ -44,21 +40,12 @@ public class MyHomeFragment extends BaseFragment {
     GridView gvMy;
 
     private List mStringList;
-    private GridViewAdapter mGridAdapter;
+    private MyGridAdapter mGridAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LogUtil.showLog("MyHomeFragment:onCreateView");
         return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        LogUtil.showLog("MyHomeFragment:onActivityCreated");
-        // 绑定数据
-        bindData();
     }
 
     /**
@@ -84,13 +71,13 @@ public class MyHomeFragment extends BaseFragment {
         mStringList.add(2, this.getString(R.string.grid_myads));
         mStringList.add(3, this.getString(R.string.grid_share));
         mStringList.add(4, this.getString(R.string.grid_rcmcode));
-        mGridAdapter = new GridViewAdapter(getActivity(), mStringList);
+        mGridAdapter = new MyGridAdapter(getActivity(), mStringList);
     }
 
     /**
      * 绑定数据
      */
-    private void bindData() {
+    public void bindData() {
         // 配置适配器
         gvMy.setAdapter(mGridAdapter);
     }

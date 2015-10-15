@@ -54,15 +54,14 @@ public class UserAgreeActivity extends FrameActivity {
      * 初始化变量
      */
     private void initVariable() {
+        tvTitle.setText(R.string.title_user_regulate);
         Intent mIntent = getIntent();
-        mValue = mIntent.getStringExtra(Contant.INTENT_PARAM);
     }
 
     /**
      * 初始化布局
      */
     private void initView() {
-        tvTitle.setText(R.string.title_user_regulate);
         wvRegulate.loadUrl(HttpPath.getUserAgreeIfo());
         // 覆盖WebView默认其他浏览器打开网页的行为,使网页用WebView打开
         wvRegulate.setWebViewClient(new WebViewClient() {
@@ -80,17 +79,6 @@ public class UserAgreeActivity extends FrameActivity {
      */
     @OnClick(R.id.iv_back)
     public void onClick() {
-        switch (mValue) {
-            case Contant.VALUE_LOGIN_ACTIVITY:
-                openActivityFn(LoginActivity.class);
-                break;
-
-            case Contant.VALUE_MAIN_ACTIVITY:
-                setResultTo(Contant.TAB_MORE);
-                break;
-
-            default:
-                break;
-        }
+       finish();
     }
 }

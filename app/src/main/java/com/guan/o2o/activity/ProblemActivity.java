@@ -67,6 +67,6 @@ public class ProblemActivity extends FrameActivity {
      */
     @OnClick(R.id.iv_back)
     public void onClick() {
-        setResultTo(Contant.TAB_MORE);
+        finish();
     }
 }

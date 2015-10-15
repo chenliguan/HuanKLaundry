@@ -97,6 +97,10 @@
             android:name=".activity.AWashActivity"
             android:label="@string/title_activity_awash" >
         </activity>
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:label="@string/title_activity_about_us" >
+        </activity>
     </application>
 
 </manifest>

@@ -18,6 +18,16 @@ public class HttpPath {
         return IP + "/demo/myClive?phone=13800138000";
     }
 
+    // getClothData
+    public static String getClothIfo() {
+        return IP + "/demo/myClive?clive=wash&url=www.heartguard.cn";
+    }
+
+    // getClothImageview
+    public static String getClothIvIfo(int id) {
+        return IP + "/demo/image" + id +".png";
+    }
+
     // 用户协议IP
     public static String getUserAgreeIfo() {
         return IP_USER_AGREE + "/protocol/";

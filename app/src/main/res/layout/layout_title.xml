@@ -9,9 +9,9 @@
         android:id="@+id/iv_back"
         android:layout_width="@dimen/DIMEN_38PX"
         android:layout_height="@dimen/DIMEN_38PX"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/DIMEN_36PX"
+        android:layout_marginStart="@dimen/DIMEN_36PX"
         android:src="@drawable/bg_back_selector" />
 
     <TextView

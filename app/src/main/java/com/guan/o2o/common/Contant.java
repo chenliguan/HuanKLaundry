@@ -60,6 +60,7 @@ public class Contant {
     public static final String TAG_STRING_REQUEST = "StringRequest";
     public static final String TAG_JSON_REQUEST = "jsonObjectRequest";
     public static final String TAG_IMAGE_REQUEST = "ImageRequest";
+    public static final String TAG_IMAGE_LOADER = "ImageLoader";
 
     /*
      *底部tab的选项
@@ -105,14 +106,20 @@ public class Contant {
     public static final String INTENT_PARAM = "PARAM";
 
     /**
+     * Home页面跳转请求码
+     */
+    // 件洗
+    public static final int CODE_A_WASH = 1000;
+
+    /**
      * 更多页面跳转请求码
      */
-    public static final int CODE_CUSTOMER = 0000;
-    public static final int CODE_PROBLEM = 0001;
-    public static final int CODE_SERVICESCOPE = 0003;
-    public static final int CODE_ABOUTUS = 0004;
-    public static final int CODE_USERAGREE = 0005;
-    public static final int CODE_FEEDBACK = 0006;
+    public static final int CODE_CUSTOMER = 3000;
+    public static final int CODE_PROBLEM = 3001;
+    public static final int CODE_SERVICESCOPE = 3003;
+    public static final int CODE_ABOUTUS = 3004;
+    public static final int CODE_USERAGREE = 3005;
+    public static final int CODE_FEEDBACK = 3006;
 
     /**
      * 页面轮询
@@ -124,5 +131,19 @@ public class Contant {
      * 价格
      */
     public static final String PRICE_BAGWASH = "¥99";
+
+    /*
+     * 件洗顶部栏选项
+     */
+    // TAB数目
+    public final static int A_WASH_COUNT = 4;
+    // 春/秋装
+    public static final int A_WASH_SPRING = 0;
+    // 夏装
+    public static final int A_WASH_SUMMER = 1;
+    // 冬装
+    public static final int A_WASH_WINTER = 2;
+    // 皮衣
+    public static final int A_WASH_LEATER = 3;
 
 }

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/DIMEN_594PX"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rlyt_bag"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/DIMEN_20PX"
+        android:layout_marginStart="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX">
+
+        <ImageView
+            android:id="@+id/iv_bag"
+            android:layout_width="@dimen/DIMEN_236PX"
+            android:layout_height="@dimen/DIMEN_252PX"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@mipmap/bg_box"
+            android:padding="@dimen/DIMEN_40PX"
+            android:src="@mipmap/ic_pop_bag" />
+
+        <TextView
+            android:id="@+id/tv_bag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
+            android:layout_toEndOf="@+id/iv_bag"
+            android:text="@string/text_bag_wash"
+            android:textSize="@dimen/TEXT_SIZE_20SP" />
+
+        <com.guan.o2o.utils.CustomMsyhTV
+            android:id="@+id/cv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bag"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
+            android:layout_marginTop="@dimen/DIMEN_16PX"
+            android:layout_toEndOf="@+id/iv_bag"
+            android:text="@string/rnb"
+            android:textColor="@color/price_red"
+            android:textSize="@dimen/TEXT_SIZE_22SP" />
+
+        <TextView
+            android:id="@+id/tv_bags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_72PX"
+            android:layout_toEndOf="@+id/cv_price"
+            android:text="@string/unit_bag"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+        <TextView
+            android:id="@+id/tv_dsb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_price"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
+            android:layout_marginTop="@dimen/DIMEN_20PX"
+            android:layout_toEndOf="@+id/iv_bag"
+            android:text="@string/text_dsb"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+        <TextView
+            android:id="@+id/tv_dsbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dsb"
+            android:layout_marginStart="@dimen/DIMEN_20PX"
+            android:layout_marginTop="@dimen/DIMEN_4PX"
+            android:layout_toEndOf="@+id/iv_bag"
+            android:text="@string/text_dsbs"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_num"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_96PX"
+        android:layout_below="@id/rlyt_bag"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_min"
+            android:layout_width="@dimen/DIMEN_108PX"
+            android:layout_height="@dimen/DIMEN_80PX"
+            android:background="@drawable/bg_popmin_selector"
+            android:button="@null" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="@dimen/DIMEN_140PX"
+            android:layout_height="@dimen/DIMEN_82PX"
+            android:background="@mipmap/ic_pop_middle"
+            android:layout_marginTop="@dimen/DIMEN_10PX"
+            android:gravity="center"
+            android:text="@string/one"
+            android:textColor="@color/price_red"
+            android:textSize="@dimen/TEXT_SIZE_28SP" />
+
+        <RadioButton
+            android:id="@+id/rb_add"
+            android:layout_width="@dimen/DIMEN_108PX"
+            android:layout_height="@dimen/DIMEN_80PX"
+            android:background="@drawable/bg_popadd_selector"
+            android:button="@null" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_2PX"
+        android:layout_below="@id/rg_num"
+        android:layout_marginTop="@dimen/DIMEN_8PX"
+        android:background="@color/share_blue" />
+
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:layout_below="@id/tv_line"
+        android:layout_marginEnd="@dimen/DIMEN_20PX"
+        android:layout_marginStart="@dimen/DIMEN_20PX"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:layout_alignBottom="@dimen/DIMEN_30PX"
+        android:background="@drawable/bg_popok_selector" />
+
+</RelativeLayout>

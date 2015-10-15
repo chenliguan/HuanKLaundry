@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.guan.o2o.utils.LogUtil;
  * @date 2015/8/14
  * @Version 1.0
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
     /**
      * 把最常用的与业务无关的方法封装,简化编码编写过程
@@ -55,6 +56,20 @@ public class BaseActivity extends Activity {
         Intent _intent = new Intent(this,pClass);
         startActivity(_intent);
         finish();
+    }
+
+    /**
+     * startActivityForResult()发请求，跳转到Activity
+     *
+     * @param pClass
+     * @param value
+     * @param requestCode
+     */
+    public void requestActivity(Class<?> pClass, String value, int requestCode) {
+        // 第二个参数是请求码,是一个唯一值
+        Intent _intent = new Intent(this, pClass);
+        _intent.putExtra(Contant.INTENT_PARAM, value);
+        startActivityForResult(_intent, requestCode);
     }
 
     /**

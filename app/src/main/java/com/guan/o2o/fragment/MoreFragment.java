@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.activity.AboutUsActivity;
+import com.guan.o2o.activity.ProblemActivity;
+import com.guan.o2o.activity.ServiceScopeActivity;
+import com.guan.o2o.activity.UserAgreeActivity;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.view.CustomView;
@@ -46,34 +50,29 @@ public class MoreFragment extends BaseFragment {
     @InjectView(R.id.cv_feed_back)
     CustomView cvFeedBack;
 
-    private OnClickListener mCallback;
-
-    // 存放fragment的Activtiy必须实现的接口
-    public interface OnClickListener {
-        public void onMoreIntentSelected(int position);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
-        try {
-            mCallback = (OnClickListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnHeadlineSelectedListener");
-        }
-    }
+//    private OnClickListener mCallback;
+//
+//    // 存放fragment的Activtiy必须实现的接口
+//    public interface OnClickListener {
+//        public void onMoreIntentSelected(int position);
+//    }
+//
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
+//        try {
+//            mCallback = (OnClickListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement OnHeadlineSelectedListener");
+//        }
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     /**
@@ -97,6 +96,13 @@ public class MoreFragment extends BaseFragment {
     }
 
     /**
+     * 绑定/设置数据操作
+     */
+    @Override
+    public void bindData() {
+    }
+
+    /**
      * 监听实现，回调接口
      */
     @OnClick({R.id.cv_customer, R.id.cv_problem, R.id.cv_service_scope, R.id.cv_about_us, R.id.user_agree, R.id.cv_feed_back})
@@ -107,18 +113,19 @@ public class MoreFragment extends BaseFragment {
                 break;
 
             case R.id.cv_problem:
-                mCallback.onMoreIntentSelected(Contant.CV_PROBLEM);
+                openActivity(ProblemActivity.class);
                 break;
 
             case R.id.cv_service_scope:
-                mCallback.onMoreIntentSelected(Contant.CV_SERVICESCOPE);
+                openActivity(ServiceScopeActivity.class);
                 break;
 
             case R.id.cv_about_us:
+                openActivity(AboutUsActivity.class);
                 break;
 
             case R.id.user_agree:
-                mCallback.onMoreIntentSelected(Contant.CV_USERAGREE);
+                openActivity(UserAgreeActivity.class);
                 break;
 
             case R.id.cv_feed_back:

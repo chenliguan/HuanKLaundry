@@ -88,6 +88,13 @@ public class BasketFragment extends BaseFragment {
         tvTitle.setText(R.string.main_navigation_basket);
     }
 
+    /**
+     * 绑定/设置数据操作
+     */
+    @Override
+    public void bindData() {
+    }
+
     /*
      * 加载控件的数据
      */

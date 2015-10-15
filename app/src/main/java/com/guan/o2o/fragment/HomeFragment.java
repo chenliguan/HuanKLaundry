@@ -26,11 +26,14 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.guan.o2o.R;
+import com.guan.o2o.activity.AWashActivity;
+import com.guan.o2o.activity.ProblemActivity;
 import com.guan.o2o.adapter.PollPagerAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.utils.FuncUtil;
 import com.guan.o2o.utils.LogUtil;
 
 import java.lang.ref.WeakReference;
@@ -79,10 +82,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private int mCurrentItem;
     private TextView mTvNum;
     private WashOrder washOrder;
+    private ArrayList<View> mListViews;
     private PopupWindow mPopupWindow;
     private ImageView[] mImageViews;
     private ImageHandler mImageHandler;
-    private OnClickListener mCallback;
     public LocationClient mLocationClient;
     public BDLocationListener myListener;
     // 定时周期执行指定的任务
@@ -114,33 +117,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    // 存放fragment的Activtiy必须实现的接口
-    public interface OnClickListener {
-        public void onHomeIntentSelected(int position);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
-        try {
-            mCallback = (OnClickListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnHeadlineSelectedListener");
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ButterKnife.inject(this, super.onCreateView(inflater, container, savedInstanceState));
         return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     /**
@@ -167,45 +148,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     * 初始化位置
-     */
-    private void initLocation() {
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
-        );
-        option.setCoorType("bd09ll");
-        int span = 1000;
-        option.setScanSpan(span);
-        option.setIsNeedAddress(true);
-        option.setOpenGps(true);
-        option.setLocationNotify(true);
-        option.setIsNeedLocationDescribe(true);
-        option.setIsNeedLocationPoiList(true);
-        option.setIgnoreKillProcess(false);
-        option.SetIgnoreCacheException(false);
-        option.setEnableSimulateGps(false);
-        mLocationClient.setLocOption(option);
-    }
-
-    /**
      * 初始化变量
      */
     public void initVariable() {
         imageUrls = new int[]{
                 R.mipmap.ic_poll_a, R.mipmap.ic_poll_c,
-                R.mipmap.ic_poll_b, R.mipmap.ic_poll_d
-        };
+                R.mipmap.ic_poll_b, R.mipmap.ic_poll_d };
         washOrder = null;
         // 设定大大的值实现向左回播
         mCurrentItem = imageUrls.length * 1000;
         mImageHandler = new ImageHandler(HomeFragment.this);
-
         // 地图
         mLocationClient = new LocationClient(getActivity());
-        myListener = new MyLocationListener();
-        mLocationClient.registerLocationListener(myListener);
-        initLocation();
-        mLocationClient.start();
+        // 设置监听
+        mLocationClient.registerLocationListener(new MyLocationListener());
+        // 初始化位置
+        mLocationClient.setLocOption(FuncUtil.initLocation());
         /*
          * 初始化ViewPager
          */
@@ -217,13 +175,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      */
     private void initViewPager() {
         LayoutInflater _inflater = LayoutInflater.from(getActivity());
-        ArrayList<View> _listViews = new ArrayList<View>();
+        mListViews = new ArrayList<View>();
         mImageViews = new ImageView[imageUrls.length];
+
         for (int i = 0; i < imageUrls.length; i++) {
             // 图片
             View _view = (View) _inflater.inflate(R.layout.view_pager, null);
             _view.setBackgroundResource(imageUrls[i]);
-            _listViews.add(_view);
+            mListViews.add(_view);
             // 圆点
             mImageViews[i] = new ImageView(getActivity());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(16, 16);
@@ -235,7 +194,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 mImageViews[i].setBackgroundResource(R.mipmap.ic_dot);
             llytDots.addView(mImageViews[i]);
         }
-        viewpager.setAdapter(new PollPagerAdapter(_listViews));
+    }
+
+    /**
+     * 绑定/设置数据操作
+     */
+    @Override
+    public void bindData() {
+        // 开始定位
+        mLocationClient.start();
+        // viewpager设置
+        viewpager.setAdapter(new PollPagerAdapter(mListViews));
         viewpager.addOnPageChangeListener(new onPageChangeListener());
         viewpager.setCurrentItem(mCurrentItem);
     }
@@ -247,6 +216,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         @Override
         public void onPageSelected(int position) {
+            // 设置当前位置，实现手动与自动轮播切换
             mCurrentItem = position;
             // 更新小圆点图标
             for (int i = 0; i < imageUrls.length; i++)
@@ -295,6 +265,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.iv_a_wash:
+                openActivity(AWashActivity.class);
                 break;
 
             case R.id.iv_bag_wash:
@@ -337,6 +308,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         rbMin.setOnClickListener(this);
         rbAdd.setOnClickListener(this);
         btnPay.setOnClickListener(this);
+
         // PopupWindow显示位置
         mPopupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
@@ -398,13 +370,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     * 设置添加屏幕的背景透明度
+     * 设置添加屏幕的背景透明度,0.0-1.0
      *
      * @param bgAlpha
      */
     public void backgroundAlpha(float bgAlpha) {
         WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
-        // 0.0-1.0
         lp.alpha = bgAlpha;
         getActivity().getWindow().setAttributes(lp);
     }
@@ -412,7 +383,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     /**
      * 位置监听
      */
-    public class MyLocationListener implements BDLocationListener{
+    public class MyLocationListener implements BDLocationListener {
 
         @Override
         public void onReceiveLocation(BDLocation poiLocation) {

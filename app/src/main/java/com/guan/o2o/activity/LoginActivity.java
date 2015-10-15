@@ -86,9 +86,9 @@ public class LoginActivity extends FrameActivity {
         mExitTime = 0;
         mLoginCode = null;
         mLoginPhone = null;
-        mTime = new TimeCount(60000, 1000);
-        tvTitle.setText(R.string.title_login);
         context = LoginActivity.this;
+        tvTitle.setText(R.string.title_login);
+        mTime = new TimeCount(60000, 1000);
         localView = getWindow().getDecorView();
     }
 
@@ -112,7 +112,7 @@ public class LoginActivity extends FrameActivity {
                 break;
 
             case R.id.tv_book2:
-                actionStart(this, UserAgreeActivity.class, Contant.VALUE_LOGIN_ACTIVITY);
+                openActivity(UserAgreeActivity.class);
                 break;
 
             default:
