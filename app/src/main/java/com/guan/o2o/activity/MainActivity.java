@@ -124,27 +124,27 @@ public class MainActivity extends FrameActivity {
 //        }
 //    }
 
-    /**
-     * 执行startActivityForResult()方法的回调
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param intent
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case Contant.CODE_USERAGREE:
-            case Contant.CODE_PROBLEM:
-            case Contant.CODE_SERVICESCOPE:
-                if (resultCode == RESULT_OK)
-                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
-                break;
-
-            default:
-                break;
-        }
-    }
+//    /**
+//     * 执行startActivityForResult()方法的回调
+//     *
+//     * @param requestCode
+//     * @param resultCode
+//     * @param intent
+//     */
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        switch (requestCode) {
+//            case Contant.CODE_USERAGREE:
+//            case Contant.CODE_PROBLEM:
+//            case Contant.CODE_SERVICESCOPE:
+//                if (resultCode == RESULT_OK)
+//                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }
 
     /**
      * 监听设置当前页面

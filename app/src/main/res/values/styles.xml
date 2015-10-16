@@ -6,7 +6,7 @@
     </style>
 
     <!-- BaseButton -->
-    <style name="BaseButtonTheme" >
+    <style name="BaseButtonTheme">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/DIMEN_88PX</item>
         <item name="android:layout_marginLeft">@dimen/DIMEN_32PX</item>
@@ -14,7 +14,7 @@
     </style>
 
     <!-- CumtonButton -->
-    <style name="ButtonTheme" parent="BaseButtonTheme" >
+    <style name="ButtonTheme" parent="BaseButtonTheme">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginBottom">@dimen/DIMEN_32PX</item>
         <item name="android:background">@drawable/bg_btn_selector</item>
@@ -39,28 +39,28 @@
     </style>
 
     <!--  More CustomView -->
-    <style name="CustomView" >
+    <style name="CustomView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/white</item>
     </style>
 
     <!--  TextViewHorizontal -->
-    <style name="TextView" >
+    <style name="TextView">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/DIMEN_0.5PX</item>
         <item name="android:background">@color/frame_line_grey</item>
     </style>
 
     <!--  TextViewVertical -->
-    <style name="TextViewVertical" >
+    <style name="TextViewVertical">
         <item name="android:layout_width">@dimen/DIMEN_2PX</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@color/frame_line_grey</item>
     </style>
 
     <!--  ImageViewHome -->
-    <style name="imageview_home" >
+    <style name="imageview_home">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/DIMEN_136PX</item>
         <item name="android:layout_alignParentRight">true</item>
@@ -70,13 +70,22 @@
     </style>
 
     <!--  AWash TAB -->
-    <style name="awash_tab" >
+    <style name="awash_tab">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/TEXT_SIZE_18SP</item>
         <item name="android:textColor">@color/texts_grey</item>
+    </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="Loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/bg_loading</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>

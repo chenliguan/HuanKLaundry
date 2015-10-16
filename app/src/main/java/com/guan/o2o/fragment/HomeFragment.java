@@ -87,7 +87,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private ImageView[] mImageViews;
     private ImageHandler mImageHandler;
     public LocationClient mLocationClient;
-    public BDLocationListener myListener;
     // 定时周期执行指定的任务
     private ScheduledExecutorService mScheduledExecutorService;
 
@@ -367,17 +366,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             default:
                 break;
         }
-    }
-
-    /**
-     * 设置添加屏幕的背景透明度,0.0-1.0
-     *
-     * @param bgAlpha
-     */
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
-        lp.alpha = bgAlpha;
-        getActivity().getWindow().setAttributes(lp);
     }
 
     /**

@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 
-public class TestFragment extends Fragment {
+public class TextFragment extends Fragment {
     private static final String TAG = "TestFragment";
     private String hello;// = "hello android";
     private String defaultHello = "default value";
 
-    public static TestFragment newInstance(String s) {
-        TestFragment newFragment = new TestFragment();
+    static TextFragment newInstance(String s) {
+        TextFragment newFragment = new TextFragment();
         Bundle bundle = new Bundle();
         bundle.putString("hello", s);
         newFragment.setArguments(bundle);
@@ -33,7 +33,7 @@ public class TestFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         Log.d(TAG, "TestFragment-----onCreateView");
         View view = inflater.inflate(R.layout.lay1, container, false);
         TextView viewhello = (TextView) view.findViewById(R.id.tv_hello);

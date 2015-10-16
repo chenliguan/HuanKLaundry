@@ -1406,6 +1406,7 @@
     <dimen name="activity_horizontal_margin">8.888888dp</dimen>
     <dimen name="activity_vertical_margin">8.888888dp</dimen>
 
+    <dimen name="TEXT_SIZE_10SP">10sp</dimen>
     <dimen name="TEXT_SIZE_12SP">12sp</dimen>
     <dimen name="TEXT_SIZE_13SP">13sp</dimen>
     <dimen name="TEXT_SIZE_14SP">14sp</dimen>

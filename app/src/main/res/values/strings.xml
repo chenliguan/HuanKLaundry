@@ -12,7 +12,24 @@
     <string name="title_activity_user_regulate">UserRegulateActivity</string>
     <string name="title_activity_com_problem">ComProblemActivity</string>
     <string name="title_activity_awash">AWashActivity</string>
+    <string name="title_activity_service_scope">ServiceScopeActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
 
+    <!-- 标题 -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homefragment">homeFragment</string>
+    <string name="basketfragment">basketfragment</string>
+    <string name="contact_customer">联系客服</string>
+    <string name="com_problem">常见问题</string>
+    <string name="service_scope">服务范围</string>
+    <string name="about_us">关于我们</string>
+    <string name="a_wash">件洗</string>
+    <string name="user_agree">用户协议</string>
+    <string name="feedback">意见反馈</string>
+    <string name="pop_tip_title">提示信息</string>
+    <string name="pop_tip_text">请输入正确电话号码</string>
+
+    <!-- 描述 -->
     <string name="title">标题</string>
     <string name="city">成都</string>
     <string name="text_delete_order">删除订单</string>
@@ -39,21 +56,6 @@
     <string name="a_wash_tab_summer">夏装</string>
     <string name="a_wash_tab_winter">冬装</string>
     <string name="a_wash_tab_leather">皮衣</string>
-
-    <!-- 标题 -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="homefragment">homeFragment</string>
-    <string name="basketfragment">basketfragment</string>
-    <string name="contact_customer">联系客服</string>
-    <string name="com_problem">常见问题</string>
-    <string name="service_scope">服务范围</string>
-    <string name="about_us">关于我们</string>
-    <string name="a_wash">件洗</string>
-    <string name="user_agree">用户协议</string>
-    <string name="feedback">意见反馈</string>
-    <string name="pop_tip_title">提示信息</string>
-    <string name="pop_tip_text">请输入正确电话号码</string>
-
     <string name="msg_repress">再按一次退出程序</string>
     <string name="text_tshirt">T恤</string>
     <string name="x">X</string>
@@ -77,10 +79,9 @@
     <string name="unit_bag">/袋</string>
     <string name="text_dsb">装多少，洗多少！</string>
     <string name="text_dsbs">亲,皮衣真丝内衣、袜子、鞋不要装喔!</string>
-    <string name="title_activity_service_scope">ServiceScopeActivity</string>
+    <string name="text_loading">加载中…</string>
 
     <!--衣服类型 -->
     <string name="text_bag_wash">袋洗</string>
-    <string name="title_activity_about_us">AboutUsActivity</string>
 
 </resources>

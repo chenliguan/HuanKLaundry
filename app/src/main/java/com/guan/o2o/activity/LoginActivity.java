@@ -61,8 +61,8 @@ public class LoginActivity extends FrameActivity {
     private TimeCount mTime;
     private String mLoginPhone;
     private String mLoginCode;
-    private View localView;
-    private PopupWindow popupWindow;
+    private View mLocalView;
+    private PopupWindow mPopupWindow;
     private long mExitTime;
     public Context context;
     public VolleyHandler<String> volleyRequest;
@@ -89,7 +89,7 @@ public class LoginActivity extends FrameActivity {
         context = LoginActivity.this;
         tvTitle.setText(R.string.title_login);
         mTime = new TimeCount(60000, 1000);
-        localView = getWindow().getDecorView();
+        mLocalView = getWindow().getDecorView();
     }
 
     /**
@@ -145,7 +145,7 @@ public class LoginActivity extends FrameActivity {
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
         } else
-            showPopupWindow(localView);
+            showPopupWindow(mLocalView);
     }
 
     /**
@@ -214,16 +214,16 @@ public class LoginActivity extends FrameActivity {
     private void showPopupWindow(View view) {
         View contentView = LayoutInflater.from(this).inflate(
                 R.layout.view_pop_tip, null);
-        popupWindow = new PopupWindow(contentView,
+        mPopupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
-        popupWindow.setOutsideTouchable(true);
+        mPopupWindow.setOutsideTouchable(true);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
         backgroundAlpha(0.5f);
         // 设置好参数之后再show
-        popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
+        mPopupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
         // 隐退监听
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 backgroundAlpha(1f);
@@ -233,7 +233,7 @@ public class LoginActivity extends FrameActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                popupWindow.dismiss();
+                mPopupWindow.dismiss();
             }
         }, Contant.POPWIN_DELAY_MS);
     }

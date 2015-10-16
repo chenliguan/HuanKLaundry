@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.guan.o2o.activity.BaseActivity;
@@ -76,6 +77,17 @@ public abstract class BaseFragment extends Fragment {
     public void openActivity(Class<?> pClass) {
         Intent _intent = new Intent(getActivity(), pClass);
         startActivity(_intent);
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度,0.0-1.0
+     *
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+        lp.alpha = bgAlpha;
+        getActivity().getWindow().setAttributes(lp);
     }
 
     /**

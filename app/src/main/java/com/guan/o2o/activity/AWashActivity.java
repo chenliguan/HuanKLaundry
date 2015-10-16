@@ -1,7 +1,5 @@
 package com.guan.o2o.activity;
 
-import android.app.Activity;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -15,9 +13,12 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
 import com.guan.o2o.common.Contant;
+import com.guan.o2o.fragment.LeatherCloFragment;
+import com.guan.o2o.fragment.MyHomeFragment;
 import com.guan.o2o.fragment.SpringCloFragment;
-import com.guan.o2o.fragment.TestFragment;
-import com.guan.o2o.utils.LogUtil;
+import com.guan.o2o.fragment.SumCloFragment;
+import com.guan.o2o.fragment.TextFragment;
+import com.guan.o2o.fragment.WinterCloFragment;
 
 import java.util.ArrayList;
 
@@ -92,9 +93,13 @@ public class AWashActivity extends FrameActivity {
 
         mFragList = new ArrayList<Fragment>();
         mFragList.add(new SpringCloFragment());
-        mFragList.add(TestFragment.newInstance("Hello summer."));
-        mFragList.add(TestFragment.newInstance("Hello winter."));
-        mFragList.add(TestFragment.newInstance("Hello leather."));
+//        mFragList.add(new SumCloFragment());
+//        mFragList.add(new WinterCloFragment());
+//        mFragList.add(new LeatherCloFragment());
+
+        mFragList.add(new MyHomeFragment());
+        mFragList.add(new TextFragment());
+        mFragList.add(new TextFragment());
     }
 
     /**
@@ -115,6 +120,7 @@ public class AWashActivity extends FrameActivity {
      * 绑定数据
      */
     private void bindData() {
+        fragVPager.setOffscreenPageLimit(3);
         fragVPager.setAdapter(new FragmentAdapter(
                 getSupportFragmentManager(), mFragList));
         fragVPager.addOnPageChangeListener(new onPageChangeListener());

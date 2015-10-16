@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guan.o2o.fragment.SpringCloFragment">
+
+    <GridView
+        android:id="@+id/gv_spring_clo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2"
+        android:paddingStart="@dimen/DIMEN_24PX"
+        android:paddingEnd="@dimen/DIMEN_24PX"
+        android:paddingTop="@dimen/DIMEN_32PX"
+        android:horizontalSpacing="@dimen/DIMEN_20PX"
+        android:verticalSpacing="@dimen/DIMEN_20PX">
+
+    </GridView>
+
+</FrameLayout>

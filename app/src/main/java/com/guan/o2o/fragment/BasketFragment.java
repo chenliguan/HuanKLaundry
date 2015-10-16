@@ -42,7 +42,6 @@ public class BasketFragment extends BaseFragment {
 
     /**
      * Fragment可见时,并在onCreateView之前调用
-     *
      * @param isVisibleToUser
      */
     @Override

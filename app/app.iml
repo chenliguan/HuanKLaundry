@@ -93,6 +93,7 @@
     <orderEntry type="library" exported="" name="locSDK_6.03" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_v3_5_0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
+    <orderEntry type="library" exported="" name="android-smart-image-view-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="butterknife-5.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.1" level="project" />

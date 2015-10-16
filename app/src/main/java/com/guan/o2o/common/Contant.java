@@ -45,6 +45,8 @@ public class Contant {
     public static final long SPLASH_DELAY_MS = 2300;
     // Popupwindow显示时间
     public static final long POPWIN_DELAY_MS = 2300;
+    // loadingDialog显示时间
+    public static final long LOADING_DELAY_MS = 1500;
 
     /**
      * sharedpreferences保存表名
