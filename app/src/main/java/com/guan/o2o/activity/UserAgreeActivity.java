@@ -25,14 +25,10 @@ import butterknife.OnClick;
  */
 public class UserAgreeActivity extends FrameActivity {
 
-    @InjectView(R.id.iv_back)
-    ImageView ivBack;
     @InjectView(R.id.wv_regulate)
     WebView wvRegulate;
     @InjectView(R.id.tv_title)
     TextView tvTitle;
-
-    private String mValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +51,6 @@ public class UserAgreeActivity extends FrameActivity {
      */
     private void initVariable() {
         tvTitle.setText(R.string.title_user_regulate);
-        Intent mIntent = getIntent();
     }
 
     /**

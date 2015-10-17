@@ -94,7 +94,7 @@ public class LeatherCloFragment extends BaseFragment {
             public void reqSuccess(String response) {
                 LogUtil.showLog("response:" + response);
                 winterCloth = WinterCloth.praseJson(response);
-                mLeaAdapter = new AWLeaAdapter(getActivity(), winterCloth.washInfo);
+                mLeaAdapter = new AWLeaAdapter(getActivity(), winterCloth.WashInfo);
                 // 配置适配器
                 gvSpringclo.setAdapter(mLeaAdapter);
 
@@ -112,7 +112,7 @@ public class LeatherCloFragment extends BaseFragment {
 
             @Override
             public void reqError(String error) {
-                showMsg("连接服务器出错");
+                showMsg(getString(R.string.msg_con_server_error));
             }
         };
 

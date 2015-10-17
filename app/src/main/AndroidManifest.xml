@@ -87,9 +87,9 @@
             android:label="@string/title_activity_service_scope" >
         </activity>
         <activity
-            android:parentActivityName=".activity.MainActivity"
             android:name=".activity.AWashActivity"
-            android:label="@string/title_activity_awash" >
+            android:label="@string/title_activity_awash"
+            android:parentActivityName=".activity.MainActivity" >
         </activity>
         <activity
             android:name=".activity.AboutUsActivity"
@@ -101,6 +101,11 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
+
+        <activity
+            android:name=".activity.ServiceNoteActivity"
+            android:label="@string/title_activity_service_note" >
+        </activity>
     </application>
 
 </manifest>

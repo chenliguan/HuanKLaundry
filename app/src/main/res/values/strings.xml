@@ -38,6 +38,7 @@
     <string name="title_login">绑定手机登录</string>
     <string name="title_user_regulate">用户协议</string>
     <string name="title_com_problem">常见问题</string>
+    <string name="title_service_note">服务说明</string>
     <string name="title_about_us">关于我们</string>
     <string name="title_register">注册</string>
     <string name="phone_input">请输入手机号码</string>
@@ -83,5 +84,8 @@
 
     <!--衣服类型 -->
     <string name="text_bag_wash">袋洗</string>
+    <string name="title_activity_service_note">ServiceNoteActivity</string>
+    <string name="msg_loading_error">加载失败</string>
+    <string name="msg_con_server_error">连接服务器出错</string>
 
 </resources>

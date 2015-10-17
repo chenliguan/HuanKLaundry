@@ -3,22 +3,18 @@ package com.guan.o2o.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.guan.o2o.R;
+import com.guan.o2o.common.HttpPath;
 import com.guan.o2o.model.WinterCloth;
 import com.guan.o2o.utils.CustomMsyhTV;
-import com.guan.o2o.volley.VolleyHttpRequest;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-
-import static com.guan.o2o.common.HttpPath.getClothIvIfo;
 
 /**
  * 我的主页GridVieW适配器
@@ -57,7 +53,7 @@ public class AWSprAdapter extends BaseToAdapter {
 //        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.ivIcon,
 //                R.mipmap.ic_default, R.mipmap.ic_default);
 //        VolleyHttpRequest.Image_Loader(getClothIvIfo(position + 10), listener);
-        holder.sivIcon.setImageUrl(getClothIvIfo(position + 10));
+        holder.sivIcon.setImageUrl(HttpPath.getIvfo(position + 10));
 
         return convertView;
     }

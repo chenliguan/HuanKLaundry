@@ -15,8 +15,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-import static com.guan.o2o.common.HttpPath.getClothIvIfo;
-
 /**
  * 我的主页GridVieW适配器
  *
@@ -54,7 +52,7 @@ public class AWSumAdapter extends BaseToAdapter {
 //        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.ivIcon,
 //                R.mipmap.ic_default, R.mipmap.ic_default);
 //        VolleyHttpRequest.Image_Loader(getClothIvIfo(position + 10), listener);
-//        holder.sivIcon.setImageUrl(getClothIvIfo(position + 10));
+//        holder.sivIcon.setImageUrl(getIvfo(position + 10));
 
         return convertView;
     }

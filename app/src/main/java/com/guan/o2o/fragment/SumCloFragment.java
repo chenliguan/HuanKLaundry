@@ -150,7 +150,7 @@ public class SumCloFragment extends FrameFragment {
 //
 //            @Override
 //            public void reqError(String error) {
-//                showMsg("连接服务器出错");
+//                showMsg(getString(R.string.msg_con_server_error));
 //            }
 //        };
 //

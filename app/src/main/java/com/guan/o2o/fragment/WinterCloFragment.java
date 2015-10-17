@@ -95,7 +95,7 @@ public class WinterCloFragment extends BaseFragment {
             public void reqSuccess(String response) {
                 winterCloth = WinterCloth.praseJson(response);
                 washInfo = new ArrayList<WinterCloth.WashInfoEntity>();
-                washInfo = winterCloth.washInfo;
+                washInfo = winterCloth.WashInfo;
                 mWinAdapter = new AWWinAdapter(getActivity(), washInfo);
                 // 配置适配器
                 gvSpringclo.setAdapter(mWinAdapter);
@@ -114,7 +114,7 @@ public class WinterCloFragment extends BaseFragment {
 
             @Override
             public void reqError(String error) {
-                showMsg("连接服务器出错");
+                showMsg(getString(R.string.msg_con_server_error));
             }
         };
 

@@ -108,11 +108,11 @@ public class SpringCloFragment extends BaseFragment {
             public void reqSuccess(String response) {
 
                 if (response == null) {
-                    showMsg("加载失败");
+                    showMsg(getString(R.string.msg_loading_error));
                 } else {
                     winterCloth = WinterCloth.praseJson(response);
                     washInfo = new ArrayList<WinterCloth.WashInfoEntity>();
-                    washInfo = winterCloth.washInfo;
+                    washInfo = winterCloth.WashInfo;
                     mSprAdapter = new AWSprAdapter(getActivity(), washInfo);
 //                // 停留2秒,隐退
 //                new Handler().postDelayed(new Runnable() {
@@ -140,7 +140,7 @@ public class SpringCloFragment extends BaseFragment {
 
             @Override
             public void reqError(String error) {
-                showMsg("连接服务器出错");
+                showMsg(getString(R.string.msg_con_server_error));
 //                if (mLoadingDialog == null && mLoadingDialog.isShowing())
 //                    mLoadingDialog.dismiss();
             }

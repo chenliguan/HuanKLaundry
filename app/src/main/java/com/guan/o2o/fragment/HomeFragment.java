@@ -28,7 +28,9 @@ import com.baidu.location.LocationClientOption;
 import com.guan.o2o.R;
 import com.guan.o2o.activity.AWashActivity;
 import com.guan.o2o.activity.ProblemActivity;
+import com.guan.o2o.activity.ServiceNoteActivity;
 import com.guan.o2o.adapter.PollPagerAdapter;
+import com.guan.o2o.adapter.ServiceNoteAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
@@ -282,6 +284,7 @@ public class HomeFragment extends FrameFragment {
                 break;
 
             case R.id.iv_service_note:
+                openActivity(ServiceNoteActivity.class);
                 break;
 
             default:

@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/layout_title"
-        layout="@layout/layout_basket_title">
-
-    </include>
+        layout="@layout/layout_basket_title"/>
 
     <FrameLayout
         android:layout_width="fill_parent"

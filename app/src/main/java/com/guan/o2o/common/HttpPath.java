@@ -26,14 +26,26 @@ public class HttpPath {
         return IP + "/demo/myClive?clive=wash&url=www.heartguard.cn";
     }
 
+    // getServiceNote
+    public static String getSerNotefo() {
+        return IP + "/demo/myClive?means=12345&url=www.heartguard.cn";
+    }
+
+//    http://www.heartguard.cn:8080/demo/myClive?means=12345&url=www.heartguard.cn
+
     // getClothData2
     public static String getClothIfo2() {
         return IP2 + "/demo/myClive?clive=wash&url=172.28.89.98";
     }
 
     // getClothImageview
-    public static String getClothIvIfo(int id) {
+    public static String getIvfo(int id) {
         return IP + "/demo/image" + id +".png";
+    }
+
+    // getNum
+    public static String getNumfo(int id) {
+        return IP + "/demo/means" + id +".png";
     }
 
     // 用户协议IP

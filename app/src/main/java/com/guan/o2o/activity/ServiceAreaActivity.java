@@ -1,8 +1,6 @@
 package com.guan.o2o.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -20,15 +18,13 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.guan.o2o.R;
-import com.guan.o2o.common.Contant;
 import com.guan.o2o.utils.FuncUtil;
-import com.guan.o2o.utils.LogUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class ServiceScopeActivity extends FrameActivity {
+public class ServiceAreaActivity extends FrameActivity {
 
     @InjectView(R.id.bmapView)
     MapView bmapView;
@@ -47,7 +43,7 @@ public class ServiceScopeActivity extends FrameActivity {
          * 在使用百度地图SDK各组件之前初始化context信息,传入ApplicationContext
          */
         SDKInitializer.initialize(getApplicationContext());
-        setContentView(R.layout.activity_service_scope);
+        setContentView(R.layout.activity_service_area);
         ButterKnife.inject(this);
 
         /**

@@ -1,9 +1,6 @@
 package com.guan.o2o.fragment;
 
-
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +10,8 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.activity.AboutUsActivity;
 import com.guan.o2o.activity.ProblemActivity;
-import com.guan.o2o.activity.ServiceScopeActivity;
+import com.guan.o2o.activity.ServiceAreaActivity;
 import com.guan.o2o.activity.UserAgreeActivity;
-import com.guan.o2o.common.Contant;
-import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.view.CustomView;
 
 import butterknife.ButterKnife;
@@ -117,7 +112,7 @@ public class MoreFragment extends BaseFragment {
                 break;
 
             case R.id.cv_service_scope:
-                openActivity(ServiceScopeActivity.class);
+                openActivity(ServiceAreaActivity.class);
                 break;
 
             case R.id.cv_about_us:
