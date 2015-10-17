@@ -31,6 +31,12 @@ public class WinterCloth {
         private String WashName;
         private String Amount;
 
+        public WashInfoEntity(String washName, String amount, String washHead) {
+            WashName = washName;
+            Amount = amount;
+            WashHead = washHead;
+        }
+
         public void setWashHead(String WashHead) {
             this.WashHead = WashHead;
         }

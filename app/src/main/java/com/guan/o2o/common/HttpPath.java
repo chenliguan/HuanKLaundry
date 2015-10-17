@@ -5,6 +5,9 @@ public class HttpPath {
     // 请求网路IP
     public final static String IP = "http://www.heartguard.cn:8080";
 
+    // 请求网路IP2
+    public final static String IP2 = "http://172.28.89.98:8080";
+
     // 请求浣客官网IP
     public final static String IP_USER_AGREE = "http://123.56.138.192:8002";
 
@@ -21,6 +24,11 @@ public class HttpPath {
     // getClothData
     public static String getClothIfo() {
         return IP + "/demo/myClive?clive=wash&url=www.heartguard.cn";
+    }
+
+    // getClothData2
+    public static String getClothIfo2() {
+        return IP2 + "/demo/myClive?clive=wash&url=172.28.89.98";
     }
 
     // getClothImageview

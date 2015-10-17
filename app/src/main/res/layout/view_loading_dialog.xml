@@ -11,7 +11,8 @@
         android:id="@+id/iv_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_publicloading" />
+        style="?android:attr/progressBarStyle"
+        android:background="@mipmap/ic_publicloading" />
 
     <TextView
         android:id="@+id/tv_tips"

@@ -90,7 +90,7 @@ public class SplashActivity extends FrameActivity {
             };
 
             // 请求网络
-            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
+            VolleyHttpRequest.String_request("Splash",HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else {
             openActivityFn(GuideActivity.class);
         }

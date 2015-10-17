@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.guan.o2o.common.Contant;
@@ -96,9 +97,14 @@ public class BaseActivity extends FragmentActivity {
     }
 
     /**
-     * dialog 对话框公共方法
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
      */
-    public void showAlterDialog() {
-
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        // 0.0-1.0
+        lp.alpha = bgAlpha;
+        getWindow().setAttributes(lp);
     }
 }

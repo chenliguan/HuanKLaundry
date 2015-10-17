@@ -5,7 +5,7 @@
     tools:context="com.guan.o2o.fragment.SpringCloFragment">
 
     <GridView
-        android:id="@+id/gv_spring_clo"
+        android:id="@+id/gv_spr_clo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

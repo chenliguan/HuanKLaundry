@@ -1,11 +1,10 @@
 package com.guan.o2o.application;
 
+import android.app.Application;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.baidu.mapapi.SDKInitializer;
 import com.guan.o2o.model.WashOrder;
-
-import android.app.Application;
 
 import java.util.ArrayList;
 import java.util.List;

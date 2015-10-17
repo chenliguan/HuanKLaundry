@@ -63,16 +63,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
             android:name=".activity.GuideActivity"
             android:label="@string/title_activity_splash" >
         </activity>
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name=".activity.UserAgreeActivity"
@@ -86,14 +86,8 @@
             android:name=".activity.ServiceScopeActivity"
             android:label="@string/title_activity_service_scope" >
         </activity>
-
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" >
-        </service>
-
         <activity
+            android:parentActivityName=".activity.MainActivity"
             android:name=".activity.AWashActivity"
             android:label="@string/title_activity_awash" >
         </activity>
@@ -101,6 +95,12 @@
             android:name=".activity.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
     </application>
 
 </manifest>

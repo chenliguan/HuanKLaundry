@@ -3,14 +3,11 @@ package com.guan.o2o.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.guan.o2o.R;
 import com.guan.o2o.model.WinterCloth;
 import com.guan.o2o.utils.CustomMsyhTV;
-import com.guan.o2o.volley.VolleyHttpRequest;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.List;
@@ -28,11 +25,11 @@ import static com.guan.o2o.common.HttpPath.getClothIvIfo;
  * @date 2015/10/8
  * @Version 1.0
  */
-public class AWashGridAdapter extends BaseToAdapter {
+public class AWWinAdapter extends BaseToAdapter {
 
     public List<WinterCloth.WashInfoEntity> mList;
 
-    public AWashGridAdapter(Context context, List<WinterCloth.WashInfoEntity> list) {
+    public AWWinAdapter(Context context, List<WinterCloth.WashInfoEntity> list) {
         super(context, list);
         this.mList = list;
     }
@@ -45,7 +42,7 @@ public class AWashGridAdapter extends BaseToAdapter {
         if (convertView != null) {
             holder = (ViewHolder) convertView.getTag();
         } else {
-            convertView = getLayoutInflater().inflate(R.layout.item_grid_a_wash, null);
+            convertView = getLayoutInflater().inflate(R.layout.item_grid_aw_win, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }

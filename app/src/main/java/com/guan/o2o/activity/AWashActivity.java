@@ -93,11 +93,12 @@ public class AWashActivity extends FrameActivity {
 
         mFragList = new ArrayList<Fragment>();
         mFragList.add(new SpringCloFragment());
-//        mFragList.add(new SumCloFragment());
+//        mFragList.add(new TextFragment());
+        mFragList.add(new SumCloFragment());
 //        mFragList.add(new WinterCloFragment());
 //        mFragList.add(new LeatherCloFragment());
 
-        mFragList.add(new MyHomeFragment());
+//        mFragList.add(new TextFragment());
         mFragList.add(new TextFragment());
         mFragList.add(new TextFragment());
     }

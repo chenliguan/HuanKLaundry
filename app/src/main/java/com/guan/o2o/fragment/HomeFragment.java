@@ -33,6 +33,7 @@ import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 import com.guan.o2o.utils.CustomMsyhTV;
+//import com.guan.o2o.utils.FuncUtil;
 import com.guan.o2o.utils.FuncUtil;
 import com.guan.o2o.utils.LogUtil;
 
@@ -55,7 +56,7 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends FrameFragment {
 
     @InjectView(R.id.tv_city)
     TextView tvCity;
@@ -119,7 +120,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ButterKnife.inject(this, super.onCreateView(inflater, container, savedInstanceState));
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -272,7 +272,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 if (mPopupWindow != null && mPopupWindow.isShowing())
                     mPopupWindow.dismiss();
                 else
-                    showPopupWindow(view);
+                    showOrderWindow(view);
                 break;
 
             case R.id.iv_home_ariticles:
@@ -294,7 +294,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      *
      * @param view
      */
-    private void showPopupWindow(View view) {
+    private void showOrderWindow(View view) {
         View contentView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.view_pop_bagwash, null);
         CustomMsyhTV cvPrice = ButterKnife.findById(contentView, R.id.cv_price);
@@ -313,7 +313,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
         // 接收点击事件
         mPopupWindow.setFocusable(true);
-        // 触摸
         mPopupWindow.setOutsideTouchable(true);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
@@ -394,7 +393,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mLocationClient.stop();
+//        mLocationClient.stop();
         ButterKnife.reset(this);
     }
 }

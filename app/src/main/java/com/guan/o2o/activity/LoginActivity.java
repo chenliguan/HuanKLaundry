@@ -62,7 +62,6 @@ public class LoginActivity extends FrameActivity {
     private String mLoginPhone;
     private String mLoginCode;
     private View mLocalView;
-    private PopupWindow mPopupWindow;
     private long mExitTime;
     public Context context;
     public VolleyHandler<String> volleyRequest;
@@ -143,9 +142,9 @@ public class LoginActivity extends FrameActivity {
             // 开始计时
             mTime.start();
             // 请求网络
-            VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
+            VolleyHttpRequest.String_request("LOGIN",HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
         } else
-            showPopupWindow(mLocalView);
+            showTipsWindow(mLocalView);
     }
 
     /**
@@ -175,7 +174,7 @@ public class LoginActivity extends FrameActivity {
         // 对手机号码与验证码验证
         if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RglExpressUtil.isNullNo(mLoginCode)) {
             // 请求网络
-            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
+            VolleyHttpRequest.String_request("CODE",HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else
             showMsg(Contant.MSG_PHONE_PASS_ERROR);
     }
@@ -204,50 +203,6 @@ public class LoginActivity extends FrameActivity {
             String text = "(" + millisUntilFinished / 1000 + "s" + ")后重新获取";
             btnCode.setText(text);
         }
-    }
-
-    /**
-     * 定义提示PopupWindow
-     *
-     * @param view
-     */
-    private void showPopupWindow(View view) {
-        View contentView = LayoutInflater.from(this).inflate(
-                R.layout.view_pop_tip, null);
-        mPopupWindow = new PopupWindow(contentView,
-                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
-        mPopupWindow.setOutsideTouchable(true);
-        // 必须实现,否则点击外部区域和Back键都无法dismiss
-        mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-        backgroundAlpha(0.5f);
-        // 设置好参数之后再show
-        mPopupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
-        // 隐退监听
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                backgroundAlpha(1f);
-            }
-        });
-        // 停留2秒,隐退
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPopupWindow.dismiss();
-            }
-        }, Contant.POPWIN_DELAY_MS);
-    }
-
-    /**
-     * 设置添加屏幕的背景透明度
-     *
-     * @param bgAlpha
-     */
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        // 0.0-1.0
-        lp.alpha = bgAlpha;
-        getWindow().setAttributes(lp);
     }
 
     /**
