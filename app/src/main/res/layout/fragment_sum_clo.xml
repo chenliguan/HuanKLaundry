@@ -1,8 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.guan.o2o.fragment.SpringCloFragment">
+    tools:context="com.guan.o2o.fragment.SumCloFragment">
 
     <GridView
         android:id="@+id/gv_sum_clo"
@@ -19,4 +19,4 @@
 
     </GridView>
 
-</FrameLayout>
+</LinearLayout>
