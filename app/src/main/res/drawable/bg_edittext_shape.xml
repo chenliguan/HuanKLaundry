@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 填充颜色 -->
+    <solid android:color="@color/white" />
+
+    <!-- 描边 -->
+    <stroke
+        android:width="@dimen/DIMEN_1PX"
+        android:color="@color/bg_grey"></stroke>
+
+    <!-- 内容距离边界 -->
+    <padding
+        android:left="@dimen/DIMEN_8PX"
+        android:right="@dimen/DIMEN_8PX" />
+</shape>

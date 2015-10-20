@@ -154,7 +154,7 @@ public class HomeFragment extends FrameFragment {
     public void initVariable() {
         imageUrls = new int[]{
                 R.mipmap.ic_poll_a, R.mipmap.ic_poll_c,
-                R.mipmap.ic_poll_b, R.mipmap.ic_poll_d };
+                R.mipmap.ic_poll_b, R.mipmap.ic_poll_d};
         washOrder = null;
         // 设定大大的值实现向左回播
         mCurrentItem = imageUrls.length * 1000;
@@ -273,8 +273,10 @@ public class HomeFragment extends FrameFragment {
                 // popwindow
                 if (mPopupWindow != null && mPopupWindow.isShowing())
                     mPopupWindow.dismiss();
-                else
-                    showOrderWindow(view);
+                else {
+                    String textWash = getString(R.string.text_bag_wash);
+                    showOrderWindow(view, null, textWash, Contant.PRICE_BAGWASH);
+                }
                 break;
 
             case R.id.iv_home_ariticles:
@@ -285,84 +287,6 @@ public class HomeFragment extends FrameFragment {
 
             case R.id.iv_service_note:
                 openActivity(ServiceNoteActivity.class);
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    /**
-     * 定义袋洗popupwindow
-     *
-     * @param view
-     */
-    private void showOrderWindow(View view) {
-        View contentView = LayoutInflater.from(getActivity()).inflate(
-                R.layout.view_pop_bagwash, null);
-        CustomMsyhTV cvPrice = ButterKnife.findById(contentView, R.id.cv_price);
-        RadioButton rbMin = ButterKnife.findById(contentView, R.id.rb_min);
-        mTvNum = ButterKnife.findById(contentView, R.id.tv_num);
-        RadioButton rbAdd = ButterKnife.findById(contentView, R.id.rb_add);
-        Button btnPay = ButterKnife.findById(contentView, R.id.btn_pay);
-        mNum = 1;
-        cvPrice.setText(Contant.PRICE_BAGWASH);
-        rbMin.setOnClickListener(this);
-        rbAdd.setOnClickListener(this);
-        btnPay.setOnClickListener(this);
-
-        // PopupWindow显示位置
-        mPopupWindow = new PopupWindow(contentView,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
-        // 接收点击事件
-        mPopupWindow.setFocusable(true);
-        mPopupWindow.setOutsideTouchable(true);
-        // 必须实现,否则点击外部区域和Back键都无法dismiss
-        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
-        backgroundAlpha(0.5f);
-        // 显示
-        mPopupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 40);
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                backgroundAlpha(1f);
-            }
-        });
-    }
-
-    /**
-     * 袋洗popupwindow内容的监听实现
-     *
-     * @param view
-     */
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.rb_min:
-                if (mNum > 1) {
-                    mNum = mNum - 1;
-                    mTvNum.setText(String.valueOf(mNum));
-                } else
-                    mTvNum.setText(String.valueOf(1));
-                break;
-
-            case R.id.rb_add:
-                mNum = mNum + 1;
-                mTvNum.setText(String.valueOf(mNum));
-                break;
-
-            case R.id.btn_pay:
-                String bagWash = getString(R.string.text_bag_wash);
-                if (App.washOrderList.size() == 0)
-                    App.washOrderList.add(new WashOrder(bagWash, mNum, Contant.PRICE_BAGWASH));
-                else
-                    for (int i = 0; i < App.washOrderList.size(); i++) {
-                        WashOrder washOrder = App.washOrderList.get(i);
-                        if (washOrder.getWashCategory().equals(bagWash)) {
-                            washOrder.setWashNum(washOrder.getWashNum() + mNum);
-                            break;
-                        }
-                    }
-                mPopupWindow.dismiss();
                 break;
 
             default:
@@ -396,7 +320,7 @@ public class HomeFragment extends FrameFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        mLocationClient.stop();
+        mLocationClient.stop();
         ButterKnife.reset(this);
     }
 }

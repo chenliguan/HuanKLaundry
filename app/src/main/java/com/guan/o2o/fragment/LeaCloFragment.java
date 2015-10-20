@@ -1,6 +1,5 @@
 package com.guan.o2o.fragment;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.adapter.AWLeaAdapter;
+import com.guan.o2o.adapter.AWashGridAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.model.WinterCloth;
-import com.guan.o2o.utils.LogUtil;
+import com.guan.o2o.model.AWashCloth;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
 
@@ -25,32 +23,34 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * 春秋装Fragment
+ * 皮衣Fragment
  *
  * @author Guan
  * @file com.guan.o2o.fragment
  * @date 2015/10/14
  * @Version 1.0
  */
-public class LeatherCloFragment extends BaseFragment {
+public class LeaCloFragment extends FrameFragment {
 
     @InjectView(R.id.gv_spr_clo)
     GridView gvSpringclo;
 
     private List mStringList;
-    private AWLeaAdapter mLeaAdapter;
-    public WinterCloth winterCloth;
+    private AWashGridAdapter mWinAdapter;
+    public AWashCloth aWashCloth;
     public VolleyHandler<String> volleyRequest;
+    public List<AWashCloth.WashInfoEntity> awashInfo;
 
     /**
      * Fragment可见时,并在onCreateView之前调用
+     *
      * @param isVisibleToUser
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser & mLeaAdapter != null) {
-            mLeaAdapter.notifyDataSetChanged();
+        if (isVisibleToUser & mWinAdapter != null) {
+            mWinAdapter.notifyDataSetChanged();
         }
     }
 
@@ -68,7 +68,7 @@ public class LeatherCloFragment extends BaseFragment {
      */
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_spr_clo, container, false);
+        View view = inflater.inflate(R.layout.fragment_awash_clo, container, false);
         ButterKnife.inject(this, view);
         return view;
     }
@@ -92,20 +92,24 @@ public class LeatherCloFragment extends BaseFragment {
         volleyRequest = new VolleyHandler<String>() {
             @Override
             public void reqSuccess(String response) {
-                LogUtil.showLog("response:" + response);
-                winterCloth = WinterCloth.praseJson(response);
-                mLeaAdapter = new AWLeaAdapter(getActivity(), winterCloth.WashInfo);
+                AWashCloth aWashCloth = AWashCloth.praseJson(response);
+                awashInfo = new ArrayList<AWashCloth.WashInfoEntity>();
+                awashInfo = aWashCloth.washInfo;
+
+                mWinAdapter = new AWashGridAdapter(getActivity(), awashInfo);
                 // 配置适配器
-                gvSpringclo.setAdapter(mLeaAdapter);
+                gvSpringclo.setAdapter(mWinAdapter);
 
                 gvSpringclo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        // popwindow
-//                        if (mPopupWindow != null && mPopupWindow.isShowing())
-//                            mPopupWindow.dismiss();
-//                        else
-//                            showOrderWindow(view);
+                        // popwindow
+                        if (mPopupWindow != null && mPopupWindow.isShowing())
+                            mPopupWindow.dismiss();
+                        else {
+                            AWashCloth.WashInfoEntity entity = awashInfo.get(i);
+                            showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                        }
                     }
                 });
             }
@@ -117,7 +121,7 @@ public class LeatherCloFragment extends BaseFragment {
         };
 
         // 请求网络
-        VolleyHttpRequest.String_request("Leater",HttpPath.getClothIfo(), volleyRequest);
+        VolleyHttpRequest.String_request(Contant.TAG_STRING_REQUEST, HttpPath.getClothIfo(), volleyRequest);
     }
 
     /**
@@ -130,15 +134,12 @@ public class LeatherCloFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        LogUtil.showLog("LeatherCloFragment:onStop()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        App.getQueue().cancelAll("Leater");
-//        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
-        LogUtil.showLog("LeatherCloFragment:onDestroyView()");
+        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
     }
 }

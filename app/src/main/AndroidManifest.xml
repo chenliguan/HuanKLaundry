@@ -82,8 +82,15 @@
             android:name=".activity.ProblemActivity"
             android:label="@string/title_activity_com_problem" >
         </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
         <activity
-            android:name=".activity.ServiceScopeActivity"
+            android:name=".activity.ServiceAreaActivity"
             android:label="@string/title_activity_service_scope" >
         </activity>
         <activity
@@ -95,16 +102,13 @@
             android:name=".activity.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
-
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" >
-        </service>
-
         <activity
             android:name=".activity.ServiceNoteActivity"
             android:label="@string/title_activity_service_note" >
+        </activity>
+        <activity
+            android:name=".activity.ShareCodeActivity"
+            android:label="@string/title_activity_share_code" >
         </activity>
     </application>
 

@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_title"></include>
+    <include layout="@layout/layout_title"/>
 
     <WebView
         android:id="@+id/wv_regulate"

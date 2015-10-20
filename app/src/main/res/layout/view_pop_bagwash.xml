@@ -12,8 +12,8 @@
         android:layout_marginStart="@dimen/DIMEN_32PX"
         android:layout_marginTop="@dimen/DIMEN_32PX">
 
-        <ImageView
-            android:id="@+id/iv_bag"
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/siv_wash_head"
             android:layout_width="@dimen/DIMEN_236PX"
             android:layout_height="@dimen/DIMEN_252PX"
             android:layout_alignParentStart="true"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/DIMEN_20PX"
-            android:layout_toEndOf="@+id/iv_bag"
+            android:layout_toEndOf="@+id/siv_wash_head"
             android:text="@string/text_bag_wash"
             android:textSize="@dimen/TEXT_SIZE_20SP" />
 
@@ -38,7 +38,7 @@
             android:layout_below="@id/tv_bag"
             android:layout_marginStart="@dimen/DIMEN_20PX"
             android:layout_marginTop="@dimen/DIMEN_16PX"
-            android:layout_toEndOf="@+id/iv_bag"
+            android:layout_toEndOf="@+id/siv_wash_head"
             android:text="@string/rnb"
             android:textColor="@color/price_red"
             android:textSize="@dimen/TEXT_SIZE_22SP" />
@@ -59,7 +59,7 @@
             android:layout_below="@id/cv_price"
             android:layout_marginStart="@dimen/DIMEN_20PX"
             android:layout_marginTop="@dimen/DIMEN_20PX"
-            android:layout_toEndOf="@+id/iv_bag"
+            android:layout_toEndOf="@+id/siv_wash_head"
             android:text="@string/text_dsb"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
 
@@ -70,7 +70,7 @@
             android:layout_below="@id/tv_dsb"
             android:layout_marginStart="@dimen/DIMEN_20PX"
             android:layout_marginTop="@dimen/DIMEN_4PX"
-            android:layout_toEndOf="@+id/iv_bag"
+            android:layout_toEndOf="@+id/siv_wash_head"
             android:text="@string/text_dsbs"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
     </RelativeLayout>

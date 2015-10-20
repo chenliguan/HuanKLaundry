@@ -1,20 +1,14 @@
 package com.guan.o2o.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.adapter.AWSprAdapter;
 import com.guan.o2o.adapter.ServiceNoteAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.HttpPath;
 import com.guan.o2o.model.ServiceNote;
-import com.guan.o2o.model.WinterCloth;
-import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
 

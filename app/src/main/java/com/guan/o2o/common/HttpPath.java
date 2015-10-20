@@ -33,16 +33,6 @@ public class HttpPath {
 
 //    http://www.heartguard.cn:8080/demo/myClive?means=12345&url=www.heartguard.cn
 
-    // getClothData2
-    public static String getClothIfo2() {
-        return IP2 + "/demo/myClive?clive=wash&url=172.28.89.98";
-    }
-
-    // getClothImageview
-    public static String getIvfo(int id) {
-        return IP + "/demo/image" + id +".png";
-    }
-
     // getNum
     public static String getNumfo(int id) {
         return IP + "/demo/means" + id +".png";

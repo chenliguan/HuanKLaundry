@@ -1,6 +1,5 @@
 package com.guan.o2o.fragment;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.adapter.AWWinAdapter;
+import com.guan.o2o.adapter.AWashGridAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.model.WinterCloth;
-import com.guan.o2o.utils.LogUtil;
+import com.guan.o2o.model.AWashCloth;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
 
@@ -25,26 +23,27 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * 春秋装Fragment
+ * 冬装Fragment
  *
  * @author Guan
  * @file com.guan.o2o.fragment
  * @date 2015/10/14
  * @Version 1.0
  */
-public class WinterCloFragment extends BaseFragment {
+public class WinterCloFragment extends FrameFragment {
 
     @InjectView(R.id.gv_spr_clo)
     GridView gvSpringclo;
 
     private List mStringList;
-    private AWWinAdapter mWinAdapter;
-    public WinterCloth winterCloth;
+    private AWashGridAdapter mWinAdapter;
+    public AWashCloth aWashCloth;
     public VolleyHandler<String> volleyRequest;
-    public List<WinterCloth.WashInfoEntity> washInfo;
+    public List<AWashCloth.WashInfoEntity> awashInfo;
 
     /**
      * Fragment可见时,并在onCreateView之前调用
+     *
      * @param isVisibleToUser
      */
     @Override
@@ -69,7 +68,7 @@ public class WinterCloFragment extends BaseFragment {
      */
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_spr_clo, container, false);
+        View view = inflater.inflate(R.layout.fragment_awash_clo, container, false);
         ButterKnife.inject(this, view);
         return view;
     }
@@ -93,21 +92,24 @@ public class WinterCloFragment extends BaseFragment {
         volleyRequest = new VolleyHandler<String>() {
             @Override
             public void reqSuccess(String response) {
-                winterCloth = WinterCloth.praseJson(response);
-                washInfo = new ArrayList<WinterCloth.WashInfoEntity>();
-                washInfo = winterCloth.WashInfo;
-                mWinAdapter = new AWWinAdapter(getActivity(), washInfo);
+                AWashCloth aWashCloth = AWashCloth.praseJson(response);
+                awashInfo = new ArrayList<AWashCloth.WashInfoEntity>();
+                awashInfo = aWashCloth.washInfo;
+
+                mWinAdapter = new AWashGridAdapter(getActivity(), awashInfo);
                 // 配置适配器
                 gvSpringclo.setAdapter(mWinAdapter);
 
                 gvSpringclo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        // popwindow
-//                        if (mPopupWindow != null && mPopupWindow.isShowing())
-//                            mPopupWindow.dismiss();
-//                        else
-//                            showOrderWindow(view);
+                        // popwindow
+                        if (mPopupWindow != null && mPopupWindow.isShowing())
+                            mPopupWindow.dismiss();
+                        else {
+                            AWashCloth.WashInfoEntity entity = awashInfo.get(i);
+                            showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                        }
                     }
                 });
             }
@@ -119,7 +121,7 @@ public class WinterCloFragment extends BaseFragment {
         };
 
         // 请求网络
-        VolleyHttpRequest.String_request("Winter",HttpPath.getClothIfo2(), volleyRequest);
+        VolleyHttpRequest.String_request(Contant.TAG_STRING_REQUEST, HttpPath.getClothIfo(), volleyRequest);
     }
 
     /**
@@ -132,14 +134,12 @@ public class WinterCloFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        LogUtil.showLog("WinterCloFragment:onStop()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        App.getQueue().cancelAll("Winter");
-        LogUtil.showLog("WinterCloFragment:onDestroyView()");
+        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
     }
 }

@@ -25,7 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.jakewharton:butterknife:5.1.1'
     compile files('libs/gson-2.2.4.jar')
-    compile files('libs/android-async-http-1.4.6.jar')
     compile files('libs/volley.jar')
     compile files('libs/android-smart-image-view-1.0.0.jar')
     compile files('libs/baidumapapi_v3_5_0.jar')

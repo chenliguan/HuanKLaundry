@@ -13,11 +13,9 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
 import com.guan.o2o.common.Contant;
-import com.guan.o2o.fragment.LeatherCloFragment;
-import com.guan.o2o.fragment.MyHomeFragment;
-import com.guan.o2o.fragment.SpringCloFragment;
+import com.guan.o2o.fragment.LeaCloFragment;
+import com.guan.o2o.fragment.SprCloFragment;
 import com.guan.o2o.fragment.SumCloFragment;
-import com.guan.o2o.fragment.TextFragment;
 import com.guan.o2o.fragment.WinterCloFragment;
 
 import java.util.ArrayList;
@@ -92,15 +90,10 @@ public class AWashActivity extends FrameActivity {
         mColorMainTextGrey = getResources().getColor(R.color.texts_grey);
 
         mFragList = new ArrayList<Fragment>();
-        mFragList.add(new SpringCloFragment());
-//        mFragList.add(new TextFragment());
+        mFragList.add(new SprCloFragment());
         mFragList.add(new SumCloFragment());
-//        mFragList.add(new WinterCloFragment());
-//        mFragList.add(new LeatherCloFragment());
-
-//        mFragList.add(new TextFragment());
-        mFragList.add(new TextFragment());
-        mFragList.add(new TextFragment());
+        mFragList.add(new WinterCloFragment());
+        mFragList.add(new LeaCloFragment());
     }
 
     /**

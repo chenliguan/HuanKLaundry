@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.activity.ShareCodeActivity;
 import com.guan.o2o.adapter.MyGridAdapter;
 import com.guan.o2o.utils.CustomHanzTV;
 import com.guan.o2o.utils.CustomMsyhTV;
@@ -80,6 +82,38 @@ public class MyHomeFragment extends BaseFragment {
     public void bindData() {
         // 配置适配器
         gvMy.setAdapter(mGridAdapter);
+        gvMy.setOnItemClickListener(new OnItemClickListener());
+    }
+
+    /**
+     * 我的页面gridview监听
+     */
+    private class OnItemClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            switch (i) {
+                case 0:
+                    break;
+
+                case 1:
+                    break;
+
+                case 2:
+                    break;
+
+                case 3:
+                    openActivity(ShareCodeActivity.class);
+                    break;
+
+                case 4:
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 
     @Override
@@ -87,4 +121,5 @@ public class MyHomeFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
 }

@@ -9,11 +9,13 @@ package com.guan.o2o.model;
 public class WashOrder {
 
     private String washCategory;
+    private String washHead;
     private int washNum;
     private String washPrice;
 
-    public WashOrder(String washCategory, int washNum, String washPrice) {
+    public WashOrder(String washCategory,String washHead, int washNum, String washPrice) {
         this.washCategory = washCategory;
+        this.washHead = washHead;
         this.washNum = washNum;
         this.washPrice = washPrice;
     }
@@ -24,6 +26,14 @@ public class WashOrder {
 
     public void setWashCategory(String washCategory) {
         this.washCategory = washCategory;
+    }
+
+    public String getWashHead() {
+        return washHead;
+    }
+
+    public void setWashHead(String washHead) {
+        this.washHead = washHead;
     }
 
     public int getWashNum() {

@@ -6,9 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.model.WinterCloth;
-import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.model.AWashCloth;
 import com.loopj.android.image.SmartImageView;
 
 import java.util.List;
@@ -24,11 +22,11 @@ import butterknife.InjectView;
  * @date 2015/10/8
  * @Version 1.0
  */
-public class AWSprAdapter extends BaseToAdapter {
+public class AWashGridAdapter extends BaseToAdapter {
 
-    public List<WinterCloth.WashInfoEntity> mList;
+    public List<AWashCloth.WashInfoEntity> mList;
 
-    public AWSprAdapter(Context context, List<WinterCloth.WashInfoEntity> list) {
+    public AWashGridAdapter(Context context, List<AWashCloth.WashInfoEntity> list) {
         super(context, list);
         this.mList = list;
     }
@@ -48,12 +46,11 @@ public class AWSprAdapter extends BaseToAdapter {
 
         holder.tvName.setText(mList.get(position).getWashName());
         holder.cvPrice.setText(mList.get(position).getAmount());
-
         // 网络请求图片
 //        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.ivIcon,
 //                R.mipmap.ic_default, R.mipmap.ic_default);
 //        VolleyHttpRequest.Image_Loader(getClothIvIfo(position + 10), listener);
-        holder.sivIcon.setImageUrl(HttpPath.getIvfo(position + 10));
+        holder.sivIcon.setImageUrl(mList.get(position).getWashHead(),R.mipmap.ic_default,R.mipmap.ic_default);
 
         return convertView;
     }
@@ -64,7 +61,7 @@ public class AWSprAdapter extends BaseToAdapter {
         @InjectView(R.id.tv_name)
         TextView tvName;
         @InjectView(R.id.cv_price)
-        CustomMsyhTV cvPrice;
+        TextView cvPrice;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

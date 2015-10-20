@@ -52,7 +52,7 @@ public class ProblemActivity extends FrameActivity {
      */
     private void initView() {
         tvTitle.setText(R.string.title_com_problem);
-        wvComProblem.loadUrl(HttpPath.getUserAgreeIfo());
+        wvComProblem.loadUrl(HttpPath.getProblemIfo());
         wvComProblem.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

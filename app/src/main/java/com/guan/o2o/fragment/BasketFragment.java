@@ -68,7 +68,6 @@ public class BasketFragment extends BaseFragment {
 
     /**
      * 实现父类方法
-     *
      * @param inflater
      * @return
      */
