@@ -2,8 +2,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_grey"
     tools:context="com.guan.o2o.activity.ShareCodeActivity">
 
-    <include layout="@layout/layout_title"/>
+    <include
+        android:id="@+id/rllyt_title"
+        layout="@layout/layout_title"/>
 
+    <ImageView
+        android:id="@+id/iv_coupons"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_180PX"
+        android:layout_below="@id/rllyt_title"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:gravity="center_vertical"
+        android:paddingEnd="@dimen/DIMEN_40PX"
+        android:paddingStart="@dimen/DIMEN_40PX"
+        android:src="@mipmap/ic_coupons" />
+
+    <TextView
+        android:id="@+id/tv_get_coupons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv_coupons"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:text="@string/text_get_coupons"
+        android:textSize="@dimen/TEXT_SIZE_20SP" />
+
+    <TextView
+        android:id="@+id/tv_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_get_coupons"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:paddingEnd="@dimen/DIMEN_68PX"
+        android:paddingStart="@dimen/DIMEN_68PX"
+        android:text="@string/text_describe"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <TextView
+        android:id="@+id/tv_describes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_describe"
+        android:paddingEnd="@dimen/DIMEN_68PX"
+        android:paddingStart="@dimen/DIMEN_68PX"
+        android:layout_marginTop="@dimen/DIMEN_0PX"
+        android:text="@string/text_describes"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <TextView
+        android:id="@+id/tv_coupons_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_describes"
+        android:layout_marginTop="@dimen/DIMEN_48PX"
+        android:text="@string/text_coupons_code"
+        android:textSize="@dimen/TEXT_SIZE_14SP"
+        android:textColor="@color/texts_grey"/>
+
+    <com.guan.o2o.utils.CustomMsyhTV
+        android:id="@+id/tv_recom_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_coupons_code"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:text="@string/recom_code"
+        android:textSize="@dimen/TEXT_SIZE_22SP"
+        android:textColor="@color/price_red"/>
+
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="@dimen/DIMEN_150PX"
+        android:layout_height="@dimen/DIMEN_150PX"
+        android:layout_below="@id/tv_recom_code"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:layout_centerHorizontal="true"
+        android:paddingEnd="@dimen/DIMEN_32PX"
+        android:paddingStart="@dimen/DIMEN_32PX"
+        android:background="@drawable/bg_share_selector" />
 </RelativeLayout>

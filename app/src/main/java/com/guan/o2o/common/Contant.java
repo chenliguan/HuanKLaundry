@@ -79,20 +79,10 @@ public class Contant {
     public static final int TAB_MORE = 3;
 
     /**
-     * 更多页面的选项
+     * 页面的选项
      */
-    // 联系客服
-    public static final int CV_CUSTOMER = 0;
-    // 常见问题
-    public static final int CV_PROBLEM = 1;
-    // 服务范围
-    public static final int CV_SERVICESCOPE = 2;
-    // 关于我们
-    public static final int CV_ABOUTUS = 3;
-    // 用户协议
-    public static final int CV_USERAGREE = 4;
-    // 意见反馈
-    public static final int CV_FEEDBACK = 5;
+    // HomeFragment-->AwashActivity
+    public static final int CV_HOME_AWASH = 0;
 
     /**
      * Intent识别哪个跳转ACTIVITY/FRAGMENT
@@ -122,6 +112,8 @@ public class Contant {
     public static final int CODE_ABOUTUS = 3004;
     public static final int CODE_USERAGREE = 3005;
     public static final int CODE_FEEDBACK = 3006;
+
+    public static final int CODE_HOME_AWASH = 1001;
 
     /**
      * 页面轮询

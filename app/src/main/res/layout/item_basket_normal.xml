@@ -37,14 +37,14 @@
 
         <RadioButton
             android:id="@+id/rb_min"
-            android:layout_width="@dimen/DIMEN_70PX"
+            android:layout_width="@dimen/DIMEN_66PX"
             android:layout_height="@dimen/DIMEN_56PX"
             android:background="@drawable/bg_min_selector"
             android:button="@null" />
 
         <TextView
             android:id="@+id/tv_num"
-            android:layout_width="@dimen/DIMEN_80PX"
+            android:layout_width="@dimen/DIMEN_76PX"
             android:layout_height="@dimen/DIMEN_56PX"
             android:layout_marginTop="@dimen/DIMEN_2PX"
             android:background="@mipmap/ic_middle"
@@ -55,7 +55,7 @@
 
         <RadioButton
             android:id="@+id/rb_add"
-            android:layout_width="@dimen/DIMEN_70PX"
+            android:layout_width="@dimen/DIMEN_66PX"
             android:layout_height="@dimen/DIMEN_56PX"
             android:background="@drawable/bg_add_selector"
             android:button="@null" />
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/DIMEN_110PX"
+        android:layout_marginEnd="@dimen/DIMEN_112PX"
         android:text="@string/x"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 

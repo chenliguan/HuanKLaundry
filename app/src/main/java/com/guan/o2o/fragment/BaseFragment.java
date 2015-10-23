@@ -27,13 +27,11 @@ public abstract class BaseFragment extends Fragment {
 
     //根部view
     private View rootView;
-    protected Context context;
     private Boolean hasInitData = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getActivity();
     }
 
     @Override
@@ -78,6 +76,31 @@ public abstract class BaseFragment extends Fragment {
         Intent _intent = new Intent(getActivity(), pClass);
         startActivity(_intent);
     }
+
+    /**
+     * intent 跳转Activity并finish()公共方法
+     * @param pClass
+     */
+    public void openActivityFn(Class<?> pClass) {
+        Intent _intent = new Intent(getActivity(),pClass);
+        startActivity(_intent);
+        getActivity().finish();
+    }
+
+    /**
+     * startActivityForResult()发请求，跳转到Activity
+     *
+     * @param pClass
+     * @param value
+     * @param requestCode
+     */
+    public void requestActivity(Class<?> pClass, String value, int requestCode) {
+        // 第二个参数是请求码,是一个唯一值
+        Intent _intent = new Intent(getActivity(), pClass);
+        _intent.putExtra(Contant.INTENT_PARAM, value);
+        startActivityForResult(_intent, requestCode);
+    }
+
 
     /**
      * 设置添加屏幕的背景透明度,0.0-1.0

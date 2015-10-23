@@ -15,6 +15,7 @@
     <string name="title_activity_service_scope">ServiceScopeActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_share_code">ShareCodeActivity</string>
+    <string name="title_activity_service_note">ServiceNoteActivity</string>
 
     <!-- 标题 -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -70,6 +71,7 @@
     <string name="one">1</string>
     <string name="text_phone">13751338740</string>
     <string name="text_name">小冠</string>
+    <string name="text_coupons_code">优惠码</string>
     <string name="text_recom_code">推荐码:</string>
     <string name="recom_code">SI9J6Q</string>
     <string name="text_last_coupon">余0张优惠券</string>
@@ -83,11 +85,16 @@
     <string name="text_dsb">装多少，洗多少！</string>
     <string name="text_dsbs">亲,皮衣真丝内衣、袜子、鞋不要装喔!</string>
     <string name="text_loading">加载中…</string>
+    <string name="msg_loading_error">加载失败</string>
+    <string name="msg_con_server_error">连接服务器出错</string>
+    <string name="text_get_coupons">获得优惠洗衣</string>
+    <string name="text_describe">\u3000\u3000\u3000向朋友分享洗衣优惠码，朋友在该\u3000\u3000\u3000</string>
+    <string name="text_describes">平台首次使用你的优惠码消费后，您也将获得相应金额的洗衣券。</string>
+    <string name="title_share">用浣客洗衣，首单免费送</string>
+    <string name="content_share">[浣客洗衣]上门服务，分享好友，好礼无限，我的推荐码是：</string>
+    <string name="text_added_basket">已加入洗衣篮</string>
 
     <!--衣服类型 -->
     <string name="text_bag_wash">袋洗</string>
-    <string name="title_activity_service_note">ServiceNoteActivity</string>
-    <string name="msg_loading_error">加载失败</string>
-    <string name="msg_con_server_error">连接服务器出错</string>
 
 </resources>

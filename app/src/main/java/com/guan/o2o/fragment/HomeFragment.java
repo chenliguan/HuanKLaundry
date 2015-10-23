@@ -93,6 +93,25 @@ public class HomeFragment extends FrameFragment {
     // 定时周期执行指定的任务
     private ScheduledExecutorService mScheduledExecutorService;
 
+    private OnClickListener mCallback;
+
+    // 存放fragment的Activtiy必须实现的接口
+    public interface OnClickListener {
+        public void onMoreIntentSelected(int position);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
+        try {
+            mCallback = (OnClickListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
     /**
      * Handler来处理ViewPager的轮播,实现定时更新
      */
@@ -266,7 +285,7 @@ public class HomeFragment extends FrameFragment {
                 break;
 
             case R.id.iv_a_wash:
-                openActivity(AWashActivity.class);
+                mCallback.onMoreIntentSelected(Contant.CV_HOME_AWASH);
                 break;
 
             case R.id.iv_bag_wash:

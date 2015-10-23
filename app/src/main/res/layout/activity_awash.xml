@@ -1,18 +1,24 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.guan.o2o.activity.AWashActivity">
 
-    <include layout="@layout/layout_title"/>
+    <include
+        android:id="@+id/rllyt_title"
+        layout="@layout/layout_title" />
 
-    <TextView style="@style/TextView"
-        android:layout_height="@dimen/DIMEN_2PX"/>
+    <TextView
+        android:id="@+id/tv_line"
+        style="@style/TextView"
+        android:layout_height="@dimen/DIMEN_2PX"
+        android:layout_below="@id/rllyt_title" />
 
     <LinearLayout
+        android:id="@+id/llyt_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_88PX"
+        android:layout_below="@id/tv_line"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -26,21 +32,21 @@
                 style="@style/awash_tab"
                 android:text="@string/a_wash_tab_spring" />
 
-            <TextView style="@style/TextViewVertical"/>
+            <TextView style="@style/TextViewVertical" />
 
             <TextView
                 android:id="@+id/tv_wash_summer"
                 style="@style/awash_tab"
                 android:text="@string/a_wash_tab_summer" />
 
-            <TextView style="@style/TextViewVertical"/>
+            <TextView style="@style/TextViewVertical" />
 
             <TextView
                 android:id="@+id/tv_wash_winter"
                 style="@style/awash_tab"
                 android:text="@string/a_wash_tab_winter" />
 
-            <TextView style="@style/TextViewVertical"/>
+            <TextView style="@style/TextViewVertical" />
 
             <TextView
                 android:id="@+id/tv_wash_leather"
@@ -65,6 +71,17 @@
         android:id="@+id/frag_vpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/llyt_title"
         android:background="@color/bg_grey"
         android:persistentDrawingCache="animation" />
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_pop_basket"
+        android:layout_width="@dimen/DIMEN_120PX"
+        android:layout_height="@dimen/DIMEN_120PX"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/DIMEN_24PX"
+        android:layout_marginBottom="@dimen/DIMEN_200PX"
+        android:background="@mipmap/ic_pop_basket" />
+
+</RelativeLayout>

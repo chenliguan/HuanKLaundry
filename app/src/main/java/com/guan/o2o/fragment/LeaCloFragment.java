@@ -99,13 +99,13 @@ public class LeaCloFragment extends FrameFragment {
                 mWinAdapter = new AWashGridAdapter(getActivity(), awashInfo);
                 // 配置适配器
                 gvSpringclo.setAdapter(mWinAdapter);
-
+                // 选项监听
                 gvSpringclo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         // popwindow
-                        if (mPopupWindow != null && mPopupWindow.isShowing())
-                            mPopupWindow.dismiss();
+                        if (orderWindow != null && orderWindow.isShowing())
+                            orderWindow.dismiss();
                         else {
                             AWashCloth.WashInfoEntity entity = awashInfo.get(i);
                             showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());

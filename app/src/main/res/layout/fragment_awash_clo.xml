@@ -14,7 +14,7 @@
         android:numColumns="2"
         android:paddingEnd="@dimen/DIMEN_24PX"
         android:paddingStart="@dimen/DIMEN_24PX"
-        android:paddingTop="@dimen/DIMEN_32PX"
+        android:paddingTop="@dimen/DIMEN_28PX"
         android:verticalSpacing="@dimen/DIMEN_20PX" />
 
     <include

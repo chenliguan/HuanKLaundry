@@ -32,7 +32,7 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class MainActivity extends FrameActivity {
+public class MainActivity extends FrameActivity implements HomeFragment.OnClickListener{
 
     @InjectView(R.id.frag_vpager)
     ViewPager fragVPager;
@@ -91,60 +91,45 @@ public class MainActivity extends FrameActivity {
         fragVPager.addOnPageChangeListener(new onPageChangeListener());
     }
 
-//    /**
-//     * 3.实现MoreFragment的回调方法
-//     *
-//     * @param position
-//     */
-//    @Override
-//    public void onMoreIntentSelected(int position) {
-//
-//        switch (position) {
-//            case Contant.CV_CUSTOMER:
-//                break;
-//
-//            case Contant.CV_PROBLEM:
-//                // startActivityForResult()跳转，class、传值、请求码
-//                requestActivity(ProblemActivity.class, null, Contant.CODE_PROBLEM);
-//                break;
-//
-//            case Contant.CV_SERVICESCOPE:
-//                requestActivity(ServiceScopeActivity.class, null, Contant.CODE_SERVICESCOPE);
-//                break;
-//
-//            case Contant.CV_ABOUTUS:
-//                break;
-//
-//            case Contant.CV_USERAGREE:
-//                requestActivity(UserAgreeActivity.class, Contant.VALUE_MAIN_ACTIVITY, Contant.CODE_USERAGREE);
-//                break;
-//
-//            case Contant.CV_FEEDBACK:
-//                break;
-//        }
-//    }
+    /**
+     * 实现HomeFragment的回调方法
+     *
+     * @param position
+     */
+    @Override
+    public void onMoreIntentSelected(int position) {
 
-//    /**
-//     * 执行startActivityForResult()方法的回调
-//     *
-//     * @param requestCode
-//     * @param resultCode
-//     * @param intent
-//     */
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//        switch (requestCode) {
-//            case Contant.CODE_USERAGREE:
-//            case Contant.CODE_PROBLEM:
-//            case Contant.CODE_SERVICESCOPE:
-//                if (resultCode == RESULT_OK)
-//                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }
+        switch (position) {
+            case Contant.CV_HOME_AWASH:
+                // startActivityForResult()跳转，class、传值、请求码
+                requestActivity(AWashActivity.class, null, Contant.CODE_HOME_AWASH);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 执行startActivityForResult()方法的回调
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
+        switch (requestCode) {
+            case Contant.CODE_HOME_AWASH:
+                if (resultCode == RESULT_OK)
+                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
+                break;
+
+            default:
+                break;
+        }
+    }
 
     /**
      * 监听设置当前页面

@@ -120,7 +120,7 @@
         android:background="@color/share_blue" />
 
     <Button
-        android:id="@+id/btn_pay"
+        android:id="@+id/btn_add"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_88PX"
         android:layout_below="@id/tv_line"

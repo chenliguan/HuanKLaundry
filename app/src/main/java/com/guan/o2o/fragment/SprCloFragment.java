@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.activity.MainActivity;
 import com.guan.o2o.adapter.AWashGridAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
@@ -39,14 +41,10 @@ public class SprCloFragment extends FrameFragment {
     GridView gvSpringclo;
     @InjectView(R.id.pb_loading)
     ProgressBar pbLoading;
-    @InjectView(R.id.tv_tips)
-    TextView tvTips;
     @InjectView(R.id.rlyt_loading)
     LinearLayout rlytLoading;
 
-    private List mStringList;
     private AWashGridAdapter mWinAdapter;
-    public AWashCloth aWashCloth;
     public VolleyHandler<String> volleyRequest;
     public List<AWashCloth.WashInfoEntity> awashInfo;
 
@@ -58,9 +56,8 @@ public class SprCloFragment extends FrameFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser & mWinAdapter != null) {
+        if (isVisibleToUser & mWinAdapter != null)
             mWinAdapter.notifyDataSetChanged();
-        }
     }
 
     @Override
@@ -119,9 +116,9 @@ public class SprCloFragment extends FrameFragment {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             // popwindow
-                            if (mPopupWindow != null && mPopupWindow.isShowing())
-                                mPopupWindow.dismiss();
-                            else {
+                            if (orderWindow != null && orderWindow.isShowing())
+                                orderWindow.dismiss();
+                            else{
                                 AWashCloth.WashInfoEntity entity = awashInfo.get(i);
                                 showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
                             }

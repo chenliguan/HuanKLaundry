@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/layout_title"
-        layout="@layout/layout_basket_title" />
+        layout="@layout/layout_title_to" />
 
     <TextView
         android:layout_width="match_parent"

@@ -39,17 +39,6 @@ public class FrameActivity extends BaseActivity {
     }
 
     /**
-     * 动态添加主界面的girdview布局
-     *
-     * @param pResID
-     */
-    protected void AppendMainBody(int pResID) {
-//        LinearLayout _mainBody = (LinearLayout) findViewById(R.id.llyt_main_body);
-//        View _view = LayoutInflater.from(this).inflate(pResID, null);
-//        _mainBody.addView(_view, RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
-    }
-
-    /**
      * 定义提示PopupWindow
      *
      * @param view

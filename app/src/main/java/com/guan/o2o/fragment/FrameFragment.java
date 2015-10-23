@@ -3,8 +3,10 @@ package com.guan.o2o.fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,17 +42,16 @@ import butterknife.ButterKnife;
 public abstract class FrameFragment extends BaseFragment implements View.OnClickListener {
 
     private int mNum;
-    private TextView mTvNum;
     private String mWashName;
     private String mAmount;
-    private Context mContext;
     private String mWashHeadUrl;
-    public PopupWindow mPopupWindow;
+    private TextView mTvNum;
+    public ImageView ivPopBasket;
+    public PopupWindow orderWindow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getActivity();
     }
 
 //    /**
@@ -100,7 +101,9 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
         RadioButton rbMin = ButterKnife.findById(contentView, R.id.rb_min);
         mTvNum = ButterKnife.findById(contentView, R.id.tv_num);
         RadioButton rbAdd = ButterKnife.findById(contentView, R.id.rb_add);
-        Button btnPay = ButterKnife.findById(contentView, R.id.btn_pay);
+        Button btnAdd = ButterKnife.findById(contentView, R.id.btn_add);
+        // 获取到AWashActivity的ImageView属性
+        ivPopBasket = (ImageView) getActivity().findViewById(R.id.iv_pop_basket);
 
         mNum = 1;
         mWashHeadUrl = washHeadUrl;
@@ -111,19 +114,19 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
         sivWashHead.setImageUrl(washHeadUrl, R.mipmap.ic_pop_bag, R.mipmap.ic_default);
         rbMin.setOnClickListener(this);
         rbAdd.setOnClickListener(this);
-        btnPay.setOnClickListener(this);
+        btnAdd.setOnClickListener(this);
         // PopupWindow显示位置
-        mPopupWindow = new PopupWindow(contentView,
+        orderWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 594, true);
         // 接收点击事件
-        mPopupWindow.setFocusable(true);
-        mPopupWindow.setOutsideTouchable(true);
+        orderWindow.setFocusable(true);
+        orderWindow.setOutsideTouchable(true);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
-        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
+        orderWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
         backgroundAlpha(0.5f);
         // 显示
-        mPopupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 40);
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        orderWindow.showAtLocation(view, Gravity.BOTTOM, 0, 40);
+        orderWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 backgroundAlpha(1f);
@@ -152,7 +155,7 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
                 mTvNum.setText(String.valueOf(mNum));
                 break;
 
-            case R.id.btn_pay:
+            case R.id.btn_add:
                 if (App.washOrderList.size() == 0)
                     App.washOrderList.add(new WashOrder(mWashName, mWashHeadUrl, mNum, mAmount));
                 else
@@ -164,7 +167,9 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
                             App.washOrderList.add(new WashOrder(mWashName, mWashHeadUrl, mNum, mAmount));
                         break;
                     }
-                mPopupWindow.dismiss();
+                orderWindow.dismiss();
+                ivPopBasket.setImageResource(R.mipmap.ic_pop_basket_p);
+                showMsg(getString(R.string.text_added_basket));
                 break;
 
             default:

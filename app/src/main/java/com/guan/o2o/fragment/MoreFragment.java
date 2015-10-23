@@ -1,5 +1,6 @@
 package com.guan.o2o.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,25 +45,6 @@ public class MoreFragment extends BaseFragment {
     CustomView userAgree;
     @InjectView(R.id.cv_feed_back)
     CustomView cvFeedBack;
-
-//    private OnClickListener mCallback;
-//
-//    // 存放fragment的Activtiy必须实现的接口
-//    public interface OnClickListener {
-//        public void onMoreIntentSelected(int position);
-//    }
-//
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
-//        try {
-//            mCallback = (OnClickListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnHeadlineSelectedListener");
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

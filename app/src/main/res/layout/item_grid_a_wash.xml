@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/DIMEN_260PX"
-    android:layout_height="@dimen/DIMEN_300PX"
+    android:layout_width="@dimen/DIMEN_240PX"
+    android:layout_height="@dimen/DIMEN_288PX"
     android:background="@color/white"
     android:orientation="vertical">
 
     <com.loopj.android.image.SmartImageView
         android:id="@+id/siv_Icon"
-        android:layout_width="@dimen/DIMEN_140PX"
-        android:layout_height="@dimen/DIMEN_148PX"
+        android:layout_width="@dimen/DIMEN_132PX"
+        android:layout_height="@dimen/DIMEN_140PX"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/DIMEN_20PX"
         android:src="@mipmap/ic_default" />

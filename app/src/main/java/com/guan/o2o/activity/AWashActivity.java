@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
+import com.guan.o2o.application.App;
 import com.guan.o2o.common.Contant;
 import com.guan.o2o.fragment.LeaCloFragment;
 import com.guan.o2o.fragment.SprCloFragment;
@@ -48,6 +49,8 @@ public class AWashActivity extends FrameActivity {
     ImageView ivBottomLine;
     @InjectView(R.id.frag_vpager)
     ViewPager fragVPager;
+    @InjectView(R.id.iv_pop_basket)
+    ImageView ivPopBasket;
 
     private int mOffset;
     private int mCurrIndex;
@@ -88,6 +91,8 @@ public class AWashActivity extends FrameActivity {
         tvTitle.setText(R.string.a_wash);
         mColorMainBlue = getResources().getColor(R.color.main_blue);
         mColorMainTextGrey = getResources().getColor(R.color.texts_grey);
+        if (App.washOrderList.size() != 0)
+            ivPopBasket.setImageResource(R.mipmap.ic_pop_basket_p);
 
         mFragList = new ArrayList<Fragment>();
         mFragList.add(new SprCloFragment());
@@ -119,6 +124,20 @@ public class AWashActivity extends FrameActivity {
                 getSupportFragmentManager(), mFragList));
         fragVPager.addOnPageChangeListener(new onPageChangeListener());
         fragVPager.setCurrentItem(0);
+
+        // 洗衣篮悬浮框触发监听
+        ivPopBasket.setOnClickListener(new onPopClickListener());
+    }
+
+    /**
+     * 洗衣篮悬浮框触发监听,
+     */
+    private class onPopClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            // 向上一个Activity(MainActivity)返回数据
+            setResultTo(Contant.TAB_BASKET);
+        }
     }
 
     /**
