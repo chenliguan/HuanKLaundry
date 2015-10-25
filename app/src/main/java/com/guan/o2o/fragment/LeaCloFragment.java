@@ -10,7 +10,7 @@ import android.widget.GridView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.AWashGridAdapter;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.common.HttpPath;
 import com.guan.o2o.model.AWashCloth;
 import com.guan.o2o.volley.VolleyHandler;
@@ -108,7 +108,7 @@ public class LeaCloFragment extends FrameFragment {
                             orderWindow.dismiss();
                         else {
                             AWashCloth.WashInfoEntity entity = awashInfo.get(i);
-                            showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                            showOrderWindowTo(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
                         }
                     }
                 });
@@ -121,7 +121,7 @@ public class LeaCloFragment extends FrameFragment {
         };
 
         // 请求网络
-        VolleyHttpRequest.String_request(Contant.TAG_STRING_REQUEST, HttpPath.getClothIfo(), volleyRequest);
+        VolleyHttpRequest.String_request(HttpPath.getClothIfo(), volleyRequest);
     }
 
     /**
@@ -140,6 +140,6 @@ public class LeaCloFragment extends FrameFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
+        App.getQueue().cancelAll(Constant.TAG_STRING_REQUEST);
     }
 }

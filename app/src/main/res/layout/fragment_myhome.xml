@@ -45,7 +45,7 @@
                 android:layout_marginStart="@dimen/DIMEN_90PX"
                 android:src="@mipmap/ic_phone" />
 
-            <com.guan.o2o.utils.CustomMsyhTV
+            <com.guan.o2o.view.CustomMsyhTV
                 android:id="@+id/tv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/TEXT_SIZE_16SP" />
 
-            <com.guan.o2o.utils.CustomHanzTV
+            <com.guan.o2o.view.CustomHanzTV
                 android:id="@+id/tv_recom_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

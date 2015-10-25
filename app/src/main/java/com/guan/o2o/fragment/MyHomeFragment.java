@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.activity.ShareCodeActivity;
 import com.guan.o2o.adapter.MyGridAdapter;
-import com.guan.o2o.utils.CustomHanzTV;
-import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.view.CustomHanzTV;
+import com.guan.o2o.view.CustomMsyhTV;
 
 import java.util.ArrayList;
 import java.util.List;

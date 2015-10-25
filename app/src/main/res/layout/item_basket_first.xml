@@ -27,7 +27,7 @@
             android:layout_marginEnd="@dimen/DIMEN_32PX"
             android:text="@string/rnb"
             android:textColor="@color/price_red"
-            android:textSize="@dimen/TEXT_SIZE_20SP" />
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
     </RelativeLayout>
 
     <ImageView
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_90PX">
 
-        <com.guan.o2o.utils.CustomMsyhTV
+        <com.guan.o2o.view.CustomMsyhTV
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -62,7 +62,7 @@
             android:layout_marginEnd="@dimen/DIMEN_32PX"
             android:text="@string/rnb"
             android:textColor="@color/price_red"
-            android:textSize="@dimen/TEXT_SIZE_20SP" />
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -104,5 +104,6 @@
         android:id="@+id/btn_pay"
         style="@style/BaseButtonTheme"
         android:layout_marginTop="@dimen/DIMEN_60PX"
+        android:layout_marginBottom="@dimen/DIMEN_32PX"
         android:background="@drawable/bg_pay_selector" />
 </LinearLayout>

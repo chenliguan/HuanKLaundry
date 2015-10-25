@@ -21,11 +21,11 @@
             android:textSize="@dimen/TEXT_SIZE_16SP" />
 
         <TextView
-            android:id="@+id/tv_tip_text"
+            android:id="@+id/tv_tip_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/DIMEN_10PX"
-            android:text="@string/pop_tip_text"
+            android:text="@string/pop_tip_content"
             android:textColor="@color/frame_line_grey"
             android:textSize="@dimen/TEXT_SIZE_16SP" />
 

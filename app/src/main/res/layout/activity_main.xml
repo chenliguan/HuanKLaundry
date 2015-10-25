@@ -25,11 +25,29 @@
             android:text="@string/main_navigation_home"
             android:textColor="@color/main_blue" />
 
-        <RadioButton
-            android:id="@+id/main_tab_basket"
-            style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/bg_tab_basket"
-            android:text="@string/main_navigation_basket" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/main_tab_basket"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/bg_tab_basket"
+                android:text="@string/main_navigation_basket" />
+
+            <ImageView
+                android:id="@+id/iv_have"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_tab_top_h"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/DIMEN_4PX"
+                android:layout_marginEnd="@dimen/DIMEN_60PX"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
 
         <RadioButton
             android:id="@+id/main_tab_my"

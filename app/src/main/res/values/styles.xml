@@ -35,7 +35,7 @@
         <item name="android:button">@null</item>
         <item name="android:singleLine">true</item>
         <item name="android:drawablePadding">@dimen/DIMEN_8PX</item>
-        <item name="android:layout_weight">1.0</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <!--  More CustomView -->

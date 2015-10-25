@@ -3,11 +3,10 @@ package com.guan.o2o.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.utils.CustomMsyhTV;
+import com.guan.o2o.view.CustomMsyhTV;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

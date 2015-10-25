@@ -1,14 +1,14 @@
 package com.guan.o2o.activity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.guan.o2o.R;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.common.HttpPath;
+import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
 
@@ -20,7 +20,6 @@ public class SplashActivity extends FrameActivity {
     private boolean mIsFirstIn;
     private String mLoginPhone;
     private String mLoginCode;
-    public Context context;
     public VolleyHandler<String> volleyRequest;
 
     @Override
@@ -41,7 +40,7 @@ public class SplashActivity extends FrameActivity {
             public void run() {
                 switchActivity();
             }
-        }, Contant.SPLASH_DELAY_MS);
+        }, Constant.SPLASH_DELAY_MS);
     }
 
     /**
@@ -55,15 +54,18 @@ public class SplashActivity extends FrameActivity {
 
         // 读取SHARED_NAME_FIRST中的数据
         SharedPreferences preferences_first = getSharedPreferences(
-                Contant.SHARED_NAME_FIRST, MODE_PRIVATE);
+                Constant.SHARED_NAME_FIRST, MODE_PRIVATE);
         // 读取SHARED_NAME_LOGIN中的数据
         SharedPreferences preferences_login = getSharedPreferences(
-                Contant.SHARED_NAME_LOGIN, MODE_PRIVATE);
-
+                Constant.SHARED_NAME_LOGIN, MODE_PRIVATE);
         // 取得相应的值,如果没有用true作为默认值
-        mIsFirstIn = preferences_first.getBoolean("isFirstIn", true);
-        mLoginPhone = preferences_login.getString("loginPhone", "");
-        mLoginCode = preferences_login.getString("loginCode", "");
+        mIsFirstIn = preferences_first.getBoolean(Constant.SHARED_KEY_ORDER, true);
+        mLoginPhone = preferences_login.getString(Constant.SHARED_KEY_PHONE, "");
+        mLoginCode = preferences_login.getString(Constant.SHARED_KEY_CODE, "");
+
+        LogUtil.showLog("mIsFirstIn:" + mIsFirstIn);
+        LogUtil.showLog("mLoginPhon:" + mLoginPhone);
+        LogUtil.showLog("mLoginCode:" + mLoginCode);
     }
 
     /**
@@ -71,7 +73,7 @@ public class SplashActivity extends FrameActivity {
      */
     private void switchActivity() {
         // 判断程序与第几次运行
-        if (!mIsFirstIn) {
+        if (mIsFirstIn) {
             volleyRequest = new VolleyHandler<String>() {
 
                 @Override
@@ -90,16 +92,15 @@ public class SplashActivity extends FrameActivity {
             };
 
             // 请求网络
-            VolleyHttpRequest.String_request("Splash",HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
-        } else {
+            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
+        } else
             openActivityFn(GuideActivity.class);
-        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
+        App.getQueue().cancelAll(Constant.TAG_STRING_REQUEST);
     }
 
     @Override

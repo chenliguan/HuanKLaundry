@@ -11,7 +11,7 @@ import butterknife.InjectView;
  * @date 2015/9/19
  * @Version 1.0
  */
-public class Contant {
+public class Constant {
 
     // 文件内存路径
     public static String FILELOCATION = "/storage/sdcard0/files/";
@@ -55,6 +55,20 @@ public class Contant {
     public static final String SHARED_NAME_FIRST = "first_pref";
     // 保存用户登录信息
     public static final String SHARED_NAME_LOGIN = "login_data";
+    // 保存订单数据
+    public static final String SHARED_NAME_ORDER = "order_list";
+
+    /**
+     * sharedpreferences保存键名
+     */
+    // 保存是否第一次登陆键名
+    public static final String SHARED_KEY_LOGIN = "login_key";
+    // 保存订单键名
+    public static final String SHARED_KEY_ORDER = "order_key";
+    // 保存用户名键名
+    public static final String SHARED_KEY_PHONE = "login_hone";
+    // 保存验证码键名
+    public static final String SHARED_KEY_CODE = "login_ode";
 
     /**
      * volley请求标签
@@ -83,6 +97,8 @@ public class Contant {
      */
     // HomeFragment-->AwashActivity
     public static final int CV_HOME_AWASH = 0;
+    // BasketFragment-->MainActivity(HomeFragment)
+    public static final int CV_BASKET_MAIN = 1;
 
     /**
      * Intent识别哪个跳转ACTIVITY/FRAGMENT
@@ -98,14 +114,10 @@ public class Contant {
     public static final String INTENT_PARAM = "PARAM";
 
     /**
-     * Home页面跳转请求码
+     * 页面跳转请求码
      */
-    // 件洗
-    public static final int CODE_A_WASH = 1000;
+    public static final int CODE_HOME_AWASH = 1001;
 
-    /**
-     * 更多页面跳转请求码
-     */
     public static final int CODE_CUSTOMER = 3000;
     public static final int CODE_PROBLEM = 3001;
     public static final int CODE_SERVICESCOPE = 3003;
@@ -113,18 +125,11 @@ public class Contant {
     public static final int CODE_USERAGREE = 3005;
     public static final int CODE_FEEDBACK = 3006;
 
-    public static final int CODE_HOME_AWASH = 1001;
-
     /**
      * 页面轮询
      */
     // 请求切换显示的View。
     public static final int MSG_UPDATE_IMAGE = 1;
-
-    /**
-     * 价格
-     */
-    public static final String PRICE_BAGWASH = "¥99";
 
     /*
      * 件洗顶部栏选项

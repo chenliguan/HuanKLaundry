@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return Contant.TAB_COUNT;
+        return Constant.TAB_COUNT;
     }
 
 }

@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
+
+import butterknife.ButterKnife;
 
 /**
  * 框架类封装业务相关的方法
@@ -43,9 +44,14 @@ public class FrameActivity extends BaseActivity {
      *
      * @param view
      */
-    public void showTipsWindow(View view) {
+    public void showTipsWindow(View view,String tipT,String tipC) {
         View contentView = LayoutInflater.from(this).inflate(
                 R.layout.view_pop_tip, null);
+        TextView tipTitle = ButterKnife.findById(contentView, R.id.tv_tip_title);
+        TextView tipContent = ButterKnife.findById(contentView, R.id.tv_tip_content);
+        tipTitle.setText(tipT);
+        tipContent.setText(tipC);
+
         mPopupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
         mPopupWindow.setOutsideTouchable(true);
@@ -67,6 +73,6 @@ public class FrameActivity extends BaseActivity {
             public void run() {
                 mPopupWindow.dismiss();
             }
-        }, Contant.POPWIN_DELAY_MS);
+        }, Constant.POPWIN_DELAY_MS);
     }
 }

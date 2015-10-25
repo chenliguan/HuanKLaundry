@@ -49,7 +49,6 @@ public class FileBean {
 	 * Gson解析Json数据
 	 */
 	public static List<FileBean> praseJson(String reponse) {
-
 		GsonUtil gsonUtil = new GsonUtil();
 		List<FileBean> list = (List<FileBean>)gsonUtil.gsonToList(reponse, FileBean.class);
 		return list;

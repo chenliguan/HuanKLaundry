@@ -1,6 +1,7 @@
 package com.guan.o2o.model;
 
 /**
+ * 洗衣篮item适配器
  * @author Guan
  * @file com.guan.o2o.model
  * @date 2015/10/5

@@ -20,7 +20,7 @@ import java.util.List;
 public class App extends Application {
 
     private static RequestQueue queue;
-    public static List<WashOrder> washOrderList;
+    public static List washOrderList;
 
     @Override
     public void onCreate() {
@@ -38,7 +38,7 @@ public class App extends Application {
         /**
          * 洗衣篮订单集合(全局保存)
          */
-        washOrderList = new ArrayList<WashOrder>();
+        washOrderList = new ArrayList<>();
     }
 
     //入口

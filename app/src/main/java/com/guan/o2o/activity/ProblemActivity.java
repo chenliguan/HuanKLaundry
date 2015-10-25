@@ -1,17 +1,12 @@
 package com.guan.o2o.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.common.Contant;
 import com.guan.o2o.common.HttpPath;
 
 import butterknife.ButterKnife;

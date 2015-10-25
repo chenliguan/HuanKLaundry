@@ -1,24 +1,27 @@
 package com.guan.o2o.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.application.App;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.fragment.BasketFragment;
 import com.guan.o2o.fragment.HomeFragment;
 import com.guan.o2o.fragment.MoreFragment;
 import com.guan.o2o.fragment.MyHomeFragment;
+import com.guan.o2o.utils.ConvertUtil;
+import com.guan.o2o.utils.SharedPfeUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -32,7 +35,9 @@ import butterknife.OnClick;
  * @date 2015/9/29
  * @Version 1.0
  */
-public class MainActivity extends FrameActivity implements HomeFragment.OnClickListener{
+public class MainActivity extends FrameActivity implements
+        HomeFragment.OnClickListener, BasketFragment.OnClickListener,
+        MoreFragment.OnClickListener {
 
     @InjectView(R.id.frag_vpager)
     ViewPager fragVPager;
@@ -44,6 +49,8 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
     RadioButton mainTabMy;
     @InjectView(R.id.main_tab_more)
     RadioButton mainTabMore;
+    @InjectView(R.id.iv_have)
+    ImageView ivHave;
 
     private long mExitTime;
     private int mColorMainBlue;
@@ -59,6 +66,10 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
          * 初始化变量
          */
         initVariable();
+        /**
+         * 初始化订单列表
+         */
+        initOrderList();
         /**
          * 绑定数据
          */
@@ -81,6 +92,20 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
     }
 
     /**
+     * 初始化订单列表
+     */
+    private void initOrderList() {
+        SharedPreferences preferences_order = getSharedPreferences(
+                Constant.SHARED_NAME_ORDER, MODE_PRIVATE);
+        String liststring = preferences_order.getString(Constant.SHARED_KEY_ORDER, "");
+        if (liststring != null)
+            // 从本地获取出字符串转化为集合
+            App.washOrderList = ConvertUtil.stringToList(liststring);
+        if (App.washOrderList.size() != 0)
+            ivHave.setVisibility(View.VISIBLE);
+    }
+
+    /**
      * 绑定数据
      */
     private void bindData() {
@@ -91,18 +116,23 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
         fragVPager.addOnPageChangeListener(new onPageChangeListener());
     }
 
+
     /**
      * 实现HomeFragment的回调方法
      *
      * @param position
      */
     @Override
-    public void onMoreIntentSelected(int position) {
+    public void onIntentSelected(int position) {
 
         switch (position) {
-            case Contant.CV_HOME_AWASH:
+            case Constant.CV_HOME_AWASH:
                 // startActivityForResult()跳转，class、传值、请求码
-                requestActivity(AWashActivity.class, null, Contant.CODE_HOME_AWASH);
+                requestActivity(AWashActivity.class, null, Constant.CODE_HOME_AWASH);
+                break;
+
+            case Constant.CV_BASKET_MAIN:
+                fragVPager.setCurrentItem(Constant.TAB_HOME);
                 break;
 
             default:
@@ -121,9 +151,9 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
         switch (requestCode) {
-            case Contant.CODE_HOME_AWASH:
+            case Constant.CODE_HOME_AWASH:
                 if (resultCode == RESULT_OK)
-                    fragVPager.setCurrentItem(intent.getIntExtra(Contant.INTENT_KEY, 0));
+                    fragVPager.setCurrentItem(intent.getIntExtra(Constant.INTENT_KEY, 0));
                 break;
 
             default:
@@ -140,19 +170,19 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_tab_home:
-                fragVPager.setCurrentItem(Contant.TAB_HOME);
+                fragVPager.setCurrentItem(Constant.TAB_HOME);
                 break;
 
             case R.id.main_tab_basket:
-                fragVPager.setCurrentItem(Contant.TAB_BASKET);
+                fragVPager.setCurrentItem(Constant.TAB_BASKET);
                 break;
 
             case R.id.main_tab_my:
-                fragVPager.setCurrentItem(Contant.TAB_MY);
+                fragVPager.setCurrentItem(Constant.TAB_MY);
                 break;
 
             case R.id.main_tab_more:
-                fragVPager.setCurrentItem(Contant.TAB_MORE);
+                fragVPager.setCurrentItem(Constant.TAB_MORE);
                 break;
 
             default:
@@ -169,36 +199,48 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
         public void onPageSelected(int position) {
 
             switch (position) {
-                case Contant.TAB_HOME:
+                case Constant.TAB_HOME:
                     mainTabHome.setChecked(true);
+                    mainTabBasket.setChecked(false);
+                    mainTabMy.setChecked(false);
+                    mainTabMore.setChecked(false);
                     mainTabHome.setTextColor(mColorMainBlue);
                     mainTabBasket.setTextColor(mColorMainTextGrey);
                     mainTabMy.setTextColor(mColorMainTextGrey);
                     mainTabMore.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.TAB_BASKET:
+                case Constant.TAB_BASKET:
+                    mainTabHome.setChecked(false);
                     mainTabBasket.setChecked(true);
+                    mainTabMy.setChecked(false);
+                    mainTabMore.setChecked(false);
+                    mainTabHome.setTextColor(mColorMainTextGrey);
                     mainTabBasket.setTextColor(mColorMainBlue);
-                    mainTabHome.setTextColor(mColorMainTextGrey);
                     mainTabMy.setTextColor(mColorMainTextGrey);
                     mainTabMore.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.TAB_MY:
+                case Constant.TAB_MY:
+                    mainTabHome.setChecked(false);
+                    mainTabBasket.setChecked(false);
                     mainTabMy.setChecked(true);
-                    mainTabMy.setTextColor(mColorMainBlue);
+                    mainTabMore.setChecked(false);
                     mainTabHome.setTextColor(mColorMainTextGrey);
                     mainTabBasket.setTextColor(mColorMainTextGrey);
+                    mainTabMy.setTextColor(mColorMainBlue);
                     mainTabMore.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.TAB_MORE:
+                case Constant.TAB_MORE:
+                    mainTabHome.setChecked(false);
+                    mainTabBasket.setChecked(false);
+                    mainTabMy.setChecked(false);
                     mainTabMore.setChecked(true);
-                    mainTabMore.setTextColor(mColorMainBlue);
                     mainTabHome.setTextColor(mColorMainTextGrey);
                     mainTabBasket.setTextColor(mColorMainTextGrey);
                     mainTabMy.setTextColor(mColorMainTextGrey);
+                    mainTabMore.setTextColor(mColorMainBlue);
                     break;
 
                 default:
@@ -229,6 +271,8 @@ public class MainActivity extends FrameActivity implements HomeFragment.OnClickL
                 mExitTime = System.currentTimeMillis();
                 showMsg(getResources().getString(R.string.msg_repress));
             } else {
+                // 将集合转化为字符串保存在本地
+                SharedPfeUtil.sharedOrderInfo(this);
                 finish();
                 System.exit(0);
             }

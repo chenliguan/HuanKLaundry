@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.fragment.LeaCloFragment;
 import com.guan.o2o.fragment.SprCloFragment;
 import com.guan.o2o.fragment.SumCloFragment;
@@ -136,7 +136,7 @@ public class AWashActivity extends FrameActivity {
         @Override
         public void onClick(View view) {
             // 向上一个Activity(MainActivity)返回数据
-            setResultTo(Contant.TAB_BASKET);
+            setResultTo(Constant.TAB_BASKET);
         }
     }
 
@@ -150,19 +150,19 @@ public class AWashActivity extends FrameActivity {
 
         switch (view.getId()) {
             case R.id.tv_wash_spring:
-                fragVPager.setCurrentItem(Contant.A_WASH_SPRING);
+                fragVPager.setCurrentItem(Constant.A_WASH_SPRING);
                 break;
 
             case R.id.tv_wash_summer:
-                fragVPager.setCurrentItem(Contant.A_WASH_SUMMER);
+                fragVPager.setCurrentItem(Constant.A_WASH_SUMMER);
                 break;
 
             case R.id.tv_wash_winter:
-                fragVPager.setCurrentItem(Contant.A_WASH_WINTER);
+                fragVPager.setCurrentItem(Constant.A_WASH_WINTER);
                 break;
 
             case R.id.tv_wash_leather:
-                fragVPager.setCurrentItem(Contant.A_WASH_LEATER);
+                fragVPager.setCurrentItem(Constant.A_WASH_LEATER);
                 break;
 
             case R.id.iv_back:
@@ -185,7 +185,7 @@ public class AWashActivity extends FrameActivity {
             Animation animation = null;
 
             switch (position) {
-                case Contant.A_WASH_SPRING:
+                case Constant.A_WASH_SPRING:
                     if (mCurrIndex == 1)
                         animation = new TranslateAnimation(mPositionOne, 0, 0, 0);
                     else if (mCurrIndex == 2)
@@ -198,7 +198,7 @@ public class AWashActivity extends FrameActivity {
                     tvWashLeather.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.A_WASH_SUMMER:
+                case Constant.A_WASH_SUMMER:
                     if (mCurrIndex == 0)
                         animation = new TranslateAnimation(mOffset, mPositionOne, 0, 0);
                     else if (mCurrIndex == 2)
@@ -211,7 +211,7 @@ public class AWashActivity extends FrameActivity {
                     tvWashLeather.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.A_WASH_WINTER:
+                case Constant.A_WASH_WINTER:
                     if (mCurrIndex == 0)
                         animation = new TranslateAnimation(mOffset, mPositionTwo, 0, 0);
                     else if (mCurrIndex == 1)
@@ -224,7 +224,7 @@ public class AWashActivity extends FrameActivity {
                     tvWashLeather.setTextColor(mColorMainTextGrey);
                     break;
 
-                case Contant.A_WASH_LEATER:
+                case Constant.A_WASH_LEATER:
                     if (mCurrIndex == 0)
                         animation = new TranslateAnimation(mOffset, mPositionThree, 0, 0);
                     else if (mCurrIndex == 1)

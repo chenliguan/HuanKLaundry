@@ -29,8 +29,9 @@
     <string name="user_agree">用户协议</string>
     <string name="feedback">意见反馈</string>
     <string name="pop_tip_title">提示信息</string>
+    <string name="pop_tip_content">请输入正确电话号码</string>
+    <string name="pop_tip_content2">功能尚未开通，敬请期待</string>
     <string name="coupon_share_title">优惠码分享</string>
-    <string name="pop_tip_text">请输入正确电话号码</string>
 
     <!-- 描述 -->
     <string name="title">标题</string>
@@ -63,7 +64,8 @@
     <string name="msg_repress">再按一次退出程序</string>
     <string name="text_tshirt">T恤</string>
     <string name="x">X</string>
-    <string name="rnb">¥00</string>
+    <string name="rnb">￥00</string>
+    <string name="price_abag">￥99</string>
     <string name="the_cost">费用总计:</string>
     <string name="last_cost">总计</string>
     <string name="user_info">用户信息</string>

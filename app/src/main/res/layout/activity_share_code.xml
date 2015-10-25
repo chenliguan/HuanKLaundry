@@ -65,7 +65,7 @@
         android:textSize="@dimen/TEXT_SIZE_14SP"
         android:textColor="@color/texts_grey"/>
 
-    <com.guan.o2o.utils.CustomMsyhTV
+    <com.guan.o2o.view.CustomMsyhTV
         android:id="@+id/tv_recom_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

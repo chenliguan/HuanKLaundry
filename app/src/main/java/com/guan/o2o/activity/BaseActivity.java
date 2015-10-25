@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.utils.LogUtil;
 
 /**
@@ -69,7 +69,7 @@ public class BaseActivity extends FragmentActivity {
     public void requestActivity(Class<?> pClass, String value, int requestCode) {
         // 第二个参数是请求码,是一个唯一值
         Intent _intent = new Intent(this, pClass);
-        _intent.putExtra(Contant.INTENT_PARAM, value);
+        _intent.putExtra(Constant.INTENT_PARAM, value);
         startActivityForResult(_intent, requestCode);
     }
 
@@ -79,7 +79,7 @@ public class BaseActivity extends FragmentActivity {
      */
     public void setResultTo(int value) {
         Intent _intent = new Intent();
-        _intent.putExtra(Contant.INTENT_KEY, value);
+        _intent.putExtra(Constant.INTENT_KEY, value);
         setResult(RESULT_OK, _intent);
         finish();
     }
@@ -92,7 +92,7 @@ public class BaseActivity extends FragmentActivity {
      */
     public static void actionStart(Context context,Class<?> pClass, String data) {
         Intent intent = new Intent(context, pClass);
-        intent.putExtra(Contant.INTENT_PARAM, data);
+        intent.putExtra(Constant.INTENT_PARAM, data);
         context.startActivity(intent);
     }
 

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
 import com.guan.o2o.model.WashOrder;
 import com.loopj.android.image.SmartImageView;
 
@@ -20,7 +19,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * 洗衣篮Adapter
@@ -36,16 +34,19 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     private int mCurrentType;
     private List<WashOrder> mList;
     private ImageView mIvBasketNull;
+    private ImageView mIvHave;
 
     private final int ITEM_NORMAL = 0;
     private final int ITEM_FIRST = 1;
     private final int ITEM_NUM = 2;
 
-    public WashOrderAdapter(Context context, List<WashOrder> list, ImageView ivBasketNull) {
+    public WashOrderAdapter(Context context, List<WashOrder> list,
+                            ImageView ivBasketNull,ImageView ivHave) {
         super(context, list);
         mContext = context;
         mList = list;
         mIvBasketNull = ivBasketNull;
+        mIvHave = ivHave;
     }
 
     /**
@@ -57,6 +58,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     public int getCount() {
         if (mList.size() == 0) {
             mIvBasketNull.setVisibility(View.VISIBLE);
+            mIvHave.setVisibility(View.INVISIBLE);
             return 0;
         } else
             return mList.size() + 1;
@@ -103,7 +105,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
             }
             convertView = normalView;
 
-            WashOrder washOrder = (WashOrder) getItem(position);
+            final WashOrder washOrder = (WashOrder) getItem(position);
             normalHolder.sivCloth.setImageUrl(washOrder.getWashHead(), R.mipmap.ic_pop_bag, R.mipmap.ic_default);
             normalHolder.mNum = washOrder.getWashNum();
             normalHolder.tvNum.setText(String.valueOf(normalHolder.mNum));
@@ -116,10 +118,10 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
                     if (normalHolder.mNum > 1) {
                         normalHolder.mNum = normalHolder.mNum - 1;
                         normalHolder.tvNum.setText(String.valueOf(normalHolder.mNum));
-                        App.washOrderList.get(position).setWashNum(normalHolder.mNum);
+                        washOrder.setWashNum(normalHolder.mNum);
                     } else {
                         normalHolder.tvNum.setText(String.valueOf(1));
-                        App.washOrderList.get(position).setWashNum(1);
+                        washOrder.setWashNum(1);
                     }
                 }
             });
@@ -128,7 +130,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
                 public void onClick(View view) {
                     normalHolder.mNum = normalHolder.mNum + 1;
                     normalHolder.tvNum.setText(String.valueOf(normalHolder.mNum));
-                    App.washOrderList.get(position).setWashNum(normalHolder.mNum);
+                    washOrder.setWashNum(normalHolder.mNum);
                 }
             });
             normalHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +177,6 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         TextView tvSinglePrice;
         @InjectView(R.id.iv_delete)
         ImageView ivDelete;
-
         int mNum;
 
         NormalHolder(View view) {

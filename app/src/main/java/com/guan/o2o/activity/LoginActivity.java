@@ -1,25 +1,18 @@
 package com.guan.o2o.activity;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.common.HttpPath;
 import com.guan.o2o.utils.RglExpressUtil;
 import com.guan.o2o.utils.SharedPfeUtil;
@@ -142,9 +135,9 @@ public class LoginActivity extends FrameActivity {
             // 开始计时
             mTime.start();
             // 请求网络
-            VolleyHttpRequest.String_request("LOGIN",HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
+            VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
         } else
-            showTipsWindow(mLocalView);
+            showTipsWindow(mLocalView,getString(R.string.pop_tip_title),getString(R.string.pop_tip_content));
     }
 
     /**
@@ -159,10 +152,10 @@ public class LoginActivity extends FrameActivity {
             public void reqSuccess(String response) {
                 // 登录业务判断
                 if (response.equals("547061")) {
-                    SharedPfeUtil.sharedPreferences(context, mLoginPhone, mLoginCode);
+                    SharedPfeUtil.sharedLoginInfo(context, mLoginPhone, mLoginCode);
                     openActivityFn(MainActivity.class);
                 } else
-                    showMsg(Contant.MSG_SEIVICE_ERROR);
+                    showMsg(Constant.MSG_SEIVICE_ERROR);
             }
 
             @Override
@@ -174,9 +167,9 @@ public class LoginActivity extends FrameActivity {
         // 对手机号码与验证码验证
         if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RglExpressUtil.isNullNo(mLoginCode)) {
             // 请求网络
-            VolleyHttpRequest.String_request("CODE",HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
+            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
         } else
-            showMsg(Contant.MSG_PHONE_PASS_ERROR);
+            showMsg(Constant.MSG_PHONE_PASS_ERROR);
     }
 
     /**
@@ -231,7 +224,7 @@ public class LoginActivity extends FrameActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
+        App.getQueue().cancelAll(Constant.TAG_STRING_REQUEST);
     }
 
     @Override

@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.common.Contant;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

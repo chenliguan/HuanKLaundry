@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-import com.guan.o2o.common.Contant;
-import com.guan.o2o.fragment.MoreFragment;
+import com.guan.o2o.common.Constant;
 
 /**
  * 基础类封装业务无关的方法
@@ -55,7 +54,7 @@ public abstract class BaseFragActivity extends FragmentActivity {
     public void requestActivity(Class<?> pClass, String value, int requestCode) {
         // 第二个参数是请求码,是一个唯一值
         Intent _intent = new Intent(this, pClass);
-        _intent.putExtra(Contant.INTENT_PARAM, value);
+        _intent.putExtra(Constant.INTENT_PARAM, value);
         startActivityForResult(_intent, requestCode);
     }
 

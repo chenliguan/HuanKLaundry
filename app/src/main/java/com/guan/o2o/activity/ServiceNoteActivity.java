@@ -107,7 +107,7 @@ public class ServiceNoteActivity extends FrameActivity {
         };
 
         // 请求网络
-        VolleyHttpRequest.String_request("ServiceNote", HttpPath.getSerNotefo(), volleyRequest);
+        VolleyHttpRequest.String_request(HttpPath.getSerNotefo(), volleyRequest);
     }
 
     @Override

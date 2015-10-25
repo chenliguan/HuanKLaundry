@@ -21,7 +21,7 @@
         android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/DIMEN_20PX"
+        android:layout_marginStart="@dimen/DIMEN_16PX"
         android:layout_toEndOf="@+id/siv_cloth"
         android:text="@string/text_tshirt"
         android:textSize="@dimen/TEXT_SIZE_20SP" />
@@ -78,10 +78,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/DIMEN_40PX"
+        android:layout_marginEnd="@dimen/DIMEN_32PX"
         android:text="@string/rnb"
         android:textColor="@color/price_red"
-        android:textSize="@dimen/TEXT_SIZE_20SP" />
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
 
     <ImageView
         android:id="@+id/iv_delete"

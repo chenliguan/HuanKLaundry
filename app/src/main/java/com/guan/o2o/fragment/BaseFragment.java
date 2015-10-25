@@ -1,6 +1,5 @@
 package com.guan.o2o.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,10 +9,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.guan.o2o.activity.BaseActivity;
-import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
-import com.guan.o2o.model.WashOrder;
+import com.guan.o2o.common.Constant;
 
 /**
  * 提供了fragment的封装后基类，提供context给子类使用
@@ -97,7 +93,7 @@ public abstract class BaseFragment extends Fragment {
     public void requestActivity(Class<?> pClass, String value, int requestCode) {
         // 第二个参数是请求码,是一个唯一值
         Intent _intent = new Intent(getActivity(), pClass);
-        _intent.putExtra(Contant.INTENT_PARAM, value);
+        _intent.putExtra(Constant.INTENT_PARAM, value);
         startActivityForResult(_intent, requestCode);
     }
 

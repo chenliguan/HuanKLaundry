@@ -2,46 +2,31 @@ package com.guan.o2o.fragment;
 
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.guan.o2o.R;
-import com.guan.o2o.activity.AWashActivity;
-import com.guan.o2o.activity.ProblemActivity;
 import com.guan.o2o.activity.ServiceNoteActivity;
 import com.guan.o2o.adapter.PollPagerAdapter;
-import com.guan.o2o.adapter.ServiceNoteAdapter;
-import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.model.WashOrder;
-import com.guan.o2o.utils.CustomMsyhTV;
 //import com.guan.o2o.utils.FuncUtil;
 import com.guan.o2o.utils.FuncUtil;
-import com.guan.o2o.utils.LogUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -97,7 +82,7 @@ public class HomeFragment extends FrameFragment {
 
     // 存放fragment的Activtiy必须实现的接口
     public interface OnClickListener {
-        public void onMoreIntentSelected(int position);
+        public void onIntentSelected(int position);
     }
 
     @Override
@@ -128,7 +113,7 @@ public class HomeFragment extends FrameFragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case Contant.MSG_UPDATE_IMAGE:
+                case Constant.MSG_UPDATE_IMAGE:
                     mWeakReference.get().viewpager.setCurrentItem(mCurrentItem);
                     break;
 
@@ -266,7 +251,7 @@ public class HomeFragment extends FrameFragment {
             synchronized (viewpager) {
                 mCurrentItem++;
                 // 通过handler切换图片
-                mImageHandler.sendEmptyMessage(Contant.MSG_UPDATE_IMAGE);
+                mImageHandler.sendEmptyMessage(Constant.MSG_UPDATE_IMAGE);
             }
         }
     }
@@ -285,7 +270,7 @@ public class HomeFragment extends FrameFragment {
                 break;
 
             case R.id.iv_a_wash:
-                mCallback.onMoreIntentSelected(Contant.CV_HOME_AWASH);
+                mCallback.onIntentSelected(Constant.CV_HOME_AWASH);
                 break;
 
             case R.id.iv_bag_wash:
@@ -294,14 +279,16 @@ public class HomeFragment extends FrameFragment {
                     mPopupWindow.dismiss();
                 else {
                     String textWash = getString(R.string.text_bag_wash);
-                    showOrderWindow(view, null, textWash, Contant.PRICE_BAGWASH);
+                    showOrderWindowM(view, null, textWash, getString(R.string.price_abag));
                 }
                 break;
 
             case R.id.iv_home_ariticles:
+                showTipsWindow(view,getString(R.string.pop_tip_title),getString(R.string.pop_tip_content2));
                 break;
 
             case R.id.iv_other_wash:
+                showTipsWindow(view,getString(R.string.pop_tip_title),getString(R.string.pop_tip_content2));
                 break;
 
             case R.id.iv_service_note:

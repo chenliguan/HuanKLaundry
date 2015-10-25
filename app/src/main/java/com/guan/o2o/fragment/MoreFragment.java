@@ -1,6 +1,8 @@
 package com.guan.o2o.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.guan.o2o.activity.AboutUsActivity;
 import com.guan.o2o.activity.ProblemActivity;
 import com.guan.o2o.activity.ServiceAreaActivity;
 import com.guan.o2o.activity.UserAgreeActivity;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.view.CustomView;
 
 import butterknife.ButterKnife;
@@ -45,6 +48,25 @@ public class MoreFragment extends BaseFragment {
     CustomView userAgree;
     @InjectView(R.id.cv_feed_back)
     CustomView cvFeedBack;
+
+    private OnClickListener mCallback;
+
+    // 存放fragment的Activtiy必须实现的接口
+    public interface OnClickListener {
+        public void onIntentSelected(int position);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // 为保证Activity容器实现以回调的接口,如果没会抛出一个异常。
+        try {
+            mCallback = (OnClickListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,11 +104,18 @@ public class MoreFragment extends BaseFragment {
     /**
      * 监听实现，回调接口
      */
-    @OnClick({R.id.cv_customer, R.id.cv_problem, R.id.cv_service_scope, R.id.cv_about_us, R.id.user_agree, R.id.cv_feed_back})
+    @OnClick({R.id.iv_back, R.id.cv_customer, R.id.cv_problem, R.id.cv_service_scope, R.id.cv_about_us, R.id.user_agree, R.id.cv_feed_back})
     public void onClick(View view) {
 
         switch (view.getId()) {
+            case R.id.iv_back:
+                mCallback.onIntentSelected(Constant.CV_BASKET_MAIN);
+                break;
+
             case R.id.cv_customer:
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + 723612));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
 
             case R.id.cv_problem:

@@ -30,7 +30,7 @@
             android:id="@+id/lv_basket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/DIMEN_132PX"
+            android:layout_marginBottom="@dimen/DIMEN_100PX"
             android:background="@color/white" />
 
     </RelativeLayout>

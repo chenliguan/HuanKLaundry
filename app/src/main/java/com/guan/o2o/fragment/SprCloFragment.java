@@ -6,16 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 
 import com.guan.o2o.R;
-import com.guan.o2o.activity.MainActivity;
 import com.guan.o2o.adapter.AWashGridAdapter;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
+import com.guan.o2o.common.Constant;
 import com.guan.o2o.common.HttpPath;
 import com.guan.o2o.model.AWashCloth;
 import com.guan.o2o.volley.VolleyHandler;
@@ -120,7 +117,7 @@ public class SprCloFragment extends FrameFragment {
                                 orderWindow.dismiss();
                             else{
                                 AWashCloth.WashInfoEntity entity = awashInfo.get(i);
-                                showOrderWindow(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                                showOrderWindowTo(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
                             }
                         }
                     });
@@ -135,7 +132,7 @@ public class SprCloFragment extends FrameFragment {
         };
 
         // 请求网络
-        VolleyHttpRequest.String_request(Contant.TAG_STRING_REQUEST, HttpPath.getClothIfo(), volleyRequest);
+        VolleyHttpRequest.String_request(HttpPath.getClothIfo(), volleyRequest);
     }
 
     /**
@@ -154,6 +151,6 @@ public class SprCloFragment extends FrameFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        App.getQueue().cancelAll(Contant.TAG_STRING_REQUEST);
+        App.getQueue().cancelAll(Constant.TAG_STRING_REQUEST);
     }
 }

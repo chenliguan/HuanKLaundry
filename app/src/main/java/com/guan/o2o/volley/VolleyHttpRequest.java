@@ -1,22 +1,21 @@
 package com.guan.o2o.volley;
 
-import java.util.Map;
-
-import org.json.JSONObject;
-
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.guan.o2o.application.App;
-import com.guan.o2o.common.Contant;
-import com.guan.o2o.utils.LogUtil;
+import com.guan.o2o.common.Constant;
+
+import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * 封装所有的请求调用
@@ -34,8 +33,8 @@ public class VolleyHttpRequest {
      * @param url           地址
      * @param volleyRequest 回调函数
      */
-    public static void String_request(String tag,String url, VolleyHandler<String> volleyRequest) {
-        Volley_StringRequest(tag,Method.GET, url, null, volleyRequest);
+    public static void String_request(String url, VolleyHandler<String> volleyRequest) {
+        Volley_StringRequest(Method.GET, url, null, volleyRequest);
     }
 
     /**
@@ -45,8 +44,8 @@ public class VolleyHttpRequest {
      * @param map           参数
      * @param volleyRequest 回调函数
      */
-    public static void String_request(String tag,String url, final Map<String, String> map, VolleyHandler<String> volleyRequest) {
-        Volley_StringRequest(tag,Method.POST, url, map, volleyRequest);
+    public static void String_request(String url, final Map<String, String> map, VolleyHandler<String> volleyRequest) {
+        Volley_StringRequest(Method.POST, url, map, volleyRequest);
     }
 
     /**
@@ -122,15 +121,14 @@ public class VolleyHttpRequest {
      * @param params        参数
      * @param volleyRequest 回调对象
      */
-    private static void Volley_StringRequest(String tag,int method, String url, final Map<String, String> params, VolleyHandler<String> volleyRequest) {
+    private static void Volley_StringRequest(int method, String url, final Map<String, String> params, VolleyHandler<String> volleyRequest) {
         StringRequest stringrequest = new StringRequest(method, url, volleyRequest.reqLis, volleyRequest.reqErr) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 return params;
             }
         };
-//        stringrequest.setTag(Contant.TAG_STRING_REQUEST);
-        stringrequest.setTag(tag);
+        stringrequest.setTag(Constant.TAG_STRING_REQUEST);
         App.getQueue().add(stringrequest);
     }
 
@@ -146,7 +144,7 @@ public class VolleyHttpRequest {
      */
     private static void Volley_JsonObjectRequest(int method, String url, JSONObject jsonObject, VolleyHandler<JSONObject> volleyRequest) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, jsonObject, volleyRequest.reqLis, volleyRequest.reqErr);
-        jsonObjectRequest.setTag(Contant.TAG_JSON_REQUEST);
+        jsonObjectRequest.setTag(Constant.TAG_JSON_REQUEST);
         App.getQueue().add(jsonObjectRequest);
     }
 
@@ -162,7 +160,7 @@ public class VolleyHttpRequest {
      */
     private static void Volley_ImageRequest(String url, int maxWidth, int maxHeight, VolleyHandler<Bitmap> volleyRequest) {
         ImageRequest imageRequest = new ImageRequest(url, volleyRequest.reqLis, maxWidth, maxHeight, Config.RGB_565, volleyRequest.reqErr);
-        imageRequest.setTag(Contant.TAG_IMAGE_REQUEST);
+        imageRequest.setTag(Constant.TAG_IMAGE_REQUEST);
         App.getQueue().add(imageRequest);
     }
 

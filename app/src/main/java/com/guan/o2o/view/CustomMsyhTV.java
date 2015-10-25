@@ -1,4 +1,4 @@
-package com.guan.o2o.utils;
+package com.guan.o2o.view;
 
 import android.content.Context;
 import android.content.res.AssetManager;

@@ -75,7 +75,7 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
     @OnClick(R.id.btn_im_exp)
     public void onButtonClick() {
         // 持久化数据设置已经引导
-        SharedPfeUtil.sharedPreferences(GuideActivity.this);
+        SharedPfeUtil.sharedFirstLogin(GuideActivity.this);
         // 跳转到LoginActivity
         openActivityFn(LoginActivity.class);
     }
