@@ -58,9 +58,9 @@ public class UserAgreeActivity extends FrameActivity {
         // 覆盖WebView默认其他浏览器打开网页的行为,使网页用WebView打开
         wvRegulate.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(WebView webView, String url) {
                 //返回值是true时用WebView打开，为false调用其他浏览器
-                view.loadUrl(url);
+                webView.loadUrl(url);
                 return true;
             }
         });

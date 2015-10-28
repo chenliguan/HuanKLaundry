@@ -7,12 +7,11 @@
 
     <include
         android:id="@+id/layout_title"
-        layout="@layout/layout_title"></include>
+        layout="@layout/layout_title"/>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_94PX"
-        android:layout_below="@id/layout_title"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
         android:layout_marginTop="@dimen/DIMEN_40PX"
@@ -22,11 +21,11 @@
             android:id="@+id/et_phone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginRight="@dimen/DIMEN_274PX"
-            android:background="@drawable/bg_et_shape"
+            android:layout_marginEnd="@dimen/DIMEN_274PX"
+            android:background="@drawable/bg_edit_shape"
             android:hint="@string/phone_input"
             android:inputType="phone"
-            android:paddingLeft="@dimen/DIMEN_12PX"
+            android:paddingEnd="@dimen/DIMEN_12PX"
             android:textColor="@color/icon_text_grey"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
 
@@ -34,7 +33,7 @@
             android:id="@+id/btn_code"
             android:layout_width="@dimen/DIMEN_260PX"
             android:layout_height="@dimen/DIMEN_92PX"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@color/main_blue"
             android:text="@string/code_get"
             android:textColor="@color/white"
@@ -46,14 +45,13 @@
         android:id="@+id/et_code"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_94PX"
-        android:layout_centerInParent="true"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
         android:layout_marginTop="@dimen/DIMEN_36PX"
-        android:background="@drawable/bg_et_shape"
+        android:background="@drawable/bg_edit_shape"
         android:hint="@string/code_input"
         android:inputType="number"
-        android:paddingLeft="@dimen/DIMEN_12PX"
+        android:paddingStart="@dimen/DIMEN_12PX"
         android:textColor="@color/icon_text_grey"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
@@ -81,7 +79,7 @@
             android:id="@+id/tv_book2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_book1"
+            android:layout_toEndOf="@id/tv_book1"
             android:text="@string/text_pattern"
             android:textColor="@color/second_blue"
             android:textSize="@dimen/TEXT_SIZE_13SP" />

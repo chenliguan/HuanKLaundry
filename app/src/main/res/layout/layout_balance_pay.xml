@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/DIMEN_186PX"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/DIMEN_480PX"
+        android:layout_height="@dimen/DIMEN_180PX"
+        android:background="@color/bg_red">
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/DIMEN_32PX"
+            android:layout_marginTop="@dimen/DIMEN_16PX"
+            android:text="@string/text_des_balance"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+        <com.guan.o2o.view.CustomMsyhTV
+            android:id="@+id/cv_balance_amout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/DIMEN_32PX"
+            android:layout_marginTop="@dimen/DIMEN_60PX"
+            android:text="@string/balance_amount"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TEXT_SIZE_40SP" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_to_up"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_180PX"
+        android:layout_marginStart="@dimen/DIMEN_480PX"
+        android:background="@color/price_red"
+        android:gravity="center"
+        android:text="@string/to_up"
+        android:textColor="@color/white"
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+    <FrameLayout
+        android:id="@+id/flyt_in"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_260PX">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_in_paypass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/DIMEN_32PX"
+                android:text="@string/text_in_pay_pass"
+                android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+            <TextView
+                android:id="@+id/tv_line"
+                android:layout_width="@dimen/DIMEN_480PX"
+                android:layout_height="@dimen/DIMEN_2PX"
+                android:layout_below="@id/tv_in_paypass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/DIMEN_32PX"
+                android:background="@color/frame_line_grey" />
+
+            <!-- 密码栏的上部线条 -->
+            <TextView
+                android:id="@+id/tv_line_top"
+                style="@style/LineHorizontalPass"
+                android:layout_below="@id/tv_line"
+                android:layout_marginTop="@dimen/DIMEN_30PX" />
+
+            <LinearLayout
+                android:id="@+id/llyt_in"
+                android:layout_width="@dimen/DIMEN_554PX"
+                android:layout_height="@dimen/DIMEN_80PX"
+                android:layout_below="@id/tv_line_top"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextViewVerticalPayPass"
+                    android:layout_height="@dimen/DIMEN_80PX" />
+
+                <TextView
+                    android:id="@+id/pass_a"
+                    style="@style/TextViewPayPass" />
+
+                <TextView style="@style/TextViewVerticalPayPass" />
+
+                <TextView
+                    android:id="@+id/pass_b"
+                    style="@style/TextViewPayPass" />
+
+                <TextView style="@style/TextViewVerticalPayPass" />
+
+                <TextView
+                    android:id="@+id/pass_c"
+                    style="@style/TextViewPayPass" />
+
+                <TextView style="@style/TextViewVerticalPayPass" />
+
+                <TextView
+                    android:id="@+id/pass_d"
+                    style="@style/TextViewPayPass" />
+
+                <TextView style="@style/TextViewVerticalPayPass" />
+
+                <TextView
+                    android:id="@+id/pass_e"
+                    style="@style/TextViewPayPass" />
+
+                <TextView style="@style/TextViewVerticalPayPass" />
+
+                <TextView
+                    android:id="@+id/pass_f"
+                    style="@style/TextViewPayPass" />
+
+                <TextView
+                    style="@style/TextViewVerticalPayPass"
+                    android:layout_height="@dimen/DIMEN_80PX" />
+            </LinearLayout>
+
+            <!-- 密码栏的下部线条 -->
+            <TextView
+                android:id="@+id/tv_line_bottom"
+                style="@style/LineHorizontalPass"
+                android:layout_below="@id/llyt_in" />
+
+            <Button
+                android:id="@+id/btn_ok_pay"
+                style="@style/ButtonTheme"
+                android:layout_width="@dimen/DIMEN_560PX"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@id/llyt_in"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/DIMEN_48PX"
+                android:text="@string/ok_pay" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_focus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_252PX"
+            android:background="@color/transparent" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="@dimen/DIMEN_230PX"
+        android:layout_height="@dimen/DIMEN_50PX"
+        android:layout_below="@id/flyt_in"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/DIMEN_120PX"
+        android:background="@drawable/bg_text_res_pass"
+        android:gravity="center"
+        android:text="@string/reset_pay_pass"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+</RelativeLayout>

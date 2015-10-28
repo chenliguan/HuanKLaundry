@@ -50,7 +50,8 @@ public class AWashGridAdapter extends BaseToAdapter {
 //        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.ivIcon,
 //                R.mipmap.ic_default, R.mipmap.ic_default);
 //        VolleyHttpRequest.Image_Loader(getClothIvIfo(position + 10), listener);
-        holder.sivIcon.setImageUrl(mList.get(position).getWashHead(),R.mipmap.ic_default,R.mipmap.ic_default);
+        holder.sivIcon.setImageUrl(mList.get(position).getWashHead(),
+                R.mipmap.ic_default, R.mipmap.ic_default);
 
         return convertView;
     }

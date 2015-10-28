@@ -11,6 +11,9 @@ public class HttpPath {
     // 请求浣客官网IP
     public final static String IP_USER_AGREE = "http://123.56.138.192:8002";
 
+    // 请求浣客官网域名
+    public final static String IP_WEB = "http://www.huankxy.com";
+
     // login
     public static String getLoginIfo(String loginPhone, String loginCode) {
         return IP + "/demo/myClive?phone=13800138000";
@@ -35,7 +38,7 @@ public class HttpPath {
 
     // getNum
     public static String getNumfo(int id) {
-        return IP + "/demo/means" + id +".png";
+        return IP + "/demo/means" + id + ".png";
     }
 
     // 用户协议IP
@@ -46,5 +49,10 @@ public class HttpPath {
     // 常见问题IP
     public static String getProblemIfo() {
         return IP_USER_AGREE + "/faq/";
+    }
+
+    // 关于浣洗
+    public static String getAboutAppfo() {
+        return IP_WEB + "/";
     }
 }

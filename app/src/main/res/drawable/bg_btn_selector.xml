@@ -6,8 +6,8 @@
     <!-- 点击状态下的效果 -->
     <item android:state_pressed="true">
         <shape>
-            <!-- 设置背景填充色为灰色 -->
-            <solid android:color="@color/icon_text_grey"/>
+            <!-- 设置背景填充色为分享蓝色 -->
+            <solid android:color="@color/share_blue"/>
         </shape>
     </item>
     <!-- 正常状态下(非点击)的效果 -->

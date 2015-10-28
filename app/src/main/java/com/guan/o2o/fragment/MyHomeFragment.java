@@ -41,7 +41,7 @@ public class MyHomeFragment extends BaseFragment {
     @InjectView(R.id.gv_my)
     GridView gvMy;
 
-    private List mStringList;
+    private List<String> mStringList;
     private MyGridAdapter mGridAdapter;
 
     @Override
@@ -67,7 +67,7 @@ public class MyHomeFragment extends BaseFragment {
      * 初始化变量
      */
     public void initVariable() {
-        mStringList = new ArrayList();
+        mStringList = new ArrayList<String>();
         mStringList.add(0, this.getString(R.string.grid_myorder));
         mStringList.add(1, this.getString(R.string.grid_washcoin));
         mStringList.add(2, this.getString(R.string.grid_myads));

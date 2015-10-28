@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.guan.o2o.R;
 import com.guan.o2o.activity.AboutUsActivity;
+import com.guan.o2o.activity.FeekBackActivity;
 import com.guan.o2o.activity.ProblemActivity;
 import com.guan.o2o.activity.ServiceAreaActivity;
 import com.guan.o2o.activity.UserAgreeActivity;
@@ -135,6 +136,7 @@ public class MoreFragment extends BaseFragment {
                 break;
 
             case R.id.cv_feed_back:
+                openActivity(FeekBackActivity.class);
                 break;
 
             default:

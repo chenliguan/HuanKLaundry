@@ -15,6 +15,7 @@ import com.guan.o2o.adapter.WashOrderAdapter;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Constant;
 import com.guan.o2o.model.WashOrder;
+import com.guan.o2o.utils.ListUtil;
 import com.guan.o2o.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -41,8 +42,8 @@ public class BasketFragment extends BaseFragment {
     @InjectView(R.id.iv_basket_null)
     ImageView ivBasketNull;
 
-    ImageView ivHave;
-    private boolean isRefresh;
+    private ImageView mIvHave;
+    private boolean mIsRefresh;
     private WashOrderAdapter mWashOrderAdapter;
     private OnClickListener mCallback;
 
@@ -107,9 +108,9 @@ public class BasketFragment extends BaseFragment {
      * 初始化变量
      */
     public void initVariable() {
-        isRefresh = false;
+        mIsRefresh = false;
         tvTitle.setText(R.string.main_navigation_basket);
-        ivHave = (ImageView) getActivity().findViewById(R.id.iv_have);
+        mIvHave = (ImageView) getActivity().findViewById(R.id.iv_have);
     }
 
     /**
@@ -141,7 +142,7 @@ public class BasketFragment extends BaseFragment {
                 break;
 
             case R.id.tv_delete_order:
-                removeAll();
+                ListUtil.removeAll(App.washOrderList);
                 notifyData();
                 break;
 
@@ -154,7 +155,7 @@ public class BasketFragment extends BaseFragment {
      * 更新数据
      */
     public void notifyData() {
-        if (App.washOrderList != null & !isRefresh)
+        if (App.washOrderList != null & !mIsRefresh)
             bindAdapter();
         if (App.washOrderList != null & mWashOrderAdapter != null)
             mWashOrderAdapter.notifyDataSetChanged();
@@ -164,22 +165,10 @@ public class BasketFragment extends BaseFragment {
      * 绑定适配器
      */
     public void bindAdapter() {
-        mWashOrderAdapter = new WashOrderAdapter(getActivity(), App.washOrderList, ivBasketNull,ivHave);
+        mWashOrderAdapter = new WashOrderAdapter(getActivity(), App.washOrderList, ivBasketNull, mIvHave);
         lvBasket.setAdapter(mWashOrderAdapter);
         ivBasketNull.setVisibility(View.INVISIBLE);
-        isRefresh = true;
-    }
-
-    /**
-     * 删除集合中所有数据
-     */
-    private void removeAll() {
-        Iterator iter = App.washOrderList.iterator();
-        while (iter.hasNext()) {
-            // 没有回报异常
-            iter.next();
-            iter.remove();
-        }
+        mIsRefresh = true;
     }
 
     @Override

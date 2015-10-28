@@ -1,6 +1,7 @@
 package com.guan.o2o.activity;
 
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -8,11 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.adapter.KeyBGridAdapter;
 import com.guan.o2o.common.Constant;
+import com.guan.o2o.view.CustomMsyhTV;
+import com.loopj.android.image.SmartImageView;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -72,6 +82,7 @@ public class FrameActivity extends BaseActivity {
             @Override
             public void run() {
                 mPopupWindow.dismiss();
+                mPopupWindow = null;
             }
         }, Constant.POPWIN_DELAY_MS);
     }

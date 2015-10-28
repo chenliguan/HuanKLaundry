@@ -16,6 +16,8 @@
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_share_code">ShareCodeActivity</string>
     <string name="title_activity_service_note">ServiceNoteActivity</string>
+    <string name="title_activity_pay">PayActivity</string>
+    <string name="title_activity_feek_back">FeekBackActivity</string>
 
     <!-- 标题 -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -33,6 +35,9 @@
     <string name="pop_tip_content2">功能尚未开通，敬请期待</string>
     <string name="coupon_share_title">优惠码分享</string>
 
+    <!--衣服类型 -->
+    <string name="text_bag_wash">袋洗</string>
+
     <!-- 描述 -->
     <string name="title">标题</string>
     <string name="city">成都</string>
@@ -43,8 +48,11 @@
     <string name="title_user_regulate">用户协议</string>
     <string name="title_com_problem">常见问题</string>
     <string name="title_service_note">服务说明</string>
+    <string name="title_feek_back">意见反馈</string>
     <string name="title_about_us">关于我们</string>
+    <string name="title_about_app">关于浣洗</string>
     <string name="title_register">注册</string>
+    <string name="title_pay">支付</string>
     <string name="phone_input">请输入手机号码</string>
     <string name="code_get">获取验证码</string>
     <string name="code_input">请输入验证码</string>
@@ -95,8 +103,21 @@
     <string name="title_share">用浣客洗衣，首单免费送</string>
     <string name="content_share">[浣客洗衣]上门服务，分享好友，好礼无限，我的推荐码是：</string>
     <string name="text_added_basket">已加入洗衣篮</string>
-
-    <!--衣服类型 -->
-    <string name="text_bag_wash">袋洗</string>
+    <string name="text_balance_pay">余额支付</string>
+    <string name="text_alipay">支付宝支付</string>
+    <string name="balance_amount">000.00</string>
+    <string name="to_up">充值</string>
+    <string name="text_in_pay_pass">请输入支付密码</string>
+    <string name="ok_pay">确认支付</string>
+    <string name="reset_pay_pass">重置支付密码</string>
+    <string name="text_des_balance">快快洗余额（元）</string>
+    <string name="button_num">0</string>
+    <string name="button_delete">删除</string>
+    <string name="text_input_tips">请输入您的宝贵意见. . . .</string>
+    <string name="btn_submit">提交</string>
+    <string name="text_website">官网:</string>
+    <string name="website">www.huankxy.com</string>
+    <string name="text_weixin">微信: 浣客洗衣</string>
+    <string name="title_activity_about_app">AboutAppActivity</string>
 
 </resources>

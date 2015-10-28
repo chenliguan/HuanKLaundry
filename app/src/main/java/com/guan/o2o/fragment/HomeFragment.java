@@ -185,7 +185,7 @@ public class HomeFragment extends FrameFragment {
 
         for (int i = 0; i < imageUrls.length; i++) {
             // 图片
-            View _view = (View) _inflater.inflate(R.layout.view_pager, null);
+            View _view = (View) _inflater.inflate(R.layout.view_pager_null, null);
             _view.setBackgroundResource(imageUrls[i]);
             mListViews.add(_view);
             // 圆点

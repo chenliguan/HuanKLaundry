@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:background="@color/bg_grey"
     android:orientation="vertical"
     tools:context="com.guan.o2o.fragment.BasketFragment">
@@ -15,7 +15,7 @@
         android:layout_height="@dimen/DIMEN_18PX"
         android:background="@color/bg_grey" />
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,5 +33,5 @@
             android:layout_marginBottom="@dimen/DIMEN_100PX"
             android:background="@color/white" />
 
-    </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -45,9 +45,9 @@ public class GuideActivity extends FrameActivity implements ViewPager.OnPageChan
     private void initViewPager() {
         LayoutInflater inflater = getLayoutInflater();
         mList = new ArrayList<View>();
-        mList.add(inflater.inflate(R.layout.view_first, null));
-        mList.add(inflater.inflate(R.layout.view_second, null));
-        mList.add(inflater.inflate(R.layout.view_third, null));
+        mList.add(inflater.inflate(R.layout.view_pager_first, null));
+        mList.add(inflater.inflate(R.layout.view_pager_second, null));
+        mList.add(inflater.inflate(R.layout.view_pager_third, null));
 
         mImageViews = new ImageView[mList.size()];
         for (int i = 0; i < mList.size(); i++) {

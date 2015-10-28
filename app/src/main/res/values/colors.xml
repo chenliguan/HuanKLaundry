@@ -481,4 +481,6 @@
     <color name="price_red">#ff4d0f</color>
     <!-- 衣服价格橙色 -->
 
+    <color name="bg_red">#ff745d</color>
+    <!-- 余额背景浅红色 -->
 </resources>

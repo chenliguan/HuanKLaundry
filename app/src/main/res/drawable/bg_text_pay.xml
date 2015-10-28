@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:right="-1dp" android:left="-1dp">
+        <shape>
+            <stroke
+                android:width="@dimen/DIMEN_2PX"
+                android:color="@color/frame_line_grey" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>
+
+    <!-- android:right="-1dp"可以隐藏一边边框 -->

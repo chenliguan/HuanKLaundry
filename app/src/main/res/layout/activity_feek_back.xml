@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guan.o2o.activity.FeekBackActivity">
+
+    <include
+        android:id="@+id/llyt_title"
+        layout="@layout/layout_title" />
+
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_400PX"
+        android:layout_below="@id/llyt_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/DIMEN_32PX"
+        android:layout_marginStart="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:background="@color/white"
+        android:hint="@string/text_input_tips"
+        android:padding="@dimen/DIMEN_20PX"
+        android:singleLine="false"
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        style="@style/ButtonTheme"
+        android:layout_below="@id/tv_input"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="@dimen/DIMEN_40PX"
+        android:text="@string/btn_submit" />
+</RelativeLayout>

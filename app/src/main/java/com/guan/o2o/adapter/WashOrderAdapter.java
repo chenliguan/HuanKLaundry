@@ -1,6 +1,7 @@
 package com.guan.o2o.adapter;
 
-import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.activity.FrameActivity;
+import com.guan.o2o.activity.PayActivity;
 import com.guan.o2o.application.App;
 import com.guan.o2o.model.WashOrder;
 import com.loopj.android.image.SmartImageView;
@@ -19,6 +22,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * 洗衣篮Adapter
@@ -30,20 +34,20 @@ import butterknife.InjectView;
  */
 public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
 
-    private Context mContext;
     private int mCurrentType;
     private List<WashOrder> mList;
     private ImageView mIvBasketNull;
     private ImageView mIvHave;
 
+    private static FragmentActivity sContext;
     private final int ITEM_NORMAL = 0;
     private final int ITEM_FIRST = 1;
     private final int ITEM_NUM = 2;
 
-    public WashOrderAdapter(Context context, List<WashOrder> list,
+    public WashOrderAdapter(FragmentActivity context, List<WashOrder> list,
                             ImageView ivBasketNull,ImageView ivHave) {
         super(context, list);
-        mContext = context;
+        sContext = context;
         mList = list;
         mIvBasketNull = ivBasketNull;
         mIvHave = ivHave;
@@ -99,7 +103,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
             if (normalView != null) {
                 normalHolder = (NormalHolder) normalView.getTag();
             } else {
-                normalView = LayoutInflater.from(mContext).inflate(R.layout.item_basket_normal, null);
+                normalView = LayoutInflater.from(sContext).inflate(R.layout.item_basket_normal, null);
                 normalHolder = new NormalHolder(normalView);
                 normalView.setTag(normalHolder);
             }
@@ -149,7 +153,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
             if (firstView != null) {
                 firstHolder = (FirstHolder) firstView.getTag();
             } else {
-                firstView = LayoutInflater.from(mContext).inflate(R.layout.item_basket_first, null);
+                firstView = LayoutInflater.from(sContext).inflate(R.layout.item_basket_first, null);
                 firstHolder = new FirstHolder(firstView);
                 firstView.setTag(firstHolder);
             }
@@ -182,25 +186,6 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         NormalHolder(View view) {
             ButterKnife.inject(this, view);
         }
-
-//        @OnClick({R.id.rb_min, R.id.rb_add})
-//        public void onClick(View view) {
-//            switch (view.getId()) {
-//                case R.id.rb_min:
-//                    if (mNum > 1)
-//                        tvNum.setText(String.valueOf(mNum--));
-//                    else
-//                        tvNum.setText(String.valueOf(1));
-//                    break;
-//
-//                case R.id.rb_add:
-//                    tvNum.setText(String.valueOf(mNum++));
-//                    break;
-//
-//                default:
-//                    break;
-//            }
-//        }
     }
 
     /**
@@ -213,13 +198,32 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         TextView tvWriteInfo;
         @InjectView(R.id.iv_write_info)
         ImageView ivWriteInfo;
-        @InjectView(R.id.rlyt_write)
+        @InjectView(R.id.rlyt_write_info)
         RelativeLayout rlytWrite;
         @InjectView(R.id.btn_pay)
         Button btnPay;
 
         FirstHolder(View view) {
             ButterKnife.inject(this, view);
+        }
+
+        @OnClick({R.id.rlyt_write_info, R.id.btn_pay})
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.rlyt_write_info:
+
+                    break;
+
+                case R.id.btn_pay:
+                    Intent intent = new Intent(sContext, PayActivity.class);
+                    sContext.startActivity(intent);
+                    // 关闭MainActivity
+                    sContext.finish();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

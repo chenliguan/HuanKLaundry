@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 填充颜色 -->
+    <solid android:color="@color/bg_grey" />
+
+    <!-- 边框 -->
+    <stroke
+        android:width="@dimen/DIMEN_2PX"
+        android:color="@color/frame_line_grey" />
+
+    <!-- 设置圆角半径 -->
+    <corners
+        android:bottomLeftRadius="@dimen/DIMEN_9PX"
+        android:bottomRightRadius="@dimen/DIMEN_9PX"
+        android:radius="@dimen/DIMEN_16PX"
+        android:topLeftRadius="@dimen/DIMEN_9PX"
+        android:topRightRadius="@dimen/DIMEN_9PX" />
+</shape>

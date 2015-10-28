@@ -90,6 +90,7 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
             @Override
             public void run() {
                 tipsWindow.dismiss();
+                tipsWindow = null;
             }
         }, Constant.POPWIN_DELAY_MS);
     }
@@ -159,10 +160,10 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
             @Override
             public void onDismiss() {
                 backgroundAlpha(1f);
+                orderWindow = null;
             }
         });
     }
-
 
     /**
      * 袋洗popupwindow内容的监听实现
@@ -215,38 +216,4 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
                 break;
         }
     }
-
-
-//    /**
-//     * 自定义progressDialog
-//     *
-//     * @param context
-//     * @param msg
-//     * @return
-//     */
-//    public Dialog createLoadingDialog(Context context, String msg) {
-//        View view = LayoutInflater.from(context).inflate(R.layout.view_loading_dialog, null);
-//        LinearLayout layout = ButterKnife.findById(view, R.id.dialog_view);
-//        final ImageView imageView = ButterKnife.findById(view, R.id.iv_loading);
-//        TextView tvTips = ButterKnife.findById(view, R.id.tv_tips);
-//        // 加载动画
-//        Animation animation = AnimationUtils.loadAnimation(
-//                context, R.anim.anim_loading);
-//        imageView.startAnimation(animation);
-//        tvTips.setText(msg);
-//        // 创建自定义样式dialog
-//        final Dialog loadingDialog = new Dialog(context, R.style.Loading_dialog);
-//        // 不可用“返回键”取消
-//        loadingDialog.setCancelable(false);
-//        // 设置布局
-//        loadingDialog.setContentView(layout, new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
-//        loadingDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//            @Override
-//            public void onDismiss(DialogInterface dialogInterface) {
-//                imageView.clearAnimation();
-//            }
-//        });
-//        return loadingDialog;
-//    }
 }

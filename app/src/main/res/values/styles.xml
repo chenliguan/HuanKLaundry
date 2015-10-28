@@ -45,18 +45,39 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <!--  TextViewHorizontal -->
+    <!--  ShortLineHorizontal -->
     <style name="TextView">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/DIMEN_0.5PX</item>
         <item name="android:background">@color/frame_line_grey</item>
     </style>
 
-    <!--  TextViewVertical -->
+    <!--  LongLineHorizontal_PayPass -->
+    <style name="LineHorizontalPass">
+        <item name="android:layout_width">@dimen/DIMEN_554PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_2PX</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@color/frame_line_grey</item>
+    </style>
+
+    <!--  ShortLineVertical -->
     <style name="TextViewVertical">
         <item name="android:layout_width">@dimen/DIMEN_2PX</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@color/frame_line_grey</item>
+    </style>
+
+    <!--  ShortLineVertical_PayPass -->
+    <style name="TextViewVerticalPayPass" parent="TextViewVertical">
+        <item name="android:layout_height">@dimen/DIMEN_60PX</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--  TextViewPayPass -->
+    <style name="TextViewPayPass" >
+        <item name="android:layout_width">@dimen/DIMEN_90PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_80PX</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <!--  ImageViewHome -->

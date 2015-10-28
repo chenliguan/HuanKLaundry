@@ -1,9 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.guan.o2o.activity.AboutUsActivity">
 
-    <include layout="@layout/layout_title"></include>
+    <include layout="@layout/layout_title"/>
 
-</RelativeLayout>
+    <TextView
+        style="@style/LineHorizontalPass"
+        android:layout_width="fill_parent" />
+
+    <TextView
+        android:id="@+id/tv_weixin"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:paddingStart="@dimen/DIMEN_36PX"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:text="@string/text_weixin"
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+    <TextView
+        style="@style/LineHorizontalPass"
+        android:layout_width="fill_parent" />
+
+    <RelativeLayout
+        android:id="@+id/rllyt_website"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_88PX"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/DIMEN_38PX"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/DIMEN_36PX"
+            android:text="@string/text_website"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+        <TextView
+            android:id="@+id/tv_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/DIMEN_12PX"
+            android:layout_toEndOf="@id/tv_des"
+            android:text="@string/website"
+            android:textColor="@color/second_blue"
+            android:textSize="@dimen/TEXT_SIZE_16SP" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/LineHorizontalPass"
+        android:layout_width="fill_parent" />
+
+</LinearLayout>

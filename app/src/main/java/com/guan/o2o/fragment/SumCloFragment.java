@@ -92,26 +92,31 @@ public class SumCloFragment extends FrameFragment {
         volleyRequest = new VolleyHandler<String>() {
             @Override
             public void reqSuccess(String response) {
-                AWashCloth aWashCloth = AWashCloth.praseJson(response);
-                awashInfo = new ArrayList<AWashCloth.WashInfoEntity>();
-                awashInfo = aWashCloth.washInfo;
+                if (response == null) {
+                    showMsg(getString(R.string.msg_loading_error));
+                } else {
+                    // 解析数据
+                    AWashCloth aWashCloth = AWashCloth.praseJson(response);
+                    awashInfo = new ArrayList<AWashCloth.WashInfoEntity>();
+                    awashInfo = aWashCloth.washInfo;
 
-                mWinAdapter = new AWashGridAdapter(getActivity(), awashInfo);
-                // 配置适配器
-                gvSpringclo.setAdapter(mWinAdapter);
-                // 选项监听
-                gvSpringclo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        // popwindow
-                        if (orderWindow != null && orderWindow.isShowing())
-                            orderWindow.dismiss();
-                        else {
-                            AWashCloth.WashInfoEntity entity = awashInfo.get(i);
-                            showOrderWindowTo(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                    mWinAdapter = new AWashGridAdapter(getActivity(), awashInfo);
+                    // 配置适配器
+                    gvSpringclo.setAdapter(mWinAdapter);
+                    // 选项监听
+                    gvSpringclo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            // popwindow
+                            if (orderWindow != null && orderWindow.isShowing())
+                                orderWindow.dismiss();
+                            else {
+                                AWashCloth.WashInfoEntity entity = awashInfo.get(i);
+                                showOrderWindowTo(view, entity.getWashHead(), entity.getWashName(), entity.getAmount());
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
 
             @Override

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bt_dlt_num"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_90PX"
+        android:background="@drawable/bg_btn_keyboard_gray"
+        android:gravity="center"
+        android:textSize="@dimen/TEXT_SIZE_22SP" />
+
+</LinearLayout><!--
+<ImageButton
+android:id="@+id/bt_dlt_num"
+android:layout_width="match_parent"
+android:layout_height="@dimen/DIMEN_88PX"
+android:layout_gravity="center"
+android:background="@drawable/bg_btn_keyboard_gray"
+android:src="@mipmap/ic_delete_num" />
+
+-->

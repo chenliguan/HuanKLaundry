@@ -92,7 +92,7 @@ public class BaseActivity extends FragmentActivity {
      */
     public static void actionStart(Context context,Class<?> pClass, String data) {
         Intent intent = new Intent(context, pClass);
-        intent.putExtra(Constant.INTENT_PARAM, data);
+        intent.putExtra(Constant.INTENT_KEY, data);
         context.startActivity(intent);
     }
 

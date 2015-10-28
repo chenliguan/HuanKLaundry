@@ -11,7 +11,7 @@
         android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:progressDrawable="@mipmap/ic_public_loading" />
+        android:indeterminateDrawable="@anim/anim_loading" />
 
     <TextView
         android:id="@+id/tv_tips"

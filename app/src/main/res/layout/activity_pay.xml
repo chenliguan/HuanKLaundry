@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey"
+    android:orientation="vertical"
+    tools:context="com.guan.o2o.activity.PayActivity">
+
+    <include layout="@layout/layout_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_18PX"
+        android:layout_marginTop="@dimen/DIMEN_88PX"
+        android:background="@color/bg_grey" />
+
+    <LinearLayout
+        android:id="@+id/llyt_pay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_94PX"
+        android:layout_marginTop="@dimen/DIMEN_98PX"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_balance_pay"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/bg_red"
+            android:gravity="center"
+            android:text="@string/text_balance_pay"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+        <TextView
+            android:id="@+id/tv_alipay"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/text_alipay"
+            android:textColor="@color/texts_grey"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bg_alipay_ui"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/llyt_pay"
+        android:background="@color/bg_grey"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/bg_balance_ui"
+        layout="@layout/layout_balance_pay" />
+
+</RelativeLayout>

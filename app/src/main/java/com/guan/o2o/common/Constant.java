@@ -107,6 +107,8 @@ public class Constant {
     public static final String VALUE_LOGIN_ACTIVITY = "LoginActivity";
     // moreFragment
     public static final String VALUE_MAIN_ACTIVITY = "MainActivity";
+    // PayActivity
+    public static final String VALUE_PAY_ACTIVITY = "PayActivity";
 
     // KEY值1
     public static final String INTENT_KEY = "KEY";
@@ -144,5 +146,10 @@ public class Constant {
     public static final int A_WASH_WINTER = 2;
     // 皮衣
     public static final int A_WASH_LEATER = 3;
+
+    /**
+     * 密码个数
+     */
+    public static final int PASS_NUM = 6;
 
 }
