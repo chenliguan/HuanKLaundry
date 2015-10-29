@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlyt_my_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/DIMEN_32PX"
+    android:layout_marginTop="@dimen/DIMEN_32PX"
+    android:layout_marginBottom="@dimen/DIMEN_32PX"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llyt_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_48PX"
+        android:layout_marginEnd="@dimen/DIMEN_100PX"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/Wrap_content"
+            android:src="@mipmap/ic_phone_my" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/Wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/DIMEN_10PX"
+            android:text="@string/text_phone"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_48PX"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/Wrap_content"
+            android:src="@mipmap/ic_person_my" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/Wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/DIMEN_10PX"
+            android:text="@string/text_name"
+            android:textSize="@dimen/TEXT_SIZE_18SP" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/DIMEN_48PX"
+        android:layout_below="@id/llyt_phone"
+        android:layout_marginEnd="@dimen/DIMEN_100PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/Wrap_content"
+            android:src="@mipmap/ic_addr_my" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/Wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/DIMEN_10PX"
+            android:text="@string/text_addr"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_write_info"
+        android:layout_width="@dimen/DIMEN_30PX"
+        android:layout_height="@dimen/DIMEN_30PX"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/DIMEN_32PX"
+        android:src="@mipmap/ic_in" />
+
+</RelativeLayout>

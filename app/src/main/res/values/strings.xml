@@ -18,6 +18,8 @@
     <string name="title_activity_service_note">ServiceNoteActivity</string>
     <string name="title_activity_pay">PayActivity</string>
     <string name="title_activity_feek_back">FeekBackActivity</string>
+    <string name="title_activity_about_app">AboutAppActivity</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
 
     <!-- 标题 -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -81,6 +83,7 @@
     <string name="one">1</string>
     <string name="text_phone">13751338740</string>
     <string name="text_name">小冠</string>
+    <string name="text_addr">成都</string>
     <string name="text_coupons_code">优惠码</string>
     <string name="text_recom_code">推荐码:</string>
     <string name="recom_code">SI9J6Q</string>
@@ -118,6 +121,14 @@
     <string name="text_website">官网:</string>
     <string name="website">www.huankxy.com</string>
     <string name="text_weixin">微信: 浣客洗衣</string>
-    <string name="title_activity_about_app">AboutAppActivity</string>
+    <string name="btn_save">保存</string>
+    <string name="name_input">请输入姓氏</string>
+    <string name="btn_man">先生</string>
+    <string name="btn_woman">女士</string>
+    <string name="ship_address">收货地址</string>
+    <string name="area">区</string>
+    <string name="community">小区</string>
+    <string name="detail_addr">详细地址</string>
+    <string name="input_tips">请精准填写您所在的街道、小区、栋、单元、号</string>
 
 </resources>

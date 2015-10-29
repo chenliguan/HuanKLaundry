@@ -12,8 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
-import com.guan.o2o.activity.FrameActivity;
 import com.guan.o2o.activity.PayActivity;
+import com.guan.o2o.activity.UserInfoActivity;
 import com.guan.o2o.application.App;
 import com.guan.o2o.model.WashOrder;
 import com.loopj.android.image.SmartImageView;
@@ -42,10 +42,12 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     private static FragmentActivity sContext;
     private final int ITEM_NORMAL = 0;
     private final int ITEM_FIRST = 1;
-    private final int ITEM_NUM = 2;
+    private final int ITEM_SECOND = 2;
+    private final int ITEM_THIRD = 3;
+    private final int ITEM_NUM = 4;
 
     public WashOrderAdapter(FragmentActivity context, List<WashOrder> list,
-                            ImageView ivBasketNull,ImageView ivHave) {
+                            ImageView ivBasketNull, ImageView ivHave) {
         super(context, list);
         sContext = context;
         mList = list;
@@ -65,7 +67,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
             mIvHave.setVisibility(View.INVISIBLE);
             return 0;
         } else
-            return mList.size() + 1;
+            return mList.size() + 3;
     }
 
     /**
@@ -76,11 +78,15 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
      */
     @Override
     public int getItemViewType(int position) {
-        int count = mList.size();
-        if (position < count) {
+        int count = mList.size() + 2;
+        if (position < count - 2) {
             return ITEM_NORMAL;
-        } else {
+        } else if (position == count - 2) {
             return ITEM_FIRST;
+        } else if (position == count - 1) {
+            return ITEM_SECOND;
+        } else {
+            return ITEM_THIRD;
         }
     }
 
@@ -94,6 +100,8 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
 
         View normalView;
         View firstView;
+        View secondView;
+        View thirdView;
         mCurrentType = getItemViewType(position);
 
         if (mCurrentType == ITEM_NORMAL) {
@@ -158,6 +166,32 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
                 firstView.setTag(firstHolder);
             }
             convertView = firstView;
+
+        } else if (mCurrentType == ITEM_SECOND) {
+            // 添加的第二项
+            secondView = convertView;
+            final SecondHolder secondHolder;
+            if (secondView != null) {
+                secondHolder = (SecondHolder) secondView.getTag();
+            } else {
+                secondView = LayoutInflater.from(sContext).inflate(R.layout.item_basket_second, null);
+                secondHolder = new SecondHolder(secondView);
+                secondView.setTag(secondHolder);
+            }
+            convertView = secondView;
+
+        } else if (mCurrentType == ITEM_THIRD) {
+            // 添加的第三项
+            thirdView = convertView;
+            final ThirdHolder thirdHolder;
+            if (thirdView != null) {
+                thirdHolder = (ThirdHolder) thirdView.getTag();
+            } else {
+                thirdView = LayoutInflater.from(sContext).inflate(R.layout.item_basket_third, null);
+                thirdHolder = new ThirdHolder(thirdView);
+                thirdView.setTag(thirdHolder);
+            }
+            convertView = thirdView;
         }
 
         return convertView;
@@ -194,36 +228,45 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     static class FirstHolder {
         @InjectView(R.id.iv_laundry_coupon)
         ImageView ivLaundryCoupon;
-        @InjectView(R.id.tv_write_info)
-        TextView tvWriteInfo;
-        @InjectView(R.id.iv_write_info)
-        ImageView ivWriteInfo;
-        @InjectView(R.id.rlyt_write_info)
-        RelativeLayout rlytWrite;
-        @InjectView(R.id.btn_pay)
-        Button btnPay;
 
         FirstHolder(View view) {
             ButterKnife.inject(this, view);
         }
+    }
 
-        @OnClick({R.id.rlyt_write_info, R.id.btn_pay})
+    /**
+     * 添加的第二项
+     */
+    static class SecondHolder {
+        @InjectView(R.id.rlyt_write_info)
+        RelativeLayout rlytWriteInfo;
+
+        SecondHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
+
+        @OnClick(R.id.rlyt_write_info)
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.rlyt_write_info:
+            Intent intent = new Intent(sContext, UserInfoActivity.class);
+            sContext.startActivity(intent);
+        }
+    }
 
-                    break;
+    /**
+     * 添加的第三项
+     */
+    static class ThirdHolder {
+        @InjectView(R.id.btn_pay)
+        Button btnPay;
 
-                case R.id.btn_pay:
-                    Intent intent = new Intent(sContext, PayActivity.class);
-                    sContext.startActivity(intent);
-                    // 关闭MainActivity
-                    sContext.finish();
-                    break;
+        ThirdHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
 
-                default:
-                    break;
-            }
+        @OnClick(R.id.btn_pay)
+        public void onClick(View view) {
+            Intent intent = new Intent(sContext, PayActivity.class);
+            sContext.startActivity(intent);
         }
     }
 }

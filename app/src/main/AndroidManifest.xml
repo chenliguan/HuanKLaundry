@@ -156,6 +156,10 @@
             android:name=".activity.AboutAppActivity"
             android:label="@string/title_activity_about_app" >
         </activity>
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:label="@string/title_activity_user_info" >
+        </activity>
     </application>
 
 </manifest>

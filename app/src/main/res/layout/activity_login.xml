@@ -25,7 +25,7 @@
             android:background="@drawable/bg_edit_shape"
             android:hint="@string/phone_input"
             android:inputType="phone"
-            android:paddingEnd="@dimen/DIMEN_12PX"
+            android:paddingEnd="@dimen/DIMEN_20PX"
             android:textColor="@color/icon_text_grey"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
 

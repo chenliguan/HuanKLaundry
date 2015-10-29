@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.guan.o2o.R;
 import com.guan.o2o.adapter.FragmentAdapter;
@@ -20,7 +19,6 @@ import com.guan.o2o.fragment.HomeFragment;
 import com.guan.o2o.fragment.MoreFragment;
 import com.guan.o2o.fragment.MyHomeFragment;
 import com.guan.o2o.utils.ConvertUtil;
-import com.guan.o2o.utils.LogUtil;
 import com.guan.o2o.utils.SharedPfeUtil;
 
 import java.util.ArrayList;
@@ -76,10 +74,6 @@ public class MainActivity extends FrameActivity implements
          * 绑定数据
          */
         bindData();
-        /**
-         * 判断是否从PayActivity跳转
-         */
-        judgeIntent();
     }
 
     /**
@@ -120,23 +114,6 @@ public class MainActivity extends FrameActivity implements
         fragVPager.setAdapter(new FragmentAdapter(
                 getSupportFragmentManager(), mFragList));
         fragVPager.addOnPageChangeListener(new onPageChangeListener());
-    }
-
-    /**
-     * 判断是否从PayActivity跳转
-     */
-    private void judgeIntent() {
-        //取得从PayActivity当中传递过来的Intent对象
-        Intent _intent = getIntent();
-        //从Intent当中根据key取得value
-        if (_intent != null) {
-            String _value = _intent.getStringExtra(Constant.INTENT_KEY);
-            LogUtil.showLog("_value:" + _value + " String.valueOf(Constant.TAB_BASKET):" + String.valueOf(Constant.TAB_BASKET));
-            if (Constant.VALUE_PAY_ACTIVITY.equals(_value)) {
-                fragVPager.setCurrentItem(Constant.TAB_BASKET);
-                LogUtil.showLog("------------");
-            }
-        }
     }
 
     @Override

@@ -121,7 +121,6 @@ public class PayActivity extends FrameActivity {
             case R.id.iv_back:
                 // 删除订单和刷新本地数据
                 removeAndShare();
-                actionStart(this, MainActivity.class, Constant.VALUE_PAY_ACTIVITY);
                 this.finish();
                 break;
 
@@ -134,7 +133,8 @@ public class PayActivity extends FrameActivity {
 
             case R.id.tv_alipay:
                 tvBalancePay.setBackgroundColor(getResources().getColor(R.color.white));
-                tvAlipay.setBackgroundColor(getResources().getColor(R.color.price_red));
+                tvAlipay.setBackgroundColor(getResources().getColor(R.color.bg_red));
+                tvBalancePay.setTextColor(getResources().getColor(R.color.texts_grey));
                 bgBalanceUi.setVisibility(View.INVISIBLE);
                 bgAlipayUi.setVisibility(View.VISIBLE);
                 /**
@@ -153,7 +153,6 @@ public class PayActivity extends FrameActivity {
                  */
                 // 删除订单和刷新本地数据
                 removeAndShare();
-                actionStart(this,MainActivity.class,Constant.VALUE_PAY_ACTIVITY);
                 this.finish();
                 break;
 
@@ -315,14 +314,4 @@ public class PayActivity extends FrameActivity {
             passList.remove(passList.size() - 1);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            // 删除订单和刷新本地数据
-            removeAndShare();
-            actionStart(this, MainActivity.class, Constant.VALUE_PAY_ACTIVITY);
-            this.finish();
-        }
-        return true;
-    }
 }

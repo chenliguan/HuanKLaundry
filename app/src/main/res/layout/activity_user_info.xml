@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.guan.o2o.activity.UserInfoActivity">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_100PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_edit_shape"
+            android:drawablePadding="@dimen/DIMEN_20PX"
+            android:layout_marginEnd="@dimen/DIMEN_260PX"
+            android:drawableStart="@mipmap/ic_person_my"
+            android:hint="@string/name_input"
+            android:paddingEnd="@dimen/DIMEN_20PX"
+            android:paddingStart="@dimen/DIMEN_20PX"
+            android:textColor="@color/icon_text_grey"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+        <Button
+            android:id="@+id/btn_man"
+            android:layout_width="@dimen/DIMEN_108PX"
+            android:layout_height="fill_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/DIMEN_124PX"
+            android:background="@color/main_blue"
+            android:text="@string/btn_man"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+        <Button
+            android:id="@+id/btn_woman"
+            android:layout_width="@dimen/DIMEN_108PX"
+            android:layout_height="fill_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/white"
+            android:text="@string/btn_woman"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/TEXT_SIZE_14SP" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_94PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:background="@drawable/bg_edit_shape"
+        android:drawablePadding="@dimen/DIMEN_20PX"
+        android:drawableStart="@mipmap/ic_phone_my"
+        android:hint="@string/phone_input"
+        android:inputType="phone"
+        android:paddingStart="@dimen/DIMEN_20PX"
+        android:textColor="@color/icon_text_grey"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:drawablePadding="@dimen/DIMEN_20PX"
+        android:drawableStart="@mipmap/ic_addr_my"
+        android:text="@string/ship_address"
+        android:gravity="center"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+
+    <EditText
+        android:id="@+id/et_area"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_94PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_12PX"
+        android:background="@drawable/bg_edit_shape"
+        android:text="@string/area"
+        android:inputType="phone"
+        android:paddingStart="@dimen/DIMEN_20PX"
+        android:textColor="@color/texts_grey"
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+    <EditText
+        android:id="@+id/et_commu"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_94PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_12PX"
+        android:background="@drawable/bg_edit_shape"
+        android:text="@string/community"
+        android:paddingStart="@dimen/DIMEN_20PX"
+        android:textColor="@color/texts_grey"
+        android:textSize="@dimen/TEXT_SIZE_18SP" />
+
+    <EditText
+        android:id="@+id/et_detail_addr"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_94PX"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginRight="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_12PX"
+        android:background="@drawable/bg_edit_shape"
+        android:text="@string/detail_addr"
+        android:paddingStart="@dimen/DIMEN_20PX"
+        android:textColor="@color/texts_grey"
+        android:textSize="@dimen/TEXT_SIZE_18SP"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:text="@string/input_tips"
+        android:gravity="center"
+        android:textSize="@dimen/TEXT_SIZE_14SP" />
+
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/ButtonTheme"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:text="@string/btn_save"
+        android:textSize="@dimen/TEXT_SIZE_16SP" />
+
+</LinearLayout>
