@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="area">
+        <item>青羊区</item>
+        <item>成华区</item>
+        <item>锦江区</item>
+        <item>金牛区</item>
+        <item>高新南区</item>
+        <item>武侯区</item>
+    </string-array>
+</resources>

@@ -18,6 +18,14 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * 引导页面
+ *
+ * @author Guan
+ * @file com.guan.o2o.activity
+ * @date 2015/9/23
+ * @Version 1.0
+ */
 public class GuideActivity extends FrameActivity implements ViewPager.OnPageChangeListener {
 
     @InjectView(R.id.viewPager)

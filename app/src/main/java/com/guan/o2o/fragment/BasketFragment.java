@@ -1,7 +1,12 @@
 package com.guan.o2o.fragment;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +51,7 @@ public class BasketFragment extends BaseFragment {
     private boolean mIsRefresh;
     private WashOrderAdapter mWashOrderAdapter;
     private OnClickListener mCallback;
+    private UpdateUIReceiver mUpdateUIReceiver;
 
     // 存放fragment的Activtiy必须实现的接口
     public interface OnClickListener {
@@ -76,6 +82,16 @@ public class BasketFragment extends BaseFragment {
             // 更新数据
             notifyData();
         }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // 动态注册广播
+        mUpdateUIReceiver = new UpdateUIReceiver();
+        IntentFilter filter = new IntentFilter(Constant.ACTION_BU_UPDATEUI);
+        getActivity().registerReceiver(mUpdateUIReceiver, filter);
     }
 
     @Override
@@ -110,6 +126,7 @@ public class BasketFragment extends BaseFragment {
     public void initVariable() {
         mIsRefresh = false;
         tvTitle.setText(R.string.main_navigation_basket);
+        // 取得MainActivity的控件
         mIvHave = (ImageView) getActivity().findViewById(R.id.iv_have);
     }
 
@@ -152,6 +169,18 @@ public class BasketFragment extends BaseFragment {
     }
 
     /**
+     * 定义广播接收器（内部类）
+     */
+    private class UpdateUIReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // 更新数据
+            notifyData();
+        }
+    }
+
+    /**
      * 更新数据
      */
     public void notifyData() {
@@ -175,5 +204,12 @@ public class BasketFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // 注销广播
+        getActivity().unregisterReceiver(mUpdateUIReceiver);
     }
 }

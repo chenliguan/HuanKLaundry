@@ -5,6 +5,18 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--  Wrap_content -->
+    <style name="Wrap_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--  Fill_parent -->
+    <style name="Fill_parent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
     <!-- BaseButton -->
     <style name="BaseButtonTheme">
         <item name="android:layout_width">fill_parent</item>
@@ -109,10 +121,35 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <!--  Wrap_content -->
-    <style name="Wrap_content">
+    <!--  EditText_info -->
+    <style name="EditText_info">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:inputType">none</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingEnd">@dimen/DIMEN_20PX</item>
+        <item name="android:paddingStart">@dimen/DIMEN_20PX</item>
+        <item name="android:textColor">@color/texts_grey</item>
+        <item name="android:textSize">@dimen/TEXT_SIZE_18SP</item>
+    </style>
+
+    <!--  EditText_info_detail -->
+    <style name="EditText_info_detail">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:inputType">none</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/TEXT_SIZE_16SP</item>
+    </style>
+
+    <!--  Layout_margin -->
+    <style name="Layout_margin">
+        <item name="android:layout_marginStart">@dimen/DIMEN_32PX</item>
+        <item name="android:layout_marginTop">@dimen/DIMEN_32PX</item>
+        <item name="android:layout_marginEnd">@dimen/DIMEN_100PX</item>
     </style>
 
 </resources>

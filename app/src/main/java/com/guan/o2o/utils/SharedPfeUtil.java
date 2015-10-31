@@ -33,6 +33,28 @@ public class SharedPfeUtil {
     }
 
     /**
+     * 持久化用户信息
+     */
+    public static void sharedUserInfo(Context context, boolean isShared, String name,
+                                      String phone, boolean gender, String area, String commu, String detail_addr) {
+        //1、实例化SharedPreferences对象
+        SharedPreferences preferences = context.getSharedPreferences(
+                Constant.SHARED_NAME_USERINFO, Context.MODE_PRIVATE);
+        //2、实例化SharedPreferences.Editor对象
+        SharedPreferences.Editor editor = preferences.edit();
+        //3、editor.put()存入数据
+        editor.putString(Constant.SHARED_KEY_NAME, name);
+        editor.putBoolean(Constant.SHARED_KEY_FLAG, isShared);
+        editor.putString(Constant.SHARED_KEY_USERPHONE, phone);
+        editor.putBoolean(Constant.SHARED_KEY_GENDER, gender);
+        editor.putString(Constant.SHARED_KEY_AREA, area);
+        editor.putString(Constant.SHARED_KEY_COMMU, commu);
+        editor.putString(Constant.SHARED_KEY_DETAIL_ADDR, detail_addr);
+        //4、commit()提交修改
+        editor.apply();
+    }
+
+    /**
      * 设置已经引导过了，下次启动不用再次引导
      */
     public static void sharedFirstLogin(Context context) {

@@ -47,7 +47,6 @@ public class SplashActivity extends FrameActivity {
      * 初始化数据
      */
     private void initVariable() {
-
         mLoginCode = null;
         mLoginPhone = null;
         mIsFirstIn = false;
@@ -62,10 +61,6 @@ public class SplashActivity extends FrameActivity {
         mIsFirstIn = preferences_first.getBoolean(Constant.SHARED_KEY_ORDER, true);
         mLoginPhone = preferences_login.getString(Constant.SHARED_KEY_PHONE, "");
         mLoginCode = preferences_login.getString(Constant.SHARED_KEY_CODE, "");
-
-        LogUtil.showLog("mIsFirstIn:" + mIsFirstIn);
-        LogUtil.showLog("mLoginPhon:" + mLoginPhone);
-        LogUtil.showLog("mLoginCode:" + mLoginCode);
     }
 
     /**

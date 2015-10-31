@@ -33,7 +33,14 @@
     <string name="user_agree">用户协议</string>
     <string name="feedback">意见反馈</string>
     <string name="pop_tip_title">提示信息</string>
-    <string name="pop_tip_content">请输入正确电话号码</string>
+    <string name="pop_tip_content">请输入正确手机号码</string>
+    <string name="phone_null">请输入手机号码</string>
+    <string name="pass_null">请输入验证码</string>
+    <string name="name_null">请输入姓名</string>
+    <string name="area_null">请输入区名</string>
+    <string name="commu_null">请输入小区名</string>
+    <string name="detail_addr_null">请输入详细地址名</string>
+    <string name="pass_error">请重新输入正确验证码</string>
     <string name="pop_tip_content2">功能尚未开通，敬请期待</string>
     <string name="coupon_share_title">优惠码分享</string>
 
@@ -54,6 +61,7 @@
     <string name="title_about_us">关于我们</string>
     <string name="title_about_app">关于浣洗</string>
     <string name="title_register">注册</string>
+    <string name="title_user_info">用户信息</string>
     <string name="title_pay">支付</string>
     <string name="phone_input">请输入手机号码</string>
     <string name="code_get">获取验证码</string>
@@ -74,8 +82,8 @@
     <string name="msg_repress">再按一次退出程序</string>
     <string name="text_tshirt">T恤</string>
     <string name="x">X</string>
-    <string name="rnb">￥00</string>
-    <string name="price_abag">￥99</string>
+    <string name="rnb">¥00</string>
+    <string name="price_abag">¥99</string>
     <string name="the_cost">费用总计:</string>
     <string name="last_cost">总计</string>
     <string name="user_info">用户信息</string>

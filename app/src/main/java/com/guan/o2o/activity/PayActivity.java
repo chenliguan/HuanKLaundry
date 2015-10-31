@@ -1,5 +1,6 @@
 package com.guan.o2o.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -121,7 +122,8 @@ public class PayActivity extends FrameActivity {
             case R.id.iv_back:
                 // 删除订单和刷新本地数据
                 removeAndShare();
-                this.finish();
+                // 向BasketFragment发送广播,更新界面
+                sendBroadcast();
                 break;
 
             case R.id.tv_balance_pay:
@@ -151,9 +153,10 @@ public class PayActivity extends FrameActivity {
                 /**
                  * 提交到服务器，获取密码校对，提交订单
                  */
-                // 删除订单和刷新本地数据
+                // 删除订单和刷新本地数据(保存到“已完成”或者“代付款”等表中)
                 removeAndShare();
-                this.finish();
+                // 向BasketFragment发送广播,更新界面
+                sendBroadcast();
                 break;
 
             default:
@@ -186,7 +189,17 @@ public class PayActivity extends FrameActivity {
             }
         }
         // 把集合转化为字符串
-        return sb.toString();
+        return sb != null ? sb.toString() : null;
+    }
+
+    /**
+     * 向BasketFragment发送广播
+     */
+    private void sendBroadcast() {
+        Intent intent = new Intent(Constant.ACTION_BU_UPDATEUI);
+        intent.putExtra(Constant.INTENT_KEY, Constant.VALUE_PAY_ACTIVITY);
+        sendBroadcast(intent);
+        finish();
     }
 
     /**
@@ -217,7 +230,7 @@ public class PayActivity extends FrameActivity {
 
         // PopupWindow显示位置
         mKeyBWindow = new PopupWindow(contentView,
-                ViewGroup.LayoutParams.FILL_PARENT, 408, true);
+                ViewGroup.LayoutParams.FILL_PARENT, 404, true);
         // 接收点击事件
         mKeyBWindow.setFocusable(true);
         mKeyBWindow.setOutsideTouchable(true);
@@ -314,4 +327,30 @@ public class PayActivity extends FrameActivity {
             passList.remove(passList.size() - 1);
     }
 
+
+    /**
+     * 退出程序
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // 删除订单和刷新本地数据(保存到“已完成”或者“代付款”等表中)
+            removeAndShare();
+            // 向BasketFragment发送广播,更新界面
+            sendBroadcast();
+            return true;
+        }
+        return super.onKeyDown(keyCode,event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // 向BasketFragment发送广播,更新界面
+        sendBroadcast();
+        super.onBackPressed();
+    }
 }

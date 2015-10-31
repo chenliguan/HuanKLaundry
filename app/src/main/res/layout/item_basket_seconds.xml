@@ -3,16 +3,13 @@
     android:id="@+id/rlyt_my_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/DIMEN_32PX"
-    android:layout_marginTop="@dimen/DIMEN_32PX"
-    android:layout_marginBottom="@dimen/DIMEN_32PX"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/llyt_phone"
+        style="@style/Layout_margin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/DIMEN_48PX"
-        android:layout_marginEnd="@dimen/DIMEN_100PX"
         android:layout_alignParentEnd="true"
         android:orientation="horizontal">
 
@@ -30,6 +27,7 @@
     </LinearLayout>
 
     <LinearLayout
+        style="@style/Layout_margin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/DIMEN_48PX"
         android:orientation="horizontal">
@@ -48,11 +46,11 @@
     </LinearLayout>
 
     <LinearLayout
+        style="@style/Layout_margin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/DIMEN_48PX"
         android:layout_below="@id/llyt_phone"
-        android:layout_marginEnd="@dimen/DIMEN_100PX"
-        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:layout_marginBottom="@dimen/DIMEN_32PX"
         android:orientation="horizontal">
 
         <ImageView

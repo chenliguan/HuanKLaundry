@@ -31,20 +31,12 @@ public class Constant {
     public final static int FLAG_LOGN_SUCCESS = 1;
 
     /**
-     * 验证登录信息
-     */
-    // 手机号码格式错误
-    public final static String MSG_PHONE_ERROR = "请重新输入手机号码";
-    // 手机号码或验证码格式错误
-    public final static String MSG_PHONE_PASS_ERROR = "请重新输入手机号码或验证码";
-
-    /**
      * 时间
      */
     // 延迟3秒
     public static final long SPLASH_DELAY_MS = 2300;
     // Popupwindow显示时间
-    public static final long POPWIN_DELAY_MS = 2300;
+    public static final long POPWIN_DELAY_MS = 1500;
     // loadingDialog显示时间
     public static final long LOADING_DELAY_MS = 1500;
 
@@ -57,6 +49,8 @@ public class Constant {
     public static final String SHARED_NAME_LOGIN = "login_data";
     // 保存订单数据
     public static final String SHARED_NAME_ORDER = "order_list";
+    // 保存用户信息
+    public static final String SHARED_NAME_USERINFO = "user_info";
 
     /**
      * sharedpreferences保存键名
@@ -66,9 +60,24 @@ public class Constant {
     // 保存订单键名
     public static final String SHARED_KEY_ORDER = "order_key";
     // 保存用户名键名
-    public static final String SHARED_KEY_PHONE = "login_hone";
+    public static final String SHARED_KEY_PHONE = "login_phone";
     // 保存验证码键名
-    public static final String SHARED_KEY_CODE = "login_ode";
+    public static final String SHARED_KEY_CODE = "login_code";
+
+    // 保存用户信息-标志键名
+    public static final String SHARED_KEY_FLAG = "user_flag";
+    // 保存用户信息-姓名键名
+    public static final String SHARED_KEY_NAME = "user_name";
+    // 保存用户信息-手机号键名
+    public static final String SHARED_KEY_USERPHONE = "user_phone";
+    // 保存用户信息-性别键名
+    public static final String SHARED_KEY_GENDER = "user_gender";
+    // 保存用户信息-区键名
+    public static final String SHARED_KEY_AREA = "user_area";
+    // 保存用户信息-小区键名
+    public static final String SHARED_KEY_COMMU = "user_commu";
+    // 保存用户信息-详细地址键名
+    public static final String SHARED_KEY_DETAIL_ADDR = "user_detail_addr";
 
     /**
      * volley请求标签
@@ -109,6 +118,8 @@ public class Constant {
     public static final String VALUE_MAIN_ACTIVITY = "MainActivity";
     // PayActivity
     public static final String VALUE_PAY_ACTIVITY = "PayActivity";
+    // UserInfoActivity
+    public static final String VALUE_UserInfo_ACTIVITY = "UserInfoActivity";
 
     // KEY值1
     public static final String INTENT_KEY = "KEY";
@@ -151,5 +162,12 @@ public class Constant {
      * 密码个数
      */
     public static final int PASS_NUM = 6;
+
+
+    /**
+     * 广播更新界面
+     */
+    // BasketFragment-->UserInfoActivity更新UI广播
+    public static final String ACTION_BU_UPDATEUI = "Action_BU_updateUI";
 
 }

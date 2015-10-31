@@ -25,29 +25,11 @@
             android:text="@string/main_navigation_home"
             android:textColor="@color/main_blue" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <RadioButton
-                android:id="@+id/main_tab_basket"
-                style="@style/main_tab_bottom"
-                android:drawableTop="@drawable/bg_tab_basket"
-                android:text="@string/main_navigation_basket" />
-
-            <ImageView
-                android:id="@+id/iv_have"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_tab_top_h"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/DIMEN_4PX"
-                android:layout_marginEnd="@dimen/DIMEN_60PX"
-                android:visibility="invisible"/>
-
-        </RelativeLayout>
-
+        <RadioButton
+            android:id="@+id/main_tab_basket"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/bg_tab_basket"
+            android:text="@string/main_navigation_basket" />
 
         <RadioButton
             android:id="@+id/main_tab_my"
@@ -62,4 +44,42 @@
             android:text="@string/main_navigation_more" />
     </RadioGroup>
 
+    <LinearLayout
+        android:id="@+id/rlyt_dot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/DIMEN_84PX"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/iv_have1"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="@dimen/DIMEN_1PX"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/iv_have"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/DIMEN_30PX"
+            android:src="@mipmap/ic_tab_top_h"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/iv_have3"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="@dimen/DIMEN_1PX"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/iv_have4"
+            android:layout_width="@dimen/DIMEN_0PX"
+            android:layout_height="@dimen/DIMEN_1PX"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+    </LinearLayout>
 </RelativeLayout>

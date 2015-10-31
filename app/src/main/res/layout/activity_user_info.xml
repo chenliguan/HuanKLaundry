@@ -12,23 +12,22 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_100PX"
-        android:layout_marginTop="@dimen/DIMEN_32PX"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/DIMEN_40PX">
 
         <EditText
             android:id="@+id/et_name"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginEnd="@dimen/DIMEN_260PX"
             android:background="@drawable/bg_edit_shape"
             android:drawablePadding="@dimen/DIMEN_20PX"
-            android:layout_marginEnd="@dimen/DIMEN_260PX"
             android:drawableStart="@mipmap/ic_person_my"
             android:hint="@string/name_input"
             android:paddingEnd="@dimen/DIMEN_20PX"
             android:paddingStart="@dimen/DIMEN_20PX"
-            android:textColor="@color/icon_text_grey"
+            android:textColor="@color/text_grey"
             android:textSize="@dimen/TEXT_SIZE_14SP" />
 
         <Button
@@ -66,73 +65,89 @@
         android:hint="@string/phone_input"
         android:inputType="phone"
         android:paddingStart="@dimen/DIMEN_20PX"
-        android:textColor="@color/icon_text_grey"
+        android:textColor="@color/text_grey"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DIMEN_32PX"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_32PX"
         android:drawablePadding="@dimen/DIMEN_20PX"
         android:drawableStart="@mipmap/ic_addr_my"
-        android:text="@string/ship_address"
         android:gravity="center"
+        android:text="@string/ship_address"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
-
-    <EditText
-        android:id="@+id/et_area"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_94PX"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:background="@drawable/bg_edit_shape"
-        android:text="@string/area"
-        android:inputType="phone"
-        android:paddingStart="@dimen/DIMEN_20PX"
-        android:textColor="@color/texts_grey"
-        android:textSize="@dimen/TEXT_SIZE_18SP" />
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:background="@drawable/bg_edit_shape">
 
-    <EditText
-        android:id="@+id/et_commu"
+        <EditText
+            android:id="@+id/et_dri_area"
+            style="@style/EditText_info"
+            android:text="@string/area" />
+
+        <Spinner
+            android:id="@+id/spr_area"
+            style="@style/EditText_info_detail"
+            android:layout_toEndOf="@+id/et_dri_area" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_94PX"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:background="@drawable/bg_edit_shape"
-        android:text="@string/community"
-        android:paddingStart="@dimen/DIMEN_20PX"
-        android:textColor="@color/texts_grey"
-        android:textSize="@dimen/TEXT_SIZE_18SP" />
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:background="@drawable/bg_edit_shape">
 
-    <EditText
-        android:id="@+id/et_detail_addr"
+        <EditText
+            android:id="@+id/et_dri_commu"
+            style="@style/EditText_info"
+            android:text="@string/community" />
+
+        <EditText
+            android:id="@+id/et_commu"
+            style="@style/EditText_info_detail"
+            android:layout_toEndOf="@+id/et_dri_commu" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_94PX"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
         android:layout_marginRight="@dimen/DIMEN_32PX"
-        android:layout_marginTop="@dimen/DIMEN_12PX"
-        android:background="@drawable/bg_edit_shape"
-        android:text="@string/detail_addr"
-        android:paddingStart="@dimen/DIMEN_20PX"
-        android:textColor="@color/texts_grey"
-        android:textSize="@dimen/TEXT_SIZE_18SP"/>
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:background="@drawable/bg_edit_shape">
+
+        <EditText
+            android:id="@+id/et_dri_addr"
+            style="@style/EditText_info"
+            android:text="@string/detail_addr" />
+
+        <EditText
+            android:id="@+id/et_addr"
+            style="@style/EditText_info_detail"
+            android:layout_toEndOf="@+id/et_dri_addr" />
+    </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Wrap_content"
         android:layout_marginLeft="@dimen/DIMEN_32PX"
-        android:text="@string/input_tips"
+        android:layout_marginTop="@dimen/DIMEN_8PX"
         android:gravity="center"
+        android:text="@string/input_tips"
         android:textSize="@dimen/TEXT_SIZE_14SP" />
 
     <Button
         android:id="@+id/btn_save"
         style="@style/ButtonTheme"
-        android:layout_marginTop="@dimen/DIMEN_32PX"
+        android:layout_marginTop="@dimen/DIMEN_80PX"
         android:text="@string/btn_save"
         android:textSize="@dimen/TEXT_SIZE_16SP" />
 

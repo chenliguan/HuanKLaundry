@@ -103,6 +103,8 @@ public class MainActivity extends FrameActivity implements
             App.washOrderList = ConvertUtil.stringToList(liststring);
         if (App.washOrderList.size() != 0)
             ivHave.setVisibility(View.VISIBLE);
+        else
+            ivHave.setVisibility(View.INVISIBLE);
     }
 
     /**

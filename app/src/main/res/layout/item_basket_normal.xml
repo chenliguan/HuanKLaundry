@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="@dimen/DIMEN_180PX"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/DIMEN_20PX"
     android:paddingTop="@dimen/DIMEN_20PX">
 
     <com.loopj.android.image.SmartImageView
@@ -93,4 +92,10 @@
         android:layout_marginTop="@dimen/DIMEN_0PX"
         android:src="@mipmap/ic_delete" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_2PX"
+        android:layout_marginTop="@dimen/DIMEN_158PX"
+        android:layout_marginStart="@dimen/DIMEN_48PX"
+        android:background="@color/frame_line_grey" />
 </RelativeLayout>

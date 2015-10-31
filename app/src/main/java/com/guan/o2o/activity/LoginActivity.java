@@ -14,7 +14,7 @@ import com.guan.o2o.R;
 import com.guan.o2o.application.App;
 import com.guan.o2o.common.Constant;
 import com.guan.o2o.common.HttpPath;
-import com.guan.o2o.utils.RglExpressUtil;
+import com.guan.o2o.utils.RegularExpressUtil;
 import com.guan.o2o.utils.SharedPfeUtil;
 import com.guan.o2o.volley.VolleyHandler;
 import com.guan.o2o.volley.VolleyHttpRequest;
@@ -22,9 +22,6 @@ import com.guan.o2o.volley.VolleyHttpRequest;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-
-import static com.guan.o2o.utils.RglExpressUtil.isChineseNo;
-import static com.guan.o2o.utils.RglExpressUtil.isMobileNO;
 
 /**
  * 登录页面
@@ -116,6 +113,7 @@ public class LoginActivity extends FrameActivity {
      * 获取验证码请求
      */
     private void getCode() {
+        mLoginPhone = etPhone.getText().toString();
         volleyRequest = new VolleyHandler<String>() {
             @Override
             public void reqSuccess(String response) {
@@ -131,13 +129,17 @@ public class LoginActivity extends FrameActivity {
         };
 
         // 对手机号码验证
-        if (isMobileNO(etPhone.getText().toString())) {
+        if (RegularExpressUtil.isNullNo(mLoginPhone)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.phone_null));
+        } else if (!RegularExpressUtil.isMobileNO(mLoginPhone)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.pop_tip_content));
+        } else {
             // 开始计时
             mTime.start();
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getCodeIfo(mLoginPhone), volleyRequest);
-        } else
-            showTipsWindow(mLocalView,getString(R.string.pop_tip_title),getString(R.string.pop_tip_content));
+        }
+
     }
 
     /**
@@ -164,12 +166,27 @@ public class LoginActivity extends FrameActivity {
             }
         };
 
+//        // 对手机号码与验证码验证
+//        if (RegularExpressUtil.isMobileNO(mLoginPhone) &
+//                !RegularExpressUtil.isChineseNo(mLoginCode) &
+//                !RegularExpressUtil.isNullNo(mLoginCode)) {
+//            // 请求网络
+//            VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
+//        } else
+//            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.phone_pass_error));
+
         // 对手机号码与验证码验证
-        if (isMobileNO(mLoginPhone) & !isChineseNo(mLoginCode) & !RglExpressUtil.isNullNo(mLoginCode)) {
+        if (RegularExpressUtil.isNullNo(mLoginPhone)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.phone_null));
+        } else if (!RegularExpressUtil.isMobileNO(mLoginPhone)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.pop_tip_content));
+        } else if (RegularExpressUtil.isNullNo(mLoginCode)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.pass_null));
+        } else if (RegularExpressUtil.isChineseNo(mLoginCode)) {
+            showTipsWindow(mLocalView, getString(R.string.pop_tip_title), getString(R.string.pass_error));
+        } else
             // 请求网络
             VolleyHttpRequest.String_request(HttpPath.getLoginIfo(mLoginPhone, mLoginCode), volleyRequest);
-        } else
-            showMsg(Constant.MSG_PHONE_PASS_ERROR);
     }
 
     /**
@@ -196,6 +213,7 @@ public class LoginActivity extends FrameActivity {
             String text = "(" + millisUntilFinished / 1000 + "s" + ")后重新获取";
             btnCode.setText(text);
         }
+
     }
 
     /**
