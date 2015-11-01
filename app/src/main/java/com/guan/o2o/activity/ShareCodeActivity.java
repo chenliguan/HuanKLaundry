@@ -14,6 +14,14 @@ import butterknife.OnClick;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
+/**
+ * 分享验证码页面
+ *
+ * @author Guan
+ * @file com.guan.o2o.activity
+ * @date 2015/10/30
+ * @Version 1.0
+ */
 public class ShareCodeActivity extends FrameActivity {
 
     @InjectView(R.id.tv_title)

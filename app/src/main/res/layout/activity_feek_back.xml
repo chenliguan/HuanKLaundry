@@ -8,7 +8,7 @@
         android:id="@+id/llyt_title"
         layout="@layout/layout_title" />
 
-    <TextView
+    <EditText
         android:id="@+id/tv_input"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_400PX"
@@ -21,6 +21,8 @@
         android:hint="@string/text_input_tips"
         android:padding="@dimen/DIMEN_20PX"
         android:singleLine="false"
+        android:inputType="textMultiLine"
+        android:gravity="top"
         android:textSize="@dimen/TEXT_SIZE_18SP" />
 
     <Button

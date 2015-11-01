@@ -75,7 +75,7 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
         tipsWindow.setOutsideTouchable(true);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
         tipsWindow.setBackgroundDrawable(new BitmapDrawable());
-        backgroundAlpha(0.5f);
+        backgroundAlpha(0.6f);
         // 设置好参数之后再show
         tipsWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
         // 隐退监听
@@ -151,7 +151,7 @@ public abstract class FrameFragment extends BaseFragment implements View.OnClick
         // 接收点击事件
         orderWindow.setFocusable(true);
         orderWindow.setOutsideTouchable(true);
-        backgroundAlpha(0.5f);
+        backgroundAlpha(0.6f);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
         orderWindow.setBackgroundDrawable(new ColorDrawable(0xb0000000));
         // 显示

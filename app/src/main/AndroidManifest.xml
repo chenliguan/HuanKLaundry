@@ -160,6 +160,10 @@
             android:name=".activity.UserInfoActivity"
             android:label="@string/title_activity_user_info" >
         </activity>
+        <activity
+            android:name=".activity.MyAddrActivity"
+            android:label="@string/title_activity_my_addr" >
+        </activity>
     </application>
 
 </manifest>

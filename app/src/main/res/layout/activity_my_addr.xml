@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.guan.o2o.activity.MyAddrActivity">
+
+    <include layout="@layout/layout_title_to" />
+
+    <LinearLayout
+        style="@style/MyAddr_LinearLayout"
+        android:layout_marginTop="@dimen/DIMEN_18PX">
+
+        <ImageView
+            style="@style/MyAddr_ImageView"
+            android:src="@mipmap/ic_person_my" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/MyAddr_TextView"
+            android:text="@string/text_name" />
+    </LinearLayout>
+
+    <ImageView
+        style="@style/MyAddr_DotLine"
+        android:contentDescription="@string/title_activity_my_addr" />
+
+    <LinearLayout style="@style/MyAddr_LinearLayout">
+
+        <ImageView
+            style="@style/MyAddr_ImageView"
+            android:src="@mipmap/ic_phone_my" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/MyAddr_TextView"
+            android:text="@string/text_phone" />
+    </LinearLayout>
+
+    <ImageView
+        style="@style/MyAddr_DotLine"
+        android:contentDescription="@string/title_activity_my_addr" />
+
+
+    <LinearLayout style="@style/MyAddr_LinearLayout">
+
+        <ImageView
+            style="@style/MyAddr_ImageView"
+            android:src="@mipmap/ic_addr_my" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/MyAddr_TextView"
+            android:text="@string/text_addr" />
+    </LinearLayout>
+
+</LinearLayout>

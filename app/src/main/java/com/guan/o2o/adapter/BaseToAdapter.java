@@ -1,9 +1,17 @@
 package com.guan.o2o.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.PopupWindow;
+
+import com.guan.o2o.R;
 
 import java.util.List;
 

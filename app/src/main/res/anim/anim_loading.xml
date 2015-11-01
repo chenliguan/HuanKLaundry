@@ -3,7 +3,7 @@
     <item>
         <rotate
             android:drawable="@mipmap/ic_public_loading"
-            android:duration="1500"
+            android:duration="1000"
             android:fromDegrees="0"
             android:pivotX="50%"
             android:pivotY="50%"

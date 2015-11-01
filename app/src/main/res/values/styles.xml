@@ -86,7 +86,7 @@
     </style>
 
     <!--  TextViewPayPass -->
-    <style name="TextViewPayPass" >
+    <style name="TextViewPayPass">
         <item name="android:layout_width">@dimen/DIMEN_90PX</item>
         <item name="android:layout_height">@dimen/DIMEN_80PX</item>
         <item name="android:gravity">center</item>
@@ -150,6 +150,41 @@
         <item name="android:layout_marginStart">@dimen/DIMEN_32PX</item>
         <item name="android:layout_marginTop">@dimen/DIMEN_32PX</item>
         <item name="android:layout_marginEnd">@dimen/DIMEN_100PX</item>
+    </style>
+
+    <!--  MyAddr_LinearLayout -->
+    <style name="MyAddr_LinearLayout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_88PX</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--  MyAddr_Imageview -->
+    <style name="MyAddr_ImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/DIMEN_32PX</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <!--  MyAddr_Textview -->
+    <style name="MyAddr_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/DIMEN_10PX</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/TEXT_SIZE_18SP</item>
+    </style>
+
+    <!--  MyAddr_DotLine -->
+    <style name="MyAddr_DotLine">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/DIMEN_32PX</item>
+        <item name="android:paddingEnd">@dimen/DIMEN_32PX</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:src">@mipmap/bg_dot_line</item>
     </style>
 
 </resources>

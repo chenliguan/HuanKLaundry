@@ -38,7 +38,7 @@ import butterknife.OnClick;
  * @date 2015/10/5
  * @Version 1.0
  */
-public class BasketFragment extends BaseFragment {
+public class BasketFragment extends FrameFragment {
 
     @InjectView(R.id.tv_title)
     TextView tvTitle;

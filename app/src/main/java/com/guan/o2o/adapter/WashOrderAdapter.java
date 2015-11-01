@@ -3,12 +3,17 @@ package com.guan.o2o.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -45,7 +50,7 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
     private final int ITEM_SECOND = 2;
     private final int ITEM_THIRD = 3;
     private final int ITEM_NUM = 4;
-
+    public static PopupWindow sLoadingWindow;
     private static FragmentActivity sContext;
 
     public WashOrderAdapter(FragmentActivity context, List<WashOrder> list,
@@ -347,9 +352,63 @@ public class WashOrderAdapter extends BaseToAdapter<WashOrder> {
         }
 
         @OnClick(R.id.btn_pay)
-        public void onClick(View view) {
-            Intent intent = new Intent(sContext, PayActivity.class);
-            sContext.startActivity(intent);
+        public void onClick(final View view) {
+
+            // 停留2秒,隐退
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showsLoadingWindow(view);
+                }
+            }, Constant.POPWIN_DELAY_MS);
         }
     }
+
+    /**
+     * 加载中PopupWindow
+     *
+     * @param view
+     */
+    public static void showsLoadingWindow(View view) {
+        View contentView = LayoutInflater.from(sContext).inflate(
+                R.layout.view_loading_dialog, null);
+        // 取消view_loading_dialog背景底图片
+        contentView.setBackground(null);
+        sLoadingWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT, true);
+        backgroundAlpha(0.6f);
+        // 设置好参数之后再show
+        sLoadingWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
+        // 隐退监听
+        sLoadingWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1f);
+            }
+        });
+        // 停留1.5秒,隐退
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sLoadingWindow.dismiss();
+                sLoadingWindow = null;
+                // 跳转到PayActivity
+                Intent intent = new Intent(sContext, PayActivity.class);
+                sContext.startActivity(intent);
+            }
+        }, Constant.LOADING_DELAY_MS);
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
+     */
+    public static void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = sContext.getWindow().getAttributes();
+        // 0.0-1.0
+        lp.alpha = bgAlpha;
+        sContext.getWindow().setAttributes(lp);
+    }
+
 }

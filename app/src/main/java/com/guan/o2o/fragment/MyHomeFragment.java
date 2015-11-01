@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.guan.o2o.R;
+import com.guan.o2o.activity.MyAddrActivity;
 import com.guan.o2o.activity.ShareCodeActivity;
 import com.guan.o2o.adapter.MyGridAdapter;
 import com.guan.o2o.view.CustomHanzTV;
@@ -101,6 +102,7 @@ public class MyHomeFragment extends BaseFragment {
                     break;
 
                 case 2:
+                    openActivity(MyAddrActivity.class);
                     break;
 
                 case 3:

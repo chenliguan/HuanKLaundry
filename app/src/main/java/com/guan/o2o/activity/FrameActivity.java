@@ -67,7 +67,7 @@ public class FrameActivity extends BaseActivity {
         mPopupWindow.setOutsideTouchable(true);
         // 必须实现,否则点击外部区域和Back键都无法dismiss
         mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-        backgroundAlpha(0.5f);
+        backgroundAlpha(0.6f);
         // 设置好参数之后再show
         mPopupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, 0);
         // 隐退监听
@@ -86,4 +86,5 @@ public class FrameActivity extends BaseActivity {
             }
         }, Constant.POPWIN_DELAY_MS);
     }
+
 }
